@@ -16,11 +16,24 @@ Ext.define('Pacemaker.view.Main', {
         xtype: 'panel',
         title: 'west',
         width: 150
-    },{
+    },
+    // {
+    //     region: 'center',
+    //     xtype: 'form',
+    // }
+    {
         region: 'center',
-        xtype: 'tabpanel',
-        items:[{
-            title: 'Center Tab 1'
+        xtype: 'grid',
+        store: 'Users',
+        columns: [{
+            text: 'First Name',
+            dataIndex: 'firstname',
+            flex: 1
+        },{
+            text: 'Last Name',
+            dataIndex: 'lastname',
+            flex: 1
         }]
-    }]
+    }
+    ]
 });

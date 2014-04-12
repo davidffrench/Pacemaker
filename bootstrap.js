@@ -7,7 +7,6 @@
 Ext.Loader.addClassPathMappings({
   "Ext": "../ext/src",
   "Ext.Msg": "../ext/src/window/MessageBox.js",
-  "Ext.rtl.EventObjectImpl": "../ext/src/rtl/EventObject.js",
   "Pacemaker": "app"
 });
 Ext.ClassManager.addNameAlternateMappings({
@@ -420,8 +419,9 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.grid.column.Boolean": [
     "Ext.grid.BooleanColumn"
   ],
-  "Ext.grid.column.CheckColumn": [
-    "Ext.ux.CheckColumn"
+  "Ext.grid.column.Check": [
+    "Ext.ux.CheckColumn",
+    "Ext.grid.column.CheckColumn"
   ],
   "Ext.grid.column.Column": [
     "Ext.grid.Column"
@@ -600,6 +600,13 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.rtl.AbstractComponent": [],
   "Ext.rtl.EventObjectImpl": [],
   "Ext.rtl.button.Button": [],
+  "Ext.rtl.chart.Chart": [],
+  "Ext.rtl.chart.Legend": [],
+  "Ext.rtl.chart.LegendItem": [],
+  "Ext.rtl.chart.axis.Axis": [],
+  "Ext.rtl.chart.axis.Gauge": [],
+  "Ext.rtl.chart.series.Cartesian": [],
+  "Ext.rtl.chart.series.Gauge": [],
   "Ext.rtl.dd.DD": [],
   "Ext.rtl.dom.Element_anim": [],
   "Ext.rtl.dom.Element_insertion": [],
@@ -607,6 +614,8 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.rtl.dom.Element_scroll": [],
   "Ext.rtl.dom.Element_static": [],
   "Ext.rtl.dom.Layer": [],
+  "Ext.rtl.draw.Component": [],
+  "Ext.rtl.draw.Sprite": [],
   "Ext.rtl.form.field.Checkbox": [],
   "Ext.rtl.form.field.File": [],
   "Ext.rtl.form.field.Spinner": [],
@@ -614,6 +623,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.rtl.grid.CellEditor": [],
   "Ext.rtl.grid.RowEditor": [],
   "Ext.rtl.grid.column.Column": [],
+  "Ext.rtl.grid.feature.Summary": [],
   "Ext.rtl.grid.plugin.HeaderResizer": [],
   "Ext.rtl.grid.plugin.RowEditing": [],
   "Ext.rtl.layout.ContextItem": [],
@@ -736,6 +746,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.util.KeyNav": [
     "Ext.KeyNav"
   ],
+  "Ext.util.LocalStorage": [],
   "Ext.util.LruCache": [],
   "Ext.util.Memento": [],
   "Ext.util.MixedCollection": [],
@@ -1278,7 +1289,7 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.grid.column.Boolean": [
     "widget.booleancolumn"
   ],
-  "Ext.grid.column.CheckColumn": [
+  "Ext.grid.column.Check": [
     "widget.checkcolumn"
   ],
   "Ext.grid.column.Column": [
@@ -1529,6 +1540,13 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.rtl.AbstractComponent": [],
   "Ext.rtl.EventObjectImpl": [],
   "Ext.rtl.button.Button": [],
+  "Ext.rtl.chart.Chart": [],
+  "Ext.rtl.chart.Legend": [],
+  "Ext.rtl.chart.LegendItem": [],
+  "Ext.rtl.chart.axis.Axis": [],
+  "Ext.rtl.chart.axis.Gauge": [],
+  "Ext.rtl.chart.series.Cartesian": [],
+  "Ext.rtl.chart.series.Gauge": [],
   "Ext.rtl.dd.DD": [],
   "Ext.rtl.dom.Element_anim": [],
   "Ext.rtl.dom.Element_insertion": [],
@@ -1536,6 +1554,8 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.rtl.dom.Element_scroll": [],
   "Ext.rtl.dom.Element_static": [],
   "Ext.rtl.dom.Layer": [],
+  "Ext.rtl.draw.Component": [],
+  "Ext.rtl.draw.Sprite": [],
   "Ext.rtl.form.field.Checkbox": [],
   "Ext.rtl.form.field.File": [],
   "Ext.rtl.form.field.Spinner": [],
@@ -1543,6 +1563,7 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.rtl.grid.CellEditor": [],
   "Ext.rtl.grid.RowEditor": [],
   "Ext.rtl.grid.column.Column": [],
+  "Ext.rtl.grid.feature.Summary": [],
   "Ext.rtl.grid.plugin.HeaderResizer": [],
   "Ext.rtl.grid.plugin.RowEditing": [],
   "Ext.rtl.layout.ContextItem": [],
@@ -1672,6 +1693,7 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.util.Inflector": [],
   "Ext.util.KeyMap": [],
   "Ext.util.KeyNav": [],
+  "Ext.util.LocalStorage": [],
   "Ext.util.LruCache": [],
   "Ext.util.Memento": [],
   "Ext.util.MixedCollection": [],
@@ -1824,9 +1846,9 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "Pacemaker.view.Viewport": []
 });
-Ext.setVersion("ext-theme-base", "4.2.1");
-Ext.setVersion("ext-theme-classic", "4.2.1");
-Ext.setVersion("ext-theme-neutral", "4.2.1");
+Ext.setVersion("ext-theme-base", "4.2.2");
+Ext.setVersion("ext-theme-classic", "4.2.2");
+Ext.setVersion("ext-theme-neutral", "4.2.2");
 /**
  * Sencha Blink - Development
  * @author Jacky Nguyen <jacky@sencha.com>

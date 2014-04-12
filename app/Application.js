@@ -12,6 +12,6 @@ Ext.define('Pacemaker.Application', {
     ],
 
     stores: [
-        // TODO: add stores here
+        'Users'
     ]
 });
