@@ -1,6 +1,9 @@
 Ext.define('Pacemaker.model.User', {
     extend: 'Ext.data.Model',
-	requires: [ 'Pacemaker.model.Activity' ],
+	requires: [
+        'Ext.data.SequentialIdGenerator',
+        'Pacemaker.model.Activity'
+    ],
 
     idgen: 'sequential',
     fields: [

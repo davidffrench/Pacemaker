@@ -1,9 +1,11 @@
 Ext.define('Pacemaker.view.Viewport', {
     extend: 'Ext.container.Viewport',
-    requires: ['Ext.layout.container.Border',
-               'Pacemaker.view.authorization.AuthLayout',
-               'Pacemaker.view.AppHeader',
-               'Ext.layout.container.Card'],
+    requires: [
+        'Ext.layout.container.Border',
+        'Ext.layout.container.Card',
+        'Pacemaker.view.AppHeader',
+        'Pacemaker.view.authorization.AuthLayout'
+    ],
 
     layout: {
         type: 'border'

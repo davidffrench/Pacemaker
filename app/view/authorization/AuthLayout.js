@@ -1,6 +1,7 @@
 Ext.define("Pacemaker.view.authorization.AuthLayout", {
     extend: 'Ext.container.Container',
     requires: [
+		'Ext.tab.Panel',
 		'Pacemaker.view.authorization.Login',
 		'Pacemaker.view.authorization.Signup'
     ],
