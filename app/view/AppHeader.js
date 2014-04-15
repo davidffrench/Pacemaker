@@ -1,14 +1,14 @@
 Ext.define("Pacemaker.view.AppHeader", {
-    extend: 'Ext.toolbar.Toolbar',
+    extend: 'Ext.container.Container',
 	xtype: 'appheader',
 	height: 45,
+	layout: 'hbox',
 
 	initComponent: function() {
 		this.items = [{
 			xtype: 'button',
 			text: 'Pacemaker',
 			action: 'pacemakerHome',
-			width: 80,
 			height: '100%',
 			scale: 'large',
             listeners: {

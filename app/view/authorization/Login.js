@@ -1,6 +1,6 @@
-Ext.define("Pacemaker.view.loginsignup.Signup", {
+Ext.define("Pacemaker.view.authorization.Login", {
     extend: 'Ext.container.Container',
-    xtype: 'signup',
+    xtype: 'login',
     requires: ['Ext.form.Panel','Ext.form.Label'],
     layout: {
         type: 'vbox',
@@ -11,7 +11,7 @@ Ext.define("Pacemaker.view.loginsignup.Signup", {
     height: '100%',
     items: [{
         xtype: 'panel',
-        itemId: 'signupError',
+		itemId: 'loginError',
         layout: {
             type: 'vbox',
             pack: 'center'
@@ -22,13 +22,13 @@ Ext.define("Pacemaker.view.loginsignup.Signup", {
         bodyStyle: 'border-width:1px;background-color: #FFDDDD;border-color:#FF0000',
         items: [{
             xtype: 'label',
-            padding: 5,
-            text: "Sign Up Failed"
+			padding: 5,
+            text: "Login Failed. Either you don't have access or your email/password is invalid."
         }]
     }, {
         xtype: 'form',
-        border: false,
-        itemId: 'signupForm',
+        // border: false,
+        itemId: 'loginForm',
         layout: {
             type: 'vbox'
         },
@@ -37,10 +37,6 @@ Ext.define("Pacemaker.view.loginsignup.Signup", {
             allowBlank: false
         },
         items: [{
-            xtype: 'textfield',
-            name: 'fullname',
-            fieldLabel: 'Full Name'
-        }, {
             xtype: 'textfield',
             name: 'email',
             fieldLabel: 'Email'
@@ -51,27 +47,27 @@ Ext.define("Pacemaker.view.loginsignup.Signup", {
             fieldLabel: 'Password',
             listeners: {
                 specialkey: function(txtFld, e){
-                    if (e.getKey() == e.ENTER && txtFld.up('#signupForm').isValid()) {
-                        txtFld.up('signup').submitSignup();
+                    if (e.getKey() == e.ENTER && txtFld.up('#loginForm').isValid()) {
+                        txtFld.up('login').submitLogin();
                     }
                 }
             }
         }, {
             xtype: 'button',
-            itemId: 'signup',
-            text: 'Sign Up with Email',
-            width: 100,
+            itemId: 'login',
+            text: 'Log In',
             formBind: true,
+            margin: '5 0 0 0',
             listeners: {
                 click: function(btn){
-                    btn.up('signup').submitSignup();
+                    btn.up('login').submitLogin();
                 }
             }
         }]
     }],
 
-    submitSignup: function(){
-        this.down('#signupError').hide();
-        this.fireEvent('signupAttempt', this, this.down('#signupForm').getValues());
+    submitLogin: function(){
+        this.down('#loginError').hide();
+        this.fireEvent('loginAttempt', this, this.down('#loginForm').getValues());
     }
 });

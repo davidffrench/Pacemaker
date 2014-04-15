@@ -4,5 +4,7 @@
     "requires": [
     ],
 
-    "id": "64ca424b-7866-45dd-aaa0-d326495a337e"
+    "id": "64ca424b-7866-45dd-aaa0-d326495a337e",
+
+    "theme": "ext-theme-neptune"
 }

@@ -1,11 +1,11 @@
-Ext.define("Pacemaker.view.loginsignup.LoginSignup", {
+Ext.define("Pacemaker.view.authorization.AuthLayout", {
     extend: 'Ext.container.Container',
     requires: [
-		'Pacemaker.view.loginsignup.Login',
-		'Pacemaker.view.loginsignup.Signup'
+		'Pacemaker.view.authorization.Login',
+		'Pacemaker.view.authorization.Signup'
     ],
 
-	xtype: 'loginsignup',
+	xtype: 'authlayout',
 	layout: {
 		type: 'vbox',
 		align: 'center'
@@ -17,6 +17,8 @@ Ext.define("Pacemaker.view.loginsignup.LoginSignup", {
 			width: 260,
 			height: 400,
 			padding: 20,
+			border: 1,
+			tabWidth: '50%',
 			items: [{
 				xtype: 'signup',
 				title: 'Sign Up'
