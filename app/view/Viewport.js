@@ -19,13 +19,18 @@ Ext.define('Pacemaker.view.Viewport', {
         xtype: 'panel',
         layout: 'card',
         itemId: 'appMainCard',
+        activeItem: 1,
         items: [{
             xtype: 'authlayout'
         },{
             xtype: 'container',
-            itemId: 'appmain',
+            itemId: 'appmainctn',
+            layout: {
+                type: 'vbox',
+                align: 'center'
+            },
             items: [{
-                
+                // xtype: 'newactivity'
             }]
         }]
     }]

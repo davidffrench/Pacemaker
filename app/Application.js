@@ -4,14 +4,15 @@ Ext.define('Pacemaker.Application', {
     extend: 'Ext.app.Application',
 
     views: [
-        // TODO: add views here
+        'logActivity.NewActivity'
     ],
 
     controllers: [
-        // TODO: add controllers here
+        'AppHeader'
     ],
 
     stores: [
-        'Users'
+        'Users',
+        'metadata.ActivityTypes'
     ]
 });

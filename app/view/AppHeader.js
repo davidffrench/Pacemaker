@@ -2,6 +2,14 @@ Ext.define("Pacemaker.view.AppHeader", {
     extend: 'Ext.container.Container',
     requires: ['Ext.button.Split'],
     
+	config: {
+		currentNavItem: null
+	},
+
+	updateCurrentNavItem: function(newSel, oldSel){
+		this.fireEvent('navitemchange', this, newSel, oldSel);
+	},
+
 	xtype: 'appheader',
 	height: 45,
 	layout: 'hbox',
@@ -30,7 +38,7 @@ Ext.define("Pacemaker.view.AppHeader", {
 			border: false,
             listeners: {
                 click: function(btn){
-                    //TODO fire event, take care of in controller.
+                    btn.up('appheader').setCurrentNavItem(btn);
                 }
             }
 		},{
@@ -44,7 +52,7 @@ Ext.define("Pacemaker.view.AppHeader", {
 			border: false,
             listeners: {
                 click: function(btn){
-                    //TODO fire event, take care of in controller.
+                    btn.up('appheader').setCurrentNavItem(btn);
                 }
             }
 		},{
@@ -58,7 +66,7 @@ Ext.define("Pacemaker.view.AppHeader", {
 			border: false,
             listeners: {
                 click: function(btn){
-                    //TODO fire event, take care of in controller.
+                    btn.up('appheader').setCurrentNavItem(btn);
                 }
             }
 		},{

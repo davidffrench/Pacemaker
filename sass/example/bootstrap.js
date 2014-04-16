@@ -846,16 +846,20 @@ Ext.ClassManager.addNameAlternateMappings({
   "ExtThemeNeptune.toolbar.Paging": [],
   "ExtThemeNeptune.toolbar.Toolbar": [],
   "Pacemaker.Application": [],
+  "Pacemaker.controller.AppHeader": [],
   "Pacemaker.controller.Main": [],
   "Pacemaker.model.Activity": [],
   "Pacemaker.model.User": [],
+  "Pacemaker.model.metadata.ActivityType": [],
   "Pacemaker.store.Users": [],
+  "Pacemaker.store.metadata.ActivityTypes": [],
   "Pacemaker.view.AppHeader": [],
   "Pacemaker.view.Main": [],
   "Pacemaker.view.Viewport": [],
-  "Pacemaker.view.loginsignup.Login": [],
-  "Pacemaker.view.loginsignup.LoginSignup": [],
-  "Pacemaker.view.loginsignup.Signup": []
+  "Pacemaker.view.authorization.AuthLayout": [],
+  "Pacemaker.view.authorization.Login": [],
+  "Pacemaker.view.authorization.Signup": [],
+  "Pacemaker.view.logActivity.NewActivity": []
 });
 Ext.ClassManager.addNameAliasMappings({
   "Ext.AbstractComponent": [],
@@ -1860,10 +1864,13 @@ Ext.ClassManager.addNameAliasMappings({
   "ExtThemeNeptune.toolbar.Paging": [],
   "ExtThemeNeptune.toolbar.Toolbar": [],
   "Pacemaker.Application": [],
+  "Pacemaker.controller.AppHeader": [],
   "Pacemaker.controller.Main": [],
   "Pacemaker.model.Activity": [],
   "Pacemaker.model.User": [],
+  "Pacemaker.model.metadata.ActivityType": [],
   "Pacemaker.store.Users": [],
+  "Pacemaker.store.metadata.ActivityTypes": [],
   "Pacemaker.view.AppHeader": [
     "widget.appheader"
   ],
@@ -1871,14 +1878,17 @@ Ext.ClassManager.addNameAliasMappings({
     "widget.app-main"
   ],
   "Pacemaker.view.Viewport": [],
-  "Pacemaker.view.loginsignup.Login": [
+  "Pacemaker.view.authorization.AuthLayout": [
+    "widget.authlayout"
+  ],
+  "Pacemaker.view.authorization.Login": [
     "widget.login"
   ],
-  "Pacemaker.view.loginsignup.LoginSignup": [
-    "widget.loginsignup"
-  ],
-  "Pacemaker.view.loginsignup.Signup": [
+  "Pacemaker.view.authorization.Signup": [
     "widget.signup"
+  ],
+  "Pacemaker.view.logActivity.NewActivity": [
+    "widget.newactivity"
   ]
 });
 Ext.setVersion("ext-theme-base", "4.2.1");
