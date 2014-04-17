@@ -851,15 +851,17 @@ Ext.ClassManager.addNameAlternateMappings({
   "Pacemaker.model.Activity": [],
   "Pacemaker.model.User": [],
   "Pacemaker.model.metadata.ActivityType": [],
+  "Pacemaker.store.Activities": [],
   "Pacemaker.store.Users": [],
   "Pacemaker.store.metadata.ActivityTypes": [],
   "Pacemaker.view.AppHeader": [],
-  "Pacemaker.view.Main": [],
   "Pacemaker.view.Viewport": [],
   "Pacemaker.view.authorization.AuthLayout": [],
   "Pacemaker.view.authorization.Login": [],
   "Pacemaker.view.authorization.Signup": [],
-  "Pacemaker.view.logActivity.NewActivity": []
+  "Pacemaker.view.logActivity.NewActivity": [],
+  "Pacemaker.view.user.Activities": [],
+  "Pacemaker.view.user.UserMain": []
 });
 Ext.ClassManager.addNameAliasMappings({
   "Ext.AbstractComponent": [],
@@ -1869,13 +1871,11 @@ Ext.ClassManager.addNameAliasMappings({
   "Pacemaker.model.Activity": [],
   "Pacemaker.model.User": [],
   "Pacemaker.model.metadata.ActivityType": [],
+  "Pacemaker.store.Activities": [],
   "Pacemaker.store.Users": [],
   "Pacemaker.store.metadata.ActivityTypes": [],
   "Pacemaker.view.AppHeader": [
     "widget.appheader"
-  ],
-  "Pacemaker.view.Main": [
-    "widget.app-main"
   ],
   "Pacemaker.view.Viewport": [],
   "Pacemaker.view.authorization.AuthLayout": [
@@ -1889,6 +1889,12 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "Pacemaker.view.logActivity.NewActivity": [
     "widget.newactivity"
+  ],
+  "Pacemaker.view.user.Activities": [
+    "widget.activities"
+  ],
+  "Pacemaker.view.user.UserMain": [
+    "widget.usermain"
   ]
 });
 Ext.setVersion("ext-theme-base", "4.2.1");

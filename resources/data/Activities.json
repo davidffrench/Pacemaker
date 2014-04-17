@@ -1,0 +1,13 @@
+[{
+	"activityType": "run",
+	"location": "tramore",
+	"distance": 12.0
+}, {
+	"activityType": "cycle",
+	"location": "dunmore",
+	"distance": 56.0
+}, {
+	"activityType": "walk",
+	"location": "fenor",
+	"distance": 12.0
+}]

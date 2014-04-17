@@ -3,13 +3,18 @@ Ext.define('Pacemaker.model.Activity', {
     
     idgen: 'sequential',
     fields: [
-        { name: 'kind', type: 'auto' },
+        { name: 'activityType', type: 'auto' },
         { name: 'location', type: 'auto' },
-        { name: 'distance', type: 'auto' }
+        { name: 'distance', type: 'int' }
     ],
 
-    associations: [{
-        type: 'belongsTo',
-        model: 'Pacemaker.model.User'
-    }]
+    // associations: [{
+    //     type: 'belongsTo',
+    //     model: 'Pacemaker.model.User'
+    // }]
+
+    proxy: {
+        type: 'ajax',
+        url: 'resources/data/Activities.json'
+    }
 });

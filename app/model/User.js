@@ -1,8 +1,7 @@
 Ext.define('Pacemaker.model.User', {
     extend: 'Ext.data.Model',
 	requires: [
-        'Ext.data.SequentialIdGenerator',
-        'Pacemaker.model.Activity'
+        'Ext.data.SequentialIdGenerator'
     ],
 
     idgen: 'sequential',
@@ -13,11 +12,11 @@ Ext.define('Pacemaker.model.User', {
         { name: 'password', type: 'string' }
     ],
 
-    associations: [{
-        type: 'hasMany',
-        model: 'Pacemaker.model.Activity',
-        name: 'activities'
-    }],
+    // associations: [{
+    //     type: 'hasMany',
+    //     model: 'Pacemaker.model.Activity',
+    //     name: 'activities'
+    // }],
 
     proxy: {
         type: 'ajax',

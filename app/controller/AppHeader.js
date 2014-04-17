@@ -40,6 +40,9 @@ Ext.define('Pacemaker.controller.AppHeader', {
 		if(newSel.action === 'openLog'){
 			var logActivityView = Ext.create('Pacemaker.view.logActivity.NewActivity');
 			mainContainer.insert(logActivityView);
+		} else if(newSel.action === 'openMe'){
+			var userMainView = Ext.create('Pacemaker.view.user.UserMain');
+			mainContainer.insert(userMainView);
 		}
 	},
 

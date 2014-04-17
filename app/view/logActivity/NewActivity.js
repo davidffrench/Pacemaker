@@ -1,6 +1,7 @@
 Ext.define('Pacemaker.view.logActivity.NewActivity', {
     extend: 'Ext.form.Panel',
     requires: ['Ext.form.field.ComboBox'],
+    
     xtype: 'newactivity',
     layout: {
         type: 'vbox',
@@ -21,7 +22,8 @@ Ext.define('Pacemaker.view.logActivity.NewActivity', {
         labelWidth : 100,
         width : 280,
         emptyText : 'Select',
-
+        forceSelection: true,
+        
         store : 'metadata.ActivityTypes',
 
         queryMode: 'local',
