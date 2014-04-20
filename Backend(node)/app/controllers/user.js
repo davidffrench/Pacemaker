@@ -38,7 +38,7 @@ exports.user = function(req, res){
 };
 
 exports.deleteUser = function(req, res){
-	Bear.remove({
+	User.remove({
 		_id: req.params.userId
 	}, function(err, bear) {
 		if (err)
