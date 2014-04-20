@@ -7,7 +7,7 @@ exports.createUser = function(req, res){
 	user.email = req.body.email;
 	user.password = req.body.password;
 
-	// save the bear and check for errors
+	// save the user and check for errors
 	user.save(function(err) {
 		if (err)
 			res.send(err);
@@ -17,7 +17,12 @@ exports.createUser = function(req, res){
 };
 
 exports.users = function(req, res){
-	res.json({ message: 'users succesful!' });
+	User.find(function(err, users) {
+		if (err)
+			res.send(err);
+
+		res.json(users);
+	});
 };
 
 exports.deleteAllUsers = function(req, res){
@@ -25,13 +30,38 @@ exports.deleteAllUsers = function(req, res){
 };
 
 exports.user = function(req, res){
-	res.json({ message: 'user succesful!' });
+	User.findById(req.params.userId, function(err, user) {
+		if (err)
+			res.send(err);
+		res.json(user);
+	});
 };
 
 exports.deleteUser = function(req, res){
-	res.json({ message: 'deleteUser succesful!' });
+	Bear.remove({
+		_id: req.params.userId
+	}, function(err, bear) {
+		if (err)
+			res.send(err);
+
+		res.json({ message: 'Successfully deleted' });
+	});
 };
 
 exports.updateUser = function(req, res){
-	res.json({ message: 'updateUser succesful!' });
+	User.findById(req.params.userId, function(err, user) {
+		if (err)
+			res.send(err);
+
+		user.firstname = req.body.firstname;
+		user.lastname = req.body.lastname;
+		user.email = req.body.email;
+		user.password = req.body.password;
+		user.save(function(err) {
+			if (err)
+				res.send(err);
+
+			res.json({ message: 'User updated!' });
+		});
+	});
 };

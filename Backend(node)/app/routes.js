@@ -8,13 +8,16 @@ router.route('/users')
 	.get(userController.users)
 	.delete(userController.deleteAllUsers)
 	.post(userController.createUser);
-router.route('/users/:id')
+router.route('/users/:userId')
 	.get(userController.user)
 	.delete(userController.deleteUser)
 	.put(userController.updateUser);
 router.route('/users/:userId/activities')
-	.get(userController.user)
-	.delete(userController.deleteUser)
-	.put(userController.updateUser);
+	.get(activityController.activities)
+	.post(activityController.createActivity);
+router.route('/users/:userId/activities/:activityId')
+	.get(activityController.activity)
+	.delete(activityController.deleteActivity)
+	.put(activityController.updateActivity);
 
 module.exports = router;
