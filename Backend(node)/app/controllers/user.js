@@ -15,3 +15,23 @@ exports.createUser = function(req, res){
 		res.json({ message: 'User created!' });
 	});
 };
+
+exports.users = function(req, res){
+	res.json({ message: 'users succesful!' });
+};
+
+exports.deleteAllUsers = function(req, res){
+	res.json({ message: 'deleteAllUsers succesful!' });
+};
+
+exports.user = function(req, res){
+	res.json({ message: 'user succesful!' });
+};
+
+exports.deleteUser = function(req, res){
+	res.json({ message: 'deleteUser succesful!' });
+};
+
+exports.updateUser = function(req, res){
+	res.json({ message: 'updateUser succesful!' });
+};
