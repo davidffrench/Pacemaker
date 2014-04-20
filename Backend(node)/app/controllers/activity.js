@@ -1,17 +1,55 @@
+var User     = require('./../models/user');
+var Activity = require('./../models/activity');
+
 exports.activities = function(req, res){
-	res.json({ message: 'activities succesful!' });
+	User.findById(req.params.userId, function(err, user) {
+		if (err)
+			res.send(err);
+		res.json(user.activities);
+	});
 };
 
 exports.createActivity = function(req, res){
-	res.json({ message: 'createActivity succesful!' });
+	User.findById(req.params.userId, function(err, user) {
+		if (err)
+			res.send(err);
+
+		var activity = new Activity({
+			activityType : req.body.activityType,
+			location     : req.body.location,
+			distance     : req.body.distance
+		});
+
+		user.activities.push(activity);
+		user.save(function (err) {
+			if (err)
+				res.send(err);
+			
+			res.json({ message: 'Activity created!' });
+		});
+	});
 };
 
 exports.activity = function(req, res){
-	res.json({ message: 'activity succesful!' });
+	User.findById(req.params.userId, function(err, user) {
+		if (err)
+			res.send(err);
+		res.json(user.activities.id(req.params.activityId));
+	});
 };
 
 exports.deleteActivity = function(req, res){
-	res.json({ message: 'deleteActivity succesful!' });
+	User.findById(req.params.userId, function(err, user) {
+		if (err)
+			res.send(err);
+		user.activities.id(req.params.activityId).remove();
+		user.save(function (err) {
+			if (err)
+				res.send(err);
+			
+			res.json({ message: 'Activity deleted!' });
+		});
+	});
 };
 
 exports.updateActivity = function(req, res){

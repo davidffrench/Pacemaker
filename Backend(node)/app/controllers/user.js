@@ -1,11 +1,12 @@
 var User     = require('./../models/user');
 
 exports.createUser = function(req, res){
-	var user = new User();		// create a new instance of the User model
-	user.firstname = req.body.firstname;  // set the users name (comes from the request)
-	user.lastname = req.body.lastname;
-	user.email = req.body.email;
-	user.password = req.body.password;
+	var user = new User({	// create a new instance of the User model
+		firstname : req.body.firstname,  // set the users name (comes from the request)
+		lastname  : req.body.lastname,
+		email     : req.body.email,
+		password  : req.body.password
+	});
 
 	// save the user and check for errors
 	user.save(function(err) {
