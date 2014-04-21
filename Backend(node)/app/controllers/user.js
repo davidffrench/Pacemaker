@@ -13,7 +13,7 @@ exports.createUser = function(req, res){
 		if (err)
 			res.send(err);
 
-		res.json({ message: 'User created!' });
+		res.json(user);
 	});
 };
 

@@ -1,11 +1,8 @@
 Ext.define('Pacemaker.model.User', {
     extend: 'Ext.data.Model',
-	requires: [
-        'Ext.data.SequentialIdGenerator'
-    ],
 
-    idgen: 'sequential',
     fields: [
+        { name: 'id', type: 'string' },
         { name: 'firstname', type: 'string' },
         { name: 'lastname', type: 'string' },
         { name: 'email', type: 'string' },
@@ -20,6 +17,6 @@ Ext.define('Pacemaker.model.User', {
 
     proxy: {
         type: 'ajax',
-        url: 'resources/data/Users.json'
+        url: Pacemaker.utils.GlobalVars.serverUrl + '/users'
     }
 });

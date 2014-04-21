@@ -6,6 +6,14 @@ Ext.define("Pacemaker.view.AppHeader", {
 		currentNavItem: null
 	},
 
+	applyCurrentNavItem: function(newSel, oldSel){
+		//if no nav item is passed in, default to openFeed
+		if(!newSel){
+			newSel = this.down('button[action=openFeed]');
+		}
+		return newSel;
+	},
+
 	updateCurrentNavItem: function(newSel, oldSel){
 		this.fireEvent('navitemchange', this, newSel, oldSel);
 	},

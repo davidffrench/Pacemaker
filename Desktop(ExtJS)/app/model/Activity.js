@@ -1,10 +1,10 @@
 Ext.define('Pacemaker.model.Activity', {
     extend: 'Ext.data.Model',
     
-    idgen: 'sequential',
     fields: [
-        { name: 'activityType', type: 'auto' },
-        { name: 'location', type: 'auto' },
+        { name: 'id', type: 'string' },
+        { name: 'activityType', type: 'string' },
+        { name: 'location', type: 'string' },
         { name: 'distance', type: 'int' }
     ],
 

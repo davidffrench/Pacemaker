@@ -1,5 +1,6 @@
 Ext.define('Pacemaker.Application', {
     name: 'Pacemaker',
+    requires: ['Pacemaker.utils.GlobalVars'],
 
     extend: 'Ext.app.Application',
 
@@ -9,7 +10,8 @@ Ext.define('Pacemaker.Application', {
     ],
 
     controllers: [
-        'AppHeader'
+        'AppHeader',
+        'Authorization'
     ],
 
     stores: [
