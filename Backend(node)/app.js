@@ -9,6 +9,7 @@ var bodyParser = require('body-parser');
 var mongoose   = require('mongoose');
 
 var database = require('./config/database');
+var allowCrossDomain = require('./config/cors');
 var routes = require('./app/routes');
 
 var app = express();
@@ -16,6 +17,7 @@ var app = express();
 // configuration ===============================================================
 mongoose.connect(database.url);     // connect to mongoDB database
 
+app.use(allowCrossDomain);
 app.use(favicon());
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -24,8 +26,6 @@ app.use(cookieParser());
 
 // routes ======================================================================
 app.use('/api', routes);
-
-
 
 
 /// catch 404 and forwarding to error handler
