@@ -30,7 +30,7 @@ Ext.define('Pacemaker.view.Viewport', {
                 align: 'center'
             },
             items: [{
-                xtype: 'usermain'
+                xtype: 'newactivity'
             }]
         }]
     }]

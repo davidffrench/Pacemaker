@@ -15,9 +15,9 @@ exports.createActivity = function(req, res){
 			res.send(err);
 
 		var activity = new Activity({
-			activityType : req.body.activityType,
-			location     : req.body.location,
-			distance     : req.body.distance
+			activityType     : req.body.activityType,
+			location         : req.body.location,
+			activityDistance : req.body.activityDistance
 		});
 
 		user.activities.push(activity);
@@ -61,9 +61,9 @@ exports.updateActivity = function(req, res){
 		if(req.body.activityType)
 			activity.activityType = req.body.activityType;
 		if(req.body.location)
-			activity.location     = req.body.location;
-		if(req.body.distance)
-			activity.distance     = req.body.distance;
+			activity.location = req.body.location;
+		if(req.body.activityDistance)
+			activity.activityDistance = req.body.activityDistance;
 
 		user.save(function (err) {
 			if (err)

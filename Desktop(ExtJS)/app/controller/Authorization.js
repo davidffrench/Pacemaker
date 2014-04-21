@@ -37,18 +37,18 @@ Ext.define('Pacemaker.controller.Authorization', {
 		userRec.set('firstname', firstName);
 		userRec.set('lastname', lastName);
 		userRec.save({
-		callback : function(record, operation) {
-			if (operation.success) {
-				var result = Ext.decode(operation.response.responseText);
-				userRec.set('id', result._id);
-				Pacemaker.utils.GlobalVars.userId = result.id;
+			callback : function(record, operation) {
+				if (operation.success) {
+					var result = Ext.decode(operation.response.responseText);
+					userRec.set('id', result._id);
+					Pacemaker.utils.GlobalVars.userId = result.id;
 
-				me.getAppHeader().setCurrentNavItem();
-			} else {
-				// failure
+					me.getAppHeader().setCurrentNavItem();
+				} else {
+					// failure
+				}
 			}
-		}
-	});
+		});
 	},
 
 	log: function(message){

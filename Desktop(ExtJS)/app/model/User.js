@@ -2,7 +2,7 @@ Ext.define('Pacemaker.model.User', {
     extend: 'Ext.data.Model',
 
     fields: [
-        { name: 'id', type: 'string' },
+        { name: 'id', type: 'string' , mapping: '_id'},
         { name: 'firstname', type: 'string' },
         { name: 'lastname', type: 'string' },
         { name: 'email', type: 'string' },

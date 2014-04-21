@@ -11,7 +11,8 @@ Ext.define('Pacemaker.Application', {
 
     controllers: [
         'AppHeader',
-        'Authorization'
+        'Authorization',
+        'LogActivity'
     ],
 
     stores: [

@@ -2,10 +2,10 @@ Ext.define('Pacemaker.model.Activity', {
     extend: 'Ext.data.Model',
     
     fields: [
-        { name: 'id', type: 'string' },
+        { name: 'id', type: 'string', mapping: '_id' },
         { name: 'activityType', type: 'string' },
         { name: 'location', type: 'string' },
-        { name: 'distance', type: 'int' }
+        { name: 'activityDistance', type: 'int' }
     ],
 
     // associations: [{
@@ -15,6 +15,6 @@ Ext.define('Pacemaker.model.Activity', {
 
     proxy: {
         type: 'ajax',
-        url: 'resources/data/Activities.json'
+        url: Pacemaker.utils.GlobalVars.serverUrl + '/users/'
     }
 });
