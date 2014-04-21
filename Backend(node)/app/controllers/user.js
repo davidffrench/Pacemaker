@@ -27,7 +27,9 @@ exports.users = function(req, res){
 };
 
 exports.deleteAllUsers = function(req, res){
-	res.json({ message: 'deleteAllUsers succesful!' });
+	User.remove({}, function(err) {
+		res.json('all users removed');
+	});
 };
 
 exports.user = function(req, res){

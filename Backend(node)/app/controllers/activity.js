@@ -53,5 +53,23 @@ exports.deleteActivity = function(req, res){
 };
 
 exports.updateActivity = function(req, res){
-	res.json({ message: 'updateActivity succesful!' });
+	User.findById(req.params.userId, function(err, user) {
+		if (err)
+			res.send(err);
+
+		var activity = user.activities.id(req.params.activityId);
+		if(req.body.activityType)
+			activity.activityType = req.body.activityType;
+		if(req.body.location)
+			activity.location     = req.body.location;
+		if(req.body.distance)
+			activity.distance     = req.body.distance;
+
+		user.save(function (err) {
+			if (err)
+				res.send(err);
+			
+			res.json({ message: 'Activity updated!' });
+		});
+	});
 };
