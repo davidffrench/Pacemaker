@@ -1,18 +1,22 @@
 
 // set up ======================================================================
-var express = require('express');
-var path = require('path');
-var favicon = require('static-favicon');
-var logger = require('morgan');
+var express      = require('express');
+var path         = require('path');
+var favicon      = require('static-favicon');
+var logger       = require('morgan');
 var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var mongoose   = require('mongoose');
+var bodyParser   = require('body-parser');
+var mongoose     = require('mongoose');
+var passport     = require('passport');
+var flash        = require('connect-flash');
 
-var database = require('./config/database');
+var database         = require('./config/database');
 var allowCrossDomain = require('./config/cors');
-var routes = require('./app/routes');
 
 var app = express();
+
+var router        = require('./app/routes')(app, passport);
+var errorHandling = require('./config/errorHandling')(app, router);
 
 // configuration ===============================================================
 mongoose.connect(database.url);     // connect to mongoDB database
@@ -24,40 +28,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 
+// app.use(express.session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
+
 // routes ======================================================================
-app.use('/api', routes);
-
-
-/// catch 404 and forwarding to error handler
-app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
-});
-
-/// error handlers
-
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err
-        });
-    });
-}
-
-// production error handler
-// no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {}
-    });
-});
+app.use('/api', router);
 
 
 module.exports = app;

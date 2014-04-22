@@ -1,23 +1,44 @@
 var express = require('express');
-var router = express.Router();
 
-var userController = require('./controllers/user');
-var activityController = require('./controllers/activity');
+module.exports = function(app, passport){
+	var router = express.Router();
 
-router.route('/users')
-	.get(userController.users)
-	.delete(userController.deleteAllUsers)
-	.post(userController.createUser);
-router.route('/users/:userId')
-	.get(userController.user)
-	.delete(userController.deleteUser)
-	.put(userController.updateUser);
-router.route('/users/:userId/activities')
-	.get(activityController.activities)
-	.post(activityController.createActivity);
-router.route('/users/:userId/activities/:activityId')
-	.get(activityController.activity)
-	.delete(activityController.deleteActivity)
-	.put(activityController.updateActivity);
+	var userController = require('./controllers/user');
+	var activityController = require('./controllers/activity');
 
-module.exports = router;
+	router.route('/users')
+		.all(isLoggedIn)
+		.get(userController.users)
+		.delete(userController.deleteAllUsers)
+		.post(userController.createUser);
+	router.route('/users/:userId')
+		.all(isLoggedIn)
+		.get(userController.user)
+		.delete(userController.deleteUser)
+		.put(userController.updateUser);
+	router.route('/users/:userId/activities')
+		.all(isLoggedIn)
+		.get(activityController.activities)
+		.post(activityController.createActivity);
+	router.route('/users/:userId/activities/:activityId')
+		.all(isLoggedIn)
+		.get(activityController.activity)
+		.delete(activityController.deleteActivity)
+		.put(activityController.updateActivity);
+
+	return router;
+};
+
+// route middleware to make sure a user is logged in
+function isLoggedIn(req, res, next) {
+
+	// if user is authenticated in the session, carry on 
+	if (req.isAuthenticated())
+		return next();
+
+	// if they aren't, return 403
+	res.statusCode = 403;
+    var e = new Error('Not authorized');
+    e.status = 403;
+    next(e);
+}
