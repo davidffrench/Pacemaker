@@ -15,8 +15,8 @@ Ext.define("Pacemaker.view.authorization.AuthLayout", {
 	initComponent: function() {
 		this.items = [{
 			xtype: 'tabpanel',
-			width: 260,
-			height: 400,
+			width: 310,
+			height: 500,
 			padding: 20,
 			border: 1,
 			tabWidth: '50%',

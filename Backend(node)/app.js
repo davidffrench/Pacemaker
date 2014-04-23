@@ -16,7 +16,9 @@ var allowCrossDomain = require('./config/cors');
 var app = express();
 
 var router        = require('./app/routes')(app, passport);
-var errorHandling = require('./config/errorHandling')(app, router);
+
+require('./config/errorHandling')(app, router);
+require('./config/passport')(passport);
 
 // configuration ===============================================================
 mongoose.connect(database.url);     // connect to mongoDB database

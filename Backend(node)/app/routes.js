@@ -3,9 +3,18 @@ var express = require('express');
 module.exports = function(app, passport){
 	var router = express.Router();
 
-	var userController = require('./controllers/user');
+	var userController     = require('./controllers/user');
 	var activityController = require('./controllers/activity');
+	var authController     = require('./controllers/auth');
 
+	router.route('/signup')
+		.post(authController.signup);
+	router.route('/login')
+		.post(authController.login);
+	router.route('/auth/facebook')
+		.post(authController.facebookAuth);
+	router.route('/auth/facebook/callback')
+		.post(authController.facebookAuthCallback);
 	router.route('/users')
 		.all(isLoggedIn)
 		.get(userController.users)
