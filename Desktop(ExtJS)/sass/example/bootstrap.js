@@ -847,6 +847,8 @@ Ext.ClassManager.addNameAlternateMappings({
   "ExtThemeNeptune.toolbar.Toolbar": [],
   "Pacemaker.Application": [],
   "Pacemaker.controller.AppHeader": [],
+  "Pacemaker.controller.Authorization": [],
+  "Pacemaker.controller.LogActivity": [],
   "Pacemaker.controller.Main": [],
   "Pacemaker.model.Activity": [],
   "Pacemaker.model.User": [],
@@ -854,6 +856,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "Pacemaker.store.Activities": [],
   "Pacemaker.store.Users": [],
   "Pacemaker.store.metadata.ActivityTypes": [],
+  "Pacemaker.utils.GlobalVars": [],
   "Pacemaker.view.AppHeader": [],
   "Pacemaker.view.Viewport": [],
   "Pacemaker.view.authorization.AuthLayout": [],
@@ -1867,6 +1870,8 @@ Ext.ClassManager.addNameAliasMappings({
   "ExtThemeNeptune.toolbar.Toolbar": [],
   "Pacemaker.Application": [],
   "Pacemaker.controller.AppHeader": [],
+  "Pacemaker.controller.Authorization": [],
+  "Pacemaker.controller.LogActivity": [],
   "Pacemaker.controller.Main": [],
   "Pacemaker.model.Activity": [],
   "Pacemaker.model.User": [],
@@ -1874,6 +1879,7 @@ Ext.ClassManager.addNameAliasMappings({
   "Pacemaker.store.Activities": [],
   "Pacemaker.store.Users": [],
   "Pacemaker.store.metadata.ActivityTypes": [],
+  "Pacemaker.utils.GlobalVars": [],
   "Pacemaker.view.AppHeader": [
     "widget.appheader"
   ],

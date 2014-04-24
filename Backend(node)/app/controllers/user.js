@@ -18,6 +18,7 @@ exports.createUser = function(req, res){
 };
 
 exports.users = function(req, res){
+	console.dir(req.user);
 	User.find(function(err, users) {
 		if (err)
 			res.send(err);

@@ -15,6 +15,10 @@ module.exports = function(app, passport){
 		.post(authController.facebookAuth);
 	router.route('/auth/facebook/callback')
 		.post(authController.facebookAuthCallback);
+	router.route('/auth/twitter')
+		.post(authController.twitterAuth);
+	router.route('/auth/twitter/callback')
+		.post(authController.twitterAuthCallback);
 	router.route('/users')
 		.all(isLoggedIn)
 		.get(userController.users)
@@ -42,7 +46,7 @@ module.exports = function(app, passport){
 function isLoggedIn(req, res, next) {
 
 	// if user is authenticated in the session, carry on 
-	if (req.isAuthenticated())
+	// if (req.isAuthenticated())
 		return next();
 
 	// if they aren't, return 403

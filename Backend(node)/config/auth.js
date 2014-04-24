@@ -10,8 +10,8 @@ module.exports = {
 	},
 
 	'twitterAuth' : {
-		'consumerKey'     : 'your-consumer-key-here',
-		'consumerSecret'  : 'your-client-secret-here',
+		'consumerKey'     : 'tNcLRT9gM5yytOB2mX22mSBWv',
+		'consumerSecret'  : 'M2cQBxZGfWTf0bBj03zhadVwpDwJiC6uR44lTcB4fsCvPJKZjd',
 		'callbackURL'     : 'http://localhost:3000/auth/twitter/callback'
 	},
 

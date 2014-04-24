@@ -8,16 +8,17 @@ var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var mongoose     = require('mongoose');
 var passport     = require('passport');
-var flash        = require('connect-flash');
+var expressJwt   = require('express-jwt');
+var jwt          = require('jsonwebtoken');
+
 
 var database         = require('./config/database');
-var allowCrossDomain = require('./config/cors');
+var allowCrossDomain = require('./app/middleware/cors');
 
 var app = express();
-
 var router        = require('./app/routes')(app, passport);
 
-require('./config/errorHandling')(app, router);
+require('./app/middleware/errorHandling')(app, router);
 require('./config/passport')(passport);
 
 // configuration ===============================================================
@@ -30,10 +31,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 
-// app.use(express.session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secret
+
+app.use('/users*', expressJwt({secret: 'shhhdonttellanyone'}));
+// app.use(connect.session({ secret: 'shhhdonttellanyone' })); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
-app.use(flash()); // use connect-flash for flash messages stored in session
+// app.use(flash()); // use connect-flash for flash messages stored in session
 
 // routes ======================================================================
 app.use('/api', router);
