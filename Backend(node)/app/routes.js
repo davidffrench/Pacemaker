@@ -46,10 +46,11 @@ module.exports = function(app, passport){
 
 // route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next) {
-
-	if(req.headers.bearer){
+	if(req.headers.authorization){
+		var token = req.headers.authorization.replace("Bearer ","");
+		console.log(token);
 		// verify a token symmetric
-		jwt.verify(req.headers.bearer, tokenSecret, function(err, decoded) {
+		jwt.verify(token, tokenSecret, function(err, decoded) {
 			if (err)
 				return next(err);
 			

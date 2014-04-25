@@ -120,5 +120,9 @@ Ext.define("Pacemaker.view.authorization.Login", {
     submitLogin: function(loginUrl){
         this.down('#loginError').hide();
         this.fireEvent('loginAttempt', this, this.down('#loginForm').getValues(), loginUrl);
+    },
+
+    resetAndClear: function(){
+        this.down('#loginForm').getForm().reset();
     }
 });

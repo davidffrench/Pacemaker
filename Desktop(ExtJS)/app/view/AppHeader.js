@@ -44,6 +44,7 @@ Ext.define("Pacemaker.view.AppHeader", {
 			scale: 'large',
 			padding: '0 10 0 10',
 			border: false,
+			hidden: true,
             listeners: {
                 click: function(btn){
                     btn.up('appheader').setCurrentNavItem(btn);
@@ -58,6 +59,7 @@ Ext.define("Pacemaker.view.AppHeader", {
 			scale: 'large',
 			padding: '0 10 0 10',
 			border: false,
+			hidden: true,
             listeners: {
                 click: function(btn){
                     btn.up('appheader').setCurrentNavItem(btn);
@@ -72,6 +74,7 @@ Ext.define("Pacemaker.view.AppHeader", {
 			scale: 'large',
 			padding: '0 10 0 10',
 			border: false,
+			hidden: true,
             listeners: {
                 click: function(btn){
                     btn.up('appheader').setCurrentNavItem(btn);
@@ -86,13 +89,14 @@ Ext.define("Pacemaker.view.AppHeader", {
 			height: '100%',
 			scale: 'large',
 			border: false,
+			hidden: true,
 			menu: {
 				items: [{
 					text: 'Log Out',
 					action: 'logout',
 					listeners: {
 						click: function(btn){
-							//TODO fire event, take care of in controller. reset app - clear login form, hide logout btn.
+							btn.up('appheader').fireEvent('logout', this);
 						}
 					}
 				}]
@@ -104,5 +108,19 @@ Ext.define("Pacemaker.view.AppHeader", {
             }
 		}];
         this.callParent(arguments);
+    },
+
+    hideHeaderItems: function(){
+		this.down('[action=openFeed]').hide();
+		this.down('[action=openMe]').hide();
+		this.down('[action=openLog]').hide();
+		this.down('[action=logout]').hide();
+    },
+
+    showHeaderItems: function(){
+		this.down('[action=openFeed]').show();
+		this.down('[action=openMe]').show();
+		this.down('[action=openLog]').show();
+		this.down('[action=logout]').show();
     }
 });

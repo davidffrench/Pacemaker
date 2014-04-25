@@ -15,7 +15,7 @@ exports.signup = function(req, res, next) {
 			// We are sending the user inside the token
 			var token = jwt.sign(user, tokenSecret, { expiresInMinutes: 60*5 });
 
-			return res.json({token: token});
+			return res.json({token: token, user: user});
 		}
 	})(req, res, next);
 };
@@ -31,9 +31,9 @@ exports.login = function(req, res, next) {
 			return next(e);
 		} else {
 			// We are sending the user inside the token
-			var token = jwt.sign(user, tokenSecret, { expiresInMinutes: 60/240 });
+			var token = jwt.sign(user, tokenSecret, { expiresInMinutes: 60*5 });
 
-			return res.json({token: token});
+			return res.json({token: token, user: user});
 		}
 	})(req, res, next);
 };

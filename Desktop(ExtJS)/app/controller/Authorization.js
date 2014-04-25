@@ -4,6 +4,9 @@ Ext.define('Pacemaker.controller.Authorization', {
 	refs: [{
 		ref: 'appHeader',
 		selector: 'appheader'
+	}, {
+		ref: 'viewport',
+		selector: 'viewport'
 	}],
 
     init: function() {
@@ -14,11 +17,20 @@ Ext.define('Pacemaker.controller.Authorization', {
 				},
 				'signup': {
 					signupAttempt: this.signupHandler
+				},
+				'appheader': {
+					logout: this.logoutHandler
 				}
 			},
 			store: {
 				
 			}
+		});
+
+		Ext.Ajax.on("beforerequest", function(conn, options, eOpts){
+			options.headers = {
+				'Authorization': 'Bearer ' + Pacemaker.utils.GlobalVars.apiToken
+			};
 		});
 	},
 
@@ -33,15 +45,15 @@ Ext.define('Pacemaker.controller.Authorization', {
 			success: function(response, opts) {
 				var result = Ext.decode(response.responseText);
 
-				//create our user model and populate with response, save id in global vars
+				//create our user model and populate with response, save token & id in global vars
 				var userRec = Ext.create('Pacemaker.model.User', result);
-				Pacemaker.utils.GlobalVars.userId = result._id;
+				Pacemaker.utils.GlobalVars.userId = result.user._id;
+				Pacemaker.utils.GlobalVars.apiToken = result.token;
 
 				//open app now that user has signed up
 				me.getAppHeader().setCurrentNavItem();
 			},
 			failure: function(response, opts) {
-				debugger;
 				var result = Ext.decode(response.responseText),
 					statusCode = response.status;
 
@@ -68,15 +80,16 @@ Ext.define('Pacemaker.controller.Authorization', {
 		userRec.set('firstname', firstName);
 		userRec.set('lastname', lastName);
 
-		//set the url to /signup and save the record
+		//set the url to the signup method used and save the record
 		userRec.getProxy().url = Pacemaker.utils.GlobalVars.serverUrl + signupUrl;
 		userRec.save({
 			callback : function(record, operation) {
 				if (operation.success) {
 					var result = Ext.decode(operation.response.responseText);
-					//set the newly created userId to the record and in global vars
-					userRec.set('id', result._id);
-					Pacemaker.utils.GlobalVars.userId = result._id;
+					//set the newly created userId to the record. save apitToken & userId in global vars
+					userRec.set('id', result.user._id);
+					Pacemaker.utils.GlobalVars.userId = result.user._id;
+					Pacemaker.utils.GlobalVars.apiToken = result.token;
 
 					//open app now that user has signed up
 					me.getAppHeader().setCurrentNavItem();
@@ -92,6 +105,28 @@ Ext.define('Pacemaker.controller.Authorization', {
 				}
 			}
 		});
+	},
+
+	logoutHandler: function(appHeaderView) {
+		this.log();
+
+		var mainContainer = this.getViewport().down('#appmainctn'),
+			authLayout = this.getViewport().down('authlayout');
+
+		//destroy container items
+		mainContainer.removeAll();
+		//reset login and signup forms
+		authLayout.resetAndClear();
+		//hide header navigation
+		this.getAppHeader().hideHeaderItems();
+		//set authLayout activeItem
+		this.getViewport().down('#appMainCard').layout.setActiveItem(authLayout);
+		//set authentication tab to login
+		authLayout.down('#authTabPanel').layout.setActiveItem(authLayout.down('login'));
+
+		//reset global vars for apiToken and userId
+		Pacemaker.utils.GlobalVars.userId = null;
+		Pacemaker.utils.GlobalVars.apiToken = null;
 	},
 
 	log: function(message){

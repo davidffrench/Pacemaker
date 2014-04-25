@@ -124,5 +124,9 @@ Ext.define("Pacemaker.view.authorization.Signup", {
     submitSignup: function(signupUrl){
         this.down('#signupError').hide();
         this.fireEvent('signupAttempt', this, this.down('#signupForm').getValues(), signupUrl);
+    },
+
+    resetAndClear: function(){
+        this.down('#signupForm').getForm().reset();
     }
 });

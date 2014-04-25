@@ -24,7 +24,7 @@ Ext.define('Pacemaker.view.user.UserMain', {
             activate: function(tabPanel, newCard, oldCard) {
                 var userId = Pacemaker.utils.GlobalVars.userId,
                     activityStore = tabPanel.getStore();
-                debugger;
+
                 activityStore.getProxy().url = activityStore.getProxy().proxyConfig.url + userId + '/activities';
                 activityStore.load();
             }

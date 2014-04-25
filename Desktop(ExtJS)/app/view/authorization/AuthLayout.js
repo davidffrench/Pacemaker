@@ -15,6 +15,7 @@ Ext.define("Pacemaker.view.authorization.AuthLayout", {
 	initComponent: function() {
 		this.items = [{
 			xtype: 'tabpanel',
+			itemId: 'authTabPanel',
 			width: 310,
 			height: 500,
 			padding: 20,
@@ -29,5 +30,10 @@ Ext.define("Pacemaker.view.authorization.AuthLayout", {
 			}]
         }];
         this.callParent(arguments);
+    },
+
+    resetAndClear: function(){
+        this.down('signup').resetAndClear();
+        this.down('login').resetAndClear();
     }
 });

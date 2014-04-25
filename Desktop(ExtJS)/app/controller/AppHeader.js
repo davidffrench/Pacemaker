@@ -35,6 +35,8 @@ Ext.define('Pacemaker.controller.AppHeader', {
 		mainContainer.removeAll();
 		//set mainAppCard activeItem
 		this.getViewport().down('#appMainCard').layout.setActiveItem(mainContainer);
+		//hide header navigation
+		this.getAppHeader().showHeaderItems();
 
 		if(newSel.action === 'openLog'){
 			var logActivityView = Ext.create('Pacemaker.view.logActivity.NewActivity');
