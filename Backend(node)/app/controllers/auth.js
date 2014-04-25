@@ -1,5 +1,6 @@
-var passport = require('passport');
-var jwt      = require('jsonwebtoken');
+var passport    = require('passport');
+var jwt         = require('jsonwebtoken');
+var tokenSecret = require('./../../config/tokenSecret');
 
 exports.signup = function(req, res, next) {
 	passport.authenticate('local-signup', function(err, user, info) {
@@ -12,7 +13,7 @@ exports.signup = function(req, res, next) {
 			return next(e);
 		} else {
 			// We are sending the user inside the token
-			var token = jwt.sign(user, 'shhhdonttellanyone', { expiresInMinutes: 60*5 });
+			var token = jwt.sign(user, tokenSecret, { expiresInMinutes: 60*5 });
 
 			return res.json({token: token});
 		}
@@ -30,8 +31,8 @@ exports.login = function(req, res, next) {
 			return next(e);
 		} else {
 			// We are sending the user inside the token
-			var token = jwt.sign(user, 'shhhdonttellanyone', { expiresInMinutes: 60*5 });
-			
+			var token = jwt.sign(user, tokenSecret, { expiresInMinutes: 60/240 });
+
 			return res.json({token: token});
 		}
 	})(req, res, next);

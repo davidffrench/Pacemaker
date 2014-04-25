@@ -1,4 +1,6 @@
 var express = require('express');
+var jwt          = require('jsonwebtoken');
+var tokenSecret      = require('./../config/tokenSecret');
 
 module.exports = function(app, passport){
 	var router = express.Router();
@@ -45,13 +47,18 @@ module.exports = function(app, passport){
 // route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next) {
 
-	// if user is authenticated in the session, carry on 
-	// if (req.isAuthenticated())
-		return next();
-
-	// if they aren't, return 403
-	res.statusCode = 403;
-    var e = new Error('Not authorized');
-    e.status = 403;
-    next(e);
+	if(req.headers.bearer){
+		// verify a token symmetric
+		jwt.verify(req.headers.bearer, tokenSecret, function(err, decoded) {
+			if (err)
+				return next(err);
+			
+			return next();
+		});
+	} else {
+		// if they aren't, return 403
+		var e = new Error('Not authorized');
+		e.status = 403;
+		next(e);
+	}
 }

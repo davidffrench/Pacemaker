@@ -8,9 +8,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var mongoose     = require('mongoose');
 var passport     = require('passport');
-var expressJwt   = require('express-jwt');
 var jwt          = require('jsonwebtoken');
-
 
 var database         = require('./config/database');
 var allowCrossDomain = require('./app/middleware/cors');
@@ -31,9 +29,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 
-
-app.use('/users*', expressJwt({secret: 'shhhdonttellanyone'}));
-// app.use(connect.session({ secret: 'shhhdonttellanyone' })); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 // app.use(flash()); // use connect-flash for flash messages stored in session
