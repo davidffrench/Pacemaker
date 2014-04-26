@@ -66,7 +66,7 @@ Ext.define("Pacemaker.view.authorization.Signup", {
             xtype: 'button',
             itemId: 'signup',
             text: 'Sign Up with Email',
-            signupUrl: '/signup',
+            signupUrl: '/auth/signup',
             formBind: true,
             margin: '5 0 0 0',
             width: 240,

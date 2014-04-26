@@ -42,7 +42,7 @@ module.exports = function(passport) {
         passwordField : 'password',
     },
     function(email, password, done) {
-
+        console.log('in passport local');
         // asynchronous
         // User.findOne wont fire unless data is sent back
         process.nextTick(function() {

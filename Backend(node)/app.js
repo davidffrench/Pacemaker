@@ -13,11 +13,12 @@ var jwt          = require('jsonwebtoken');
 var database         = require('./config/database');
 var allowCrossDomain = require('./app/middleware/cors');
 
-var app = express();
-var router        = require('./app/routes')(app, passport);
+var app     = express();
 
+var router  = require('./app/routes')(app, passport);
 require('./app/middleware/errorHandling')(app, router);
 require('./config/passport')(passport);
+require('./docs/swagger')(app, express);
 
 // configuration ===============================================================
 mongoose.connect(database.url);     // connect to mongoDB database
@@ -35,6 +36,5 @@ app.use(passport.session()); // persistent login sessions
 
 // routes ======================================================================
 app.use('/api', router);
-
 
 module.exports = app;

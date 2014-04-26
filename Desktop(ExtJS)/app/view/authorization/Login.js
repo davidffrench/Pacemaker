@@ -62,7 +62,7 @@ Ext.define("Pacemaker.view.authorization.Login", {
             xtype: 'button',
             itemId: 'login',
             text: 'Log In',
-            loginUrl: '/login',
+            loginUrl: '/auth/login',
             formBind: true,
             margin: '5 0 0 0',
             width: 240,

@@ -9,10 +9,10 @@ module.exports = function(app, passport){
 	var activityController = require('./controllers/activity');
 	var authController     = require('./controllers/auth');
 
-	router.route('/signup')
-		.post(authController.signup);
-	router.route('/login')
-		.post(authController.login);
+	router.route('/auth/signup')
+		.post(authController.signup.action);
+	router.route('/auth/login')
+		.post(authController.login.action);
 	router.route('/auth/facebook')
 		.post(authController.facebookAuth);
 	router.route('/auth/facebook/callback')
@@ -23,12 +23,12 @@ module.exports = function(app, passport){
 		.post(authController.twitterAuthCallback);
 	router.route('/users')
 		.all(isLoggedIn)
-		.get(userController.users)
+		.get(userController.users.action)
 		.delete(userController.deleteAllUsers)
-		.post(userController.createUser);
+		.post(userController.createUser.action);
 	router.route('/users/:userId')
 		.all(isLoggedIn)
-		.get(userController.user)
+		.get(userController.user.action)
 		.delete(userController.deleteUser)
 		.put(userController.updateUser);
 	router.route('/users/:userId/activities')
@@ -48,7 +48,7 @@ module.exports = function(app, passport){
 function isLoggedIn(req, res, next) {
 	if(req.headers.authorization){
 		var token = req.headers.authorization.replace("Bearer ","");
-		console.log(token);
+
 		// verify a token symmetric
 		jwt.verify(token, tokenSecret, function(err, decoded) {
 			if (err)
