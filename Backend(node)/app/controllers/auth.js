@@ -9,7 +9,7 @@ exports.signup = {
 		notes : "adds a user to the db",
 		summary : "Add a new user to the db",
 		method: "POST",
-		parameters : [swagger.bodyParam("body", "User object that needs to be added to the db", "UserSignup")],
+		parameters : [swagger.bodyParam("body", "User object that needs to be added to the db", "UserFlat")],
 		nickname : "addUser"
 	},
 	action: function(req, res, next) {

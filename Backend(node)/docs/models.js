@@ -74,8 +74,8 @@ module.exports = {
       }
     }
   },
-  "UserSignup":{
-    "id":"UserSignup",
+  "UserFlat":{
+    "id":"UserFlat",
     "required": ["email", "password"],
     "properties":{
       "email":{

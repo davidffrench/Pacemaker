@@ -29,17 +29,17 @@ module.exports = function(app, passport){
 	router.route('/users/:userId')
 		.all(isLoggedIn)
 		.get(userController.user.action)
-		.delete(userController.deleteUser)
-		.put(userController.updateUser);
+		.delete(userController.deleteUser.action)
+		.put(userController.updateUser.action);
 	router.route('/users/:userId/activities')
 		.all(isLoggedIn)
-		.get(activityController.activities)
-		.post(activityController.createActivity);
+		.get(activityController.activities.action)
+		.post(activityController.createActivity.action);
 	router.route('/users/:userId/activities/:activityId')
 		.all(isLoggedIn)
-		.get(activityController.activity)
-		.delete(activityController.deleteActivity)
-		.put(activityController.updateActivity);
+		.get(activityController.activity.action)
+		.delete(activityController.deleteActivity.action)
+		.put(activityController.updateActivity.action);
 
 	return router;
 };
