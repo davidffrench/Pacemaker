@@ -15,10 +15,7 @@ var allowCrossDomain = require('./app/middleware/cors');
 
 var app     = express();
 
-var router  = require('./app/routes')(app, passport);
-require('./app/middleware/errorHandling')(app, router);
-require('./config/passport')(passport);
-require('./docs/swagger')(app, express);
+
 
 // configuration ===============================================================
 mongoose.connect(database.url);     // connect to mongoDB database
@@ -32,7 +29,11 @@ app.use(cookieParser());
 
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
-// app.use(flash()); // use connect-flash for flash messages stored in session
+
+var router  = require('./app/routes')(app, passport);
+require('./app/middleware/errorHandling')(app, router);
+require('./config/passport')(passport);
+require('./docs/swagger')(app, express);
 
 // routes ======================================================================
 app.use('/api', router);
