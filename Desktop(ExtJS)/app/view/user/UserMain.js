@@ -21,12 +21,9 @@ Ext.define('Pacemaker.view.user.UserMain', {
         icon: 'resources/images/note.png',
         xtype: 'activities',
         listeners: {
-            activate: function(tabPanel, newCard, oldCard) {
-                var userId = Pacemaker.utils.GlobalVars.userId,
-                    activityStore = tabPanel.getStore();
-
-                activityStore.getProxy().url = activityStore.getProxy().proxyConfig.url + userId + '/activities';
-                activityStore.load();
+            activate: function(tab) {
+                var userMain = tab.up('usermain');
+                userMain.fireEvent('activitesTabActivate', userMain, tab);
             }
         }
     }],

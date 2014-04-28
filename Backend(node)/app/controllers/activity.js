@@ -20,6 +20,7 @@ exports.activities = {
 		User.findById(req.params.userId, function(err, user) {
 			if (err)
 				res.send(err);
+			
 			res.json(user.activities);
 		});
 	}
@@ -43,9 +44,14 @@ exports.createActivity = {
 				res.send(err);
 
 			var activity = new Activity({
-				activityType     : req.body.activityType,
-				location         : req.body.location,
-				activityDistance : req.body.activityDistance
+				activityType    : req.body.activityType,
+				activityDate    : req.body.activityDate,
+				location        : req.body.location,
+				distance        : req.body.distance,
+				calories        : req.body.calories,
+				durationHours   : req.body.durationHours,
+				durationMinutes : req.body.durationMinutes,
+				startTime       : req.body.startTime
 			});
 
 			user.activities.push(activity);
@@ -128,11 +134,21 @@ exports.updateActivity = {
 
 			var activity = user.activities.id(req.params.activityId);
 			if(req.body.activityType)
-				activity.activityType = req.body.activityType;
+				activity.activityType    = req.body.activityType;
+			if(req.body.activityDate)
+				activity.activityDate    = req.body.activityDate;
 			if(req.body.location)
-				activity.location = req.body.location;
-			if(req.body.activityDistance)
-				activity.activityDistance = req.body.activityDistance;
+				activity.location        = req.body.location;
+			if(req.body.distance)
+				activity.distance        = req.body.distance;
+			if(req.body.calories)
+				activity.calories        = req.body.calories;
+			if(req.body.durationHours)
+				activity.durationHours   = req.body.durationHours;
+			if(req.body.durationMinutes)
+				activity.durationMinutes = req.body.durationMinutes;
+			if(req.body.startTime)
+				activity.startTime       = req.body.startTime;
 
 			user.save(function (err) {
 				if (err)

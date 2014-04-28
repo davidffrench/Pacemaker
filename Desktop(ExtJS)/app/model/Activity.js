@@ -4,8 +4,13 @@ Ext.define('Pacemaker.model.Activity', {
     fields: [
         { name: 'id', type: 'string', mapping: '_id' },
         { name: 'activityType', type: 'string' },
+        { name: 'activityDate', type: 'date' },
         { name: 'location', type: 'string' },
-        { name: 'activityDistance', type: 'int' }
+        { name: 'distance', type: 'int' },
+        { name: 'calories', type: 'int' },
+        { name: 'durationHours', type: 'int' },
+        { name: 'durationMinutes', type: 'int' },
+        { name: 'startTime', type: 'date' }
     ],
 
     // associations: [{

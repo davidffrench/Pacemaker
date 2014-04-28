@@ -21,6 +21,8 @@
     "passport-google-oauth" : "~0.1.5",
     "jsonwebtoken" : "~0.3.0",   
     "bcrypt-nodejs" : "latest",
-    "swagger-node-express" : "2.0.1"
+    "swagger-node-express" : "2.0.1",
+    "mocha" : "1.18.2",
+    "chai" : "1.9.1"
   }
 }
