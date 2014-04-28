@@ -59,9 +59,24 @@ Ext.define("Pacemaker.view.authorization.Signup", {
             vtype: 'email'
         }, {
             xtype: 'textfield',
-            name: 'password',
+            name: 'password1',
             inputType: 'password',
-            fieldLabel: 'Password'
+            fieldLabel: 'Password',
+            minLength: 8,
+            margin: '5 0 0 0'
+        }, {
+            xtype: 'textfield',
+            name: 'password2',
+            inputType: 'password',
+            fieldLabel: 'Repeat Password',
+            /**
+             * Custom validator implementation - checks that the value matches what was entered into
+             * the password1 field.
+             */
+            validator: function(value) {
+                var password1 = this.previousSibling('[name=password1]');
+                return (value === password1.getValue()) ? true : 'Passwords do not match.';
+            }
         }, {
             xtype: 'button',
             itemId: 'signup',
