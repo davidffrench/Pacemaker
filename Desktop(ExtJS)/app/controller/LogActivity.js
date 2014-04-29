@@ -11,6 +11,9 @@ Ext.define('Pacemaker.controller.LogActivity', {
 			component: {
 				'newactivity': {
 					saveActivity: this.saveActivityHandler
+				},
+				'activitymap': {
+					pathPointAdded: this.pathPointAddedHandler
 				}
 			},
 			store: {
@@ -36,6 +39,15 @@ Ext.define('Pacemaker.controller.LogActivity', {
 				console.log('server-side failure with status code ' + response.status);
 			}
 		});
+	},
+
+	pathPointAddedHandler: function(activityMap, latLng) {
+		this.log();
+
+		var distance = activityMap.poly.inKm();
+		debugger;
+		if(distance)
+			this.getNewActivity().down('#distance').setValue(distance);
 	},
 
 	log: function(message){
