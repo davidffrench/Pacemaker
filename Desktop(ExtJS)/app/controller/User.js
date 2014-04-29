@@ -4,6 +4,9 @@ Ext.define('Pacemaker.controller.User', {
 	refs: [{
 		ref: 'userMain',
 		selector: 'usermain'
+	}, {
+		ref: 'activities',
+		selector: 'activities'
 	}],
 
     init: function() {
@@ -11,6 +14,9 @@ Ext.define('Pacemaker.controller.User', {
 			component: {
 				'usermain': {
 					activitesTabActivate: this.activitesActivateHandler
+				},
+				'activities': {
+					deleteActivity: this.deleteActivityHandler
 				}
 			},
 			store: {
@@ -20,13 +26,33 @@ Ext.define('Pacemaker.controller.User', {
 	},
 
 	activitesActivateHandler: function(tabPanel, tab) {
-		this.log(tabPanel);
-
+		this.log();
+		
 		var userId = Pacemaker.utils.GlobalVars.userId,
-            activityStore = tab.getStore();
+            activityStore = this.getActivities().getStore();
 
         activityStore.getProxy().url = activityStore.getProxy().proxyConfig.url + userId + '/activities';
         activityStore.load();
+	},
+
+	deleteActivityHandler: function(grid, store, rec) {
+		this.log();
+
+		var userId = Pacemaker.utils.GlobalVars.userId,
+			activityId = rec.getId();
+
+		Ext.Ajax.request({
+			url: Pacemaker.utils.GlobalVars.serverUrl + '/users/' + userId + '/activities/' + activityId,
+			method: 'delete',
+			success: function(response, opts) {
+				var result = Ext.decode(response.responseText);
+				
+				store.remove(rec);
+			},
+			failure: function(response, opts) {
+				console.log('server-side failure with status code ' + response.status);
+			}
+		});
 	},
 
 	log: function(message){

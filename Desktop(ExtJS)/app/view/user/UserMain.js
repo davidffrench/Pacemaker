@@ -1,6 +1,6 @@
 Ext.define('Pacemaker.view.user.UserMain', {
     extend: 'Ext.tab.Panel',
-    requires: ['Pacemaker.view.user.Activities'],
+    requires: ['Pacemaker.view.user.ActivitiesMain'],
 
     xtype: 'usermain',
     deferredRender: true,
@@ -19,7 +19,7 @@ Ext.define('Pacemaker.view.user.UserMain', {
     }, {
         title: 'Activites',
         icon: 'resources/images/note.png',
-        xtype: 'activities',
+        xtype: 'activitiesmain',
         listeners: {
             activate: function(tab) {
                 var userMain = tab.up('usermain');
