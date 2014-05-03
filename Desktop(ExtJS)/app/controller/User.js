@@ -13,6 +13,9 @@ Ext.define('Pacemaker.controller.User', {
 	}, {
 		ref: 'activityStats',
 		selector: 'activitystats'
+	}, {
+		ref: 'activityMap',
+		selector: 'activitymap'
 	}],
 
     init: function() {
@@ -63,9 +66,13 @@ Ext.define('Pacemaker.controller.User', {
 		this.log();
 
 		var rec = selModel.getSelection()[0],
-			activityStats = this.getActivityStats();
+			activityStats = this.getActivityStats(),
+			activityMap = this.getActivityMap();
 
-		activityStats.loadRecord(rec);
+		if(rec){
+			activityStats.loadRecord(rec);
+			activityMap.setPath(rec.route());
+		}
 	},
 
 	log: function(message){

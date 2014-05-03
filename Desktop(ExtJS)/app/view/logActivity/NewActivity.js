@@ -56,7 +56,10 @@ Ext.define('Pacemaker.view.logActivity.NewActivity', {
     saveActivity: function(){
         var form = this.getForm();
         if (form.isValid()) {
-            this.fireEvent('saveActivity', this, this.getValues(false, false, false, true));
+            var submitValues = this.getValues(false, false, false, true);
+            submitValues.route = this.down('activitymap').path.getArray();
+
+            this.fireEvent('saveActivity', this, submitValues);
         }
     }
 });

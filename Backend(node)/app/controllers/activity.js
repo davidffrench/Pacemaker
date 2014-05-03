@@ -53,6 +53,9 @@ exports.createActivity = {
 				durationMinutes : req.body.durationMinutes,
 				startTime       : req.body.startTime
 			});
+			for(i=0; i<req.body.route.length; i++){
+				activity.route.push(req.body.route[i]);
+			}
 
 			user.activities.push(activity);
 			user.save(function (err) {

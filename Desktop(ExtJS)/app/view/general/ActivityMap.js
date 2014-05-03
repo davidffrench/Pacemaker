@@ -119,9 +119,9 @@ Ext.define('Pacemaker.view.general.ActivityMap', {
             var first = true;
             // For each path point, push a new latLng onto the path array
             pathPoints.each(function(r) {
-                if(first) me.centerMap(r.latitude, r.longitude);
+                if(first) me.centerMap(r.get('latitude'), r.get('longitude'));
                 first = false;
-                newPath.push(new google.maps.LatLng(r.latitude, r.longitude));
+                newPath.push(new google.maps.LatLng(r.get('latitude'), r.get('longitude')));
             });
         }
         this.path = newPath;

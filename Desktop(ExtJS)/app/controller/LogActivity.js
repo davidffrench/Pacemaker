@@ -22,11 +22,22 @@ Ext.define('Pacemaker.controller.LogActivity', {
 		});
 	},
 
-	saveActivityHandler: function(activityView, formValues) {
-		this.log(formValues);
+	saveActivityHandler: function(activityView, submitValues) {
+		this.log(submitValues);
 
-		var activityRecord = Ext.create('Pacemaker.model.Activity', formValues);
+		var activityRecord = Ext.create('Pacemaker.model.Activity', submitValues),
+			activityRoute = activityRecord.route(),
+			routeArr = [];
 
+        //loop over route path and map to new array with instansiated models
+        Ext.Array.each(submitValues.route, function(pathPoint, index, routeItSelf) {
+            routeArr.push(Ext.create('Pacemaker.model.Route', {
+                latitude: pathPoint.lat(),
+                longitude: pathPoint.lng()
+            }));
+        });
+		activityRoute.add(routeArr);
+		
 		activityRecord.save();
 	},
 

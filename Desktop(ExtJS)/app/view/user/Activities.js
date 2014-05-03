@@ -25,7 +25,7 @@ Ext.define('Pacemaker.view.user.Activities', {
             xtype: 'datecolumn',
             dataIndex: 'activityDate',
             format:'m/d',
-            flex: 0.75
+            flex: 0.70
         }, {
             dataIndex: 'activityType',
             flex: 1
@@ -33,7 +33,7 @@ Ext.define('Pacemaker.view.user.Activities', {
             xtype: 'numbercolumn',
             dataIndex: 'distance',
             format:'0.00',
-            flex: 0.65,
+            flex: 0.75,
             renderer: function(value){
                 return value + ' km.';
             }

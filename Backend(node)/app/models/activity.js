@@ -1,5 +1,6 @@
 var mongoose		= require('mongoose');
 var Schema			= mongoose.Schema;
+var routeSchema	= require('./route');
 
 var activitySchema	= new Schema({
 	activityType: String,
@@ -9,7 +10,8 @@ var activitySchema	= new Schema({
 	calories: Number,
 	durationHours: Number,
 	durationMinutes: Number,
-	startTime: Date
+	startTime: Date,
+	route: [ routeSchema.schema ]
 });
 
 module.exports = mongoose.model('Activity', activitySchema);
