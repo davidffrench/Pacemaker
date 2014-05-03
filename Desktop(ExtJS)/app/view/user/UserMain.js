@@ -3,8 +3,9 @@ Ext.define('Pacemaker.view.user.UserMain', {
     requires: ['Pacemaker.view.user.ActivitiesMain'],
 
     xtype: 'usermain',
-    deferredRender: true,
-    width: 700,
+    // deferredRender: true,
+    width: 950,
+    height: 550,
     margin: '25 0 0 0',
     items: [{
         title: 'Dashboard',
@@ -28,8 +29,8 @@ Ext.define('Pacemaker.view.user.UserMain', {
         }
     }],
 
-    listeners: {
-        tabchange: function(tabPanel, newCard, oldCard) {
-        }
-    }
+    // listeners: {
+    //     tabchange: function(tabPanel, newCard, oldCard) {
+    //     }
+    // }
 });

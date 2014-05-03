@@ -11,8 +11,7 @@ Ext.define('Pacemaker.view.general.ActivityMap', {
 
     padding: 8,
     margin: 10,
-    width: 500,
-    height: 500,
+    layout: 'fit',
 
     latitude: 52.245915,
     longitude: -7.139788,
@@ -33,7 +32,6 @@ Ext.define('Pacemaker.view.general.ActivityMap', {
         }
     },
 
-    // @private
     renderMap: function() {
         var me = this;
 
@@ -77,13 +75,13 @@ Ext.define('Pacemaker.view.general.ActivityMap', {
                         for (var i = 0, len = result.routes[0].overview_path.length; i < len; i++) {
                             me.path.push(result.routes[0].overview_path[i]);
                         }
+                        me.fireEvent('pathPointAdded', me, evt.latLng);
                     }
                 });
             }
-            me.fireEvent('pathPointAdded', me, evt.latLng);
         });
 
-        //Additional modethos for calculating route distance
+        //Additional methods for calculating route distance
         google.maps.LatLng.prototype.kmTo = function(a){
             var e = Math, ra = e.PI/180;
             var b = this.lat() * ra, c = a.lat() * ra, d = b - c;

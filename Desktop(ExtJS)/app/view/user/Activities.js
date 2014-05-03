@@ -8,6 +8,9 @@ Ext.define('Pacemaker.view.user.Activities', {
 
     xtype: 'activities',
     store: 'Activities',
+    hideHeaders: true,
+    autoScroll: true,
+    // layout: 'fit',
 
     // features: [{
     //     ftype: 'grouping',
@@ -20,26 +23,23 @@ Ext.define('Pacemaker.view.user.Activities', {
     initComponent: function() {
         this.columns = [{
             xtype: 'datecolumn',
-            text: 'Date',
             dataIndex: 'activityDate',
             format:'m/d',
-            flex: 0.3
+            flex: 0.75
         }, {
-            text: 'Type',
             dataIndex: 'activityType',
             flex: 1
         }, {
             xtype: 'numbercolumn',
-            text: 'distance',
             dataIndex: 'distance',
             format:'0.00',
-            flex: 0.3,
+            flex: 0.65,
             renderer: function(value){
-                return value + ' mi.';
+                return value + ' km.';
             }
         }, {
             xtype:'actioncolumn',
-            width:50,
+            width:30,
             items: [{
                 icon: 'resources/images/delete.png',
                 tooltip: 'Delete',

@@ -863,7 +863,9 @@ Ext.ClassManager.addNameAlternateMappings({
   "Pacemaker.view.authorization.AuthLayout": [],
   "Pacemaker.view.authorization.Login": [],
   "Pacemaker.view.authorization.Signup": [],
+  "Pacemaker.view.general.ActivityMap": [],
   "Pacemaker.view.logActivity.NewActivity": [],
+  "Pacemaker.view.logActivity.NewActivityDetails": [],
   "Pacemaker.view.user.Activities": [],
   "Pacemaker.view.user.ActivitiesMain": [],
   "Pacemaker.view.user.UserMain": []
@@ -1896,8 +1898,14 @@ Ext.ClassManager.addNameAliasMappings({
   "Pacemaker.view.authorization.Signup": [
     "widget.signup"
   ],
+  "Pacemaker.view.general.ActivityMap": [
+    "widget.activitymap"
+  ],
   "Pacemaker.view.logActivity.NewActivity": [
     "widget.newactivity"
+  ],
+  "Pacemaker.view.logActivity.NewActivityDetails": [
+    "widget.newactivitydetails"
   ],
   "Pacemaker.view.user.Activities": [
     "widget.activities"

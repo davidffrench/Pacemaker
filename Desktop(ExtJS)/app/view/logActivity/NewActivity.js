@@ -25,7 +25,9 @@ Ext.define('Pacemaker.view.logActivity.NewActivity', {
         this.items = [{
             xtype: 'newactivitydetails'
         }, {
-            xtype: 'activitymap'
+            xtype: 'activitymap',
+            width: 500,
+            height: 500
         }];
 
         this.buttons = [{
@@ -49,5 +51,12 @@ Ext.define('Pacemaker.view.logActivity.NewActivity', {
 
 
         this.callParent(arguments);
+    },
+
+    saveActivity: function(){
+        var form = this.getForm();
+        if (form.isValid()) {
+            this.fireEvent('saveActivity', this, this.getValues(false, false, false, true));
+        }
     }
 });
