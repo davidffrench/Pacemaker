@@ -10,7 +10,12 @@ Ext.define('Pacemaker.model.Activity', {
         { name: 'calories', type: 'int' },
         { name: 'durationHours', type: 'int' },
         { name: 'durationMinutes', type: 'int' },
-        { name: 'startTime', type: 'date' }
+        { name: 'startTime', type: 'date' },
+        { name: 'duration', type: 'string',
+            convert: function (newValue, record) {
+                return record.get('durationHours') + 'hrs ' + record.get('durationMinutes') + 'm';
+            }
+        }
     ],
 
     // associations: [{
@@ -19,7 +24,7 @@ Ext.define('Pacemaker.model.Activity', {
     // }]
 
     proxy: {
-        type: 'ajax',
-        url: Pacemaker.utils.GlobalVars.serverUrl + '/users/'
+        type: 'rest',
+        url: Pacemaker.utils.GlobalVars.serverUrl + '/users/' + Pacemaker.utils.GlobalVars.userId + '/activities/'
     }
 });

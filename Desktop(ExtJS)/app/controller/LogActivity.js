@@ -25,27 +25,15 @@ Ext.define('Pacemaker.controller.LogActivity', {
 	saveActivityHandler: function(activityView, formValues) {
 		this.log(formValues);
 
-		var userId = Pacemaker.utils.GlobalVars.userId;
-		
-		Ext.Ajax.request({
-			url: Pacemaker.utils.GlobalVars.serverUrl + '/users/' + userId + '/activities',
-			method: 'post',
-			jsonData: formValues,
-			success: function(response, opts) {
-				var result = Ext.decode(response.responseText);
-				console.dir(result);
-			},
-			failure: function(response, opts) {
-				console.log('server-side failure with status code ' + response.status);
-			}
-		});
+		var activityRecord = Ext.create('Pacemaker.model.Activity', formValues);
+
+		activityRecord.save();
 	},
 
 	pathPointAddedHandler: function(activityMap, latLng) {
 		this.log();
 
 		var distance = activityMap.poly.inKm();
-		debugger;
 		if(distance)
 			this.getNewActivity().down('#distance').setValue(distance);
 	},

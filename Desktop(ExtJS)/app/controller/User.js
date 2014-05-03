@@ -5,8 +5,14 @@ Ext.define('Pacemaker.controller.User', {
 		ref: 'userMain',
 		selector: 'usermain'
 	}, {
+		ref: 'activitiesMain',
+		selector: 'activitiesmain'
+	}, {
 		ref: 'activities',
 		selector: 'activities'
+	}, {
+		ref: 'activityStats',
+		selector: 'activitystats'
 	}],
 
     init: function() {
@@ -16,7 +22,8 @@ Ext.define('Pacemaker.controller.User', {
 					activitesTabActivate: this.activitesActivateHandler
 				},
 				'activities': {
-					deleteActivity: this.deleteActivityHandler
+					deleteActivity: this.deleteActivityHandler,
+					selectionchange: this.activityChangeHandler
 				}
 			},
 			store: {
@@ -28,31 +35,37 @@ Ext.define('Pacemaker.controller.User', {
 	activitesActivateHandler: function(tabPanel, tab) {
 		this.log();
 		
-		var userId = Pacemaker.utils.GlobalVars.userId,
-            activityStore = this.getActivities().getStore();
-
-        activityStore.getProxy().url = activityStore.getProxy().proxyConfig.url + userId + '/activities';
+		var activityStore = this.getActivities().getStore();
         activityStore.load();
+
+		tabPanel.down('activitymap').renderMap();
 	},
 
 	deleteActivityHandler: function(grid, store, rec) {
 		this.log();
-
-		var userId = Pacemaker.utils.GlobalVars.userId,
-			activityId = rec.getId();
-
-		Ext.Ajax.request({
-			url: Pacemaker.utils.GlobalVars.serverUrl + '/users/' + userId + '/activities/' + activityId,
-			method: 'delete',
-			success: function(response, opts) {
-				var result = Ext.decode(response.responseText);
-				
-				store.remove(rec);
-			},
-			failure: function(response, opts) {
-				console.log('server-side failure with status code ' + response.status);
+		
+		Ext.Msg.show({
+			title: 'Remove Activity',
+			msg: 'Are you sure that you want to proceed? This activity will be removed',
+			buttons: Ext.Msg.OKCANCEL,
+			icon: Ext.Msg.WARNING,
+			fn: function(btn){
+				if(btn === 'ok'){
+					//delete user - could also use rec.destroy()
+					store.remove(rec);
+				}
 			}
 		});
+		
+	},
+
+	activityChangeHandler: function( selModel, selected) {
+		this.log();
+
+		var rec = selModel.getSelection()[0],
+			activityStats = this.getActivityStats();
+
+		activityStats.loadRecord(rec);
 	},
 
 	log: function(message){
