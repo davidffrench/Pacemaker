@@ -22,11 +22,11 @@ Ext.define('Pacemaker.view.user.ActivitiesMain', {
         items: [{
             xtype: 'activitystats',
             margin: 10,
-            height: 60
+            height: 40
         }, {
             xtype: 'activitymap',
             width: '100%',
-            height: 420,
+            height: 440,
         }]
     }]
 });
