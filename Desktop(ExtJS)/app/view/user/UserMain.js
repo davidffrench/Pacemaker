@@ -1,9 +1,12 @@
 Ext.define('Pacemaker.view.user.UserMain', {
     extend: 'Ext.tab.Panel',
-    requires: ['Pacemaker.view.user.ActivitiesMain'],
+    requires: [
+        'Pacemaker.view.user.activities.ActivitiesMain',
+        'Pacemaker.view.user.reports.ReportsMain'
+    ],
 
     xtype: 'usermain',
-    // deferredRender: true,
+    deferredRender: true,
     width: 950,
     height: 550,
     margin: '25 0 0 0',
@@ -16,7 +19,8 @@ Ext.define('Pacemaker.view.user.UserMain', {
         }
     }, {
         title: 'Reports',
-        icon: 'resources/images/chart_bar.png'
+        icon: 'resources/images/chart_bar.png',
+        xtype: 'reportsmain'
     }, {
         title: 'Activites',
         icon: 'resources/images/note.png',

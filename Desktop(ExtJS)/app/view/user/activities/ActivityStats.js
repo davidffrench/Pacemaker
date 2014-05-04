@@ -1,4 +1,4 @@
-Ext.define('Pacemaker.view.user.ActivityStats', {
+Ext.define('Pacemaker.view.user.activities.ActivityStats', {
     extend: 'Ext.form.Panel',
     requires: [
     ],
@@ -7,7 +7,6 @@ Ext.define('Pacemaker.view.user.ActivityStats', {
     layout: 'hbox',
 
     fieldDefaults: {
-        // margin: '10 0 10 0',
         labelWidth : 100,
         width : 120,
         labelAlign: 'top'
@@ -26,7 +25,6 @@ Ext.define('Pacemaker.view.user.ActivityStats', {
                 itemId : 'distance',
                 name: 'distance',
                 fieldLabel: 'KM',
-                labelAlign: 'top',
                 margin: '0 0 0 10',
                 fieldStyle: 'font-weight:bold;'
             }]
@@ -42,7 +40,6 @@ Ext.define('Pacemaker.view.user.ActivityStats', {
                 itemId : 'duration',
                 name: 'duration',
                 fieldLabel: 'Duration',
-                labelAlign: 'top',
                 margin: '0 0 0 10',
                 fieldStyle: 'font-weight:bold;'
             }]
@@ -58,7 +55,6 @@ Ext.define('Pacemaker.view.user.ActivityStats', {
                 itemId : 'location',
                 name: 'location',
                 fieldLabel: 'Location',
-                labelAlign: 'top',
                 margin: '0 0 0 10',
                 fieldStyle: 'font-weight:bold;'
             }]
@@ -74,11 +70,14 @@ Ext.define('Pacemaker.view.user.ActivityStats', {
                 itemId : 'calories',
                 name: 'calories',
                 fieldLabel: 'Calories Burned',
-                labelAlign: 'top',
                 margin: '0 0 0 10',
                 fieldStyle: 'font-weight:bold;'
             }]
         }];
         this.callParent(arguments);
+    },
+
+    resetAndClear: function(){
+        this.getForm().reset();
     }
 });

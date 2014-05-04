@@ -11,7 +11,6 @@ Ext.define('Pacemaker.view.logActivity.NewActivity', {
         align: 'center'
     },
     title: 'Enter Activity Details',
-    // width: 800,
     padding: 10,
 
     fieldDefaults: {

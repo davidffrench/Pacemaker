@@ -1,4 +1,4 @@
-Ext.define('Pacemaker.view.user.Activities', {
+Ext.define('Pacemaker.view.user.activities.ActivitiesList', {
     extend: 'Ext.grid.Panel',
     requires: [
         'Ext.grid.column.Date',
@@ -6,7 +6,7 @@ Ext.define('Pacemaker.view.user.Activities', {
         'Ext.grid.column.Action'
     ],
 
-    xtype: 'activities',
+    xtype: 'activitieslist',
     store: 'Activities',
     hideHeaders: true,
     autoScroll: true,
@@ -45,7 +45,7 @@ Ext.define('Pacemaker.view.user.Activities', {
                 tooltip: 'Delete',
                 handler: function(gridView, rowIndex, colIndex) {
                     var rec = gridView.getStore().getAt(rowIndex),
-                        activitiesGrid = gridView.up('activities');
+                        activitiesGrid = gridView.up('activitieslist');
 
                     activitiesGrid.fireEvent('deleteActivity', activitiesGrid, gridView.getStore(), rec);
                 }

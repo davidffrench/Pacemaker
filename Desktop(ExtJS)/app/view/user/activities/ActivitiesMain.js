@@ -1,8 +1,8 @@
-Ext.define('Pacemaker.view.user.ActivitiesMain', {
+Ext.define('Pacemaker.view.user.activities.ActivitiesMain', {
     extend: 'Ext.panel.Panel',
     requires: [
-        'Pacemaker.view.user.Activities',
-        'Pacemaker.view.user.ActivityStats'
+        'Pacemaker.view.user.activities.ActivitiesList',
+        'Pacemaker.view.user.activities.ActivityStats'
     ],
 
     xtype: 'activitiesmain',
@@ -12,7 +12,7 @@ Ext.define('Pacemaker.view.user.ActivitiesMain', {
     height: '100%',
 
     items: [{
-        xtype: 'activities',
+        xtype: 'activitieslist',
         width: 250,
         height: '100%'
     }, {
