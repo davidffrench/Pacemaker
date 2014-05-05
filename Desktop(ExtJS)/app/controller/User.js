@@ -8,8 +8,8 @@ Ext.define('Pacemaker.controller.User', {
 		ref: 'activitiesMain',
 		selector: 'activitiesmain'
 	}, {
-		ref: 'activities',
-		selector: 'activities'
+		ref: 'activitiesList',
+		selector: 'activitieslist'
 	}, {
 		ref: 'activityStats',
 		selector: 'activitystats'
@@ -21,10 +21,10 @@ Ext.define('Pacemaker.controller.User', {
     init: function() {
 		this.listen({
 			component: {
-				'usermain': {
-					activitesTabActivate: this.activitesActivateHandler
+				'activitiesmain': {
+					afterrender: this.activitesActivateHandler
 				},
-				'activities': {
+				'activitieslist': {
 					deleteActivity: this.deleteActivityHandler,
 					selectionchange: this.activityChangeHandler
 				}
@@ -38,7 +38,7 @@ Ext.define('Pacemaker.controller.User', {
 	activitesActivateHandler: function(tabPanel, tab) {
 		this.log();
 		
-		var activityStore = this.getActivities().getStore();
+		var activityStore = this.getActivitiesList().getStore();
         activityStore.load();
 
 		tabPanel.down('activitymap').renderMap();
@@ -72,6 +72,9 @@ Ext.define('Pacemaker.controller.User', {
 		if(rec){
 			activityStats.loadRecord(rec);
 			activityMap.setPath(rec.route());
+		} else {
+			activityStats.resetAndClear();
+			activityMap.setPath();
 		}
 	},
 

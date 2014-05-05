@@ -162,3 +162,64 @@ exports.updateActivity = {
 		});
 	}
 };
+
+exports.activitiesReportsData = {
+	'spec': {
+		path : "/users/{userId}/activitiesReportsData",
+		notes : "Retrieves actvities data for reports",
+		summary : "Retrieves actvities data for reports",
+		method: "POST",
+		parameters : [
+			swagger.pathParam("userId", "ID of user", "string", null, "5357fc3297dfc3b010000002"),
+			swagger.bodyParam("body", "params to retrieve limited reports data", "ActivitiesReportsData")
+		],
+		nickname : "activitiesReportsData"
+	},
+	action: function(req, res){
+		User.findById(req.params.userId, function(err, user) {
+			if (err)
+				res.send(err);
+
+			var activitiesSubSet = [],
+				totalDistance = 0,
+				totalDurationHrs = 0,
+				totalDurationMins = 0,
+				totalCalories = 0,
+				activities = user.activities;
+				
+
+			//unable to filter subdocument with mongoose, looping over activities to build subset and calculate totals
+			for(i=0; i<activities.length; i++){
+				var activity = activities[i];
+				//do not return the route
+				activity.route = undefined;
+
+				if(req.body.activityType){
+					if(activity.activityType === req.body.activityType){
+						activitiesSubSet.push(activity);
+						if(activity.distance) totalDistance += activity.distance;
+						if(activity.durationHours) totalDurationHrs += activity.durationHours;
+						if(activity.durationMinutes) totalDurationMins += activity.durationMinutes;
+						if(activity.calories) totalCalories += activity.calories;
+					}
+				} else {
+					activitiesSubSet.push(activity);
+					if(activity.distance) totalDistance += activity.distance;
+					if(activity.durationHours) totalDurationHrs += activity.durationHours;
+					if(activity.durationMinutes) totalDurationMins += activity.durationMinutes;
+					if(activity.calories) totalCalories += activity.calories;
+				}
+			}
+
+			res.json({
+				"totals": {
+					"totalDistance": totalDistance,
+					"totalDurationHrs": totalDurationHrs,
+					"totalDurationMins": totalDurationMins,
+					"totalCalories": totalCalories
+				},
+				"activities": activitiesSubSet
+			});
+		});
+	}
+};

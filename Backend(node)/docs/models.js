@@ -109,5 +109,28 @@ module.exports = {
         "description": "User password"
       }
     }
+  },
+  "ActivitiesReportsData":{
+    "id":"ActivitiesReportsData",
+    "required": ["timeframeOption"],
+    "properties":{
+      "timeframeOption:":{
+        "type":"string",
+        "description": "Timeframe for results",
+        "allowableValues": {
+          "valueType": "LIST",
+          "values": [
+            "LAST_30_DAYS",
+            "LAST_3_MONTHS",
+            "CURRENT_YEAR",
+            "LIFETIME"
+          ]
+        },
+      },
+      "activityType:":{
+        "type":"string",
+        "description": "Activity Type to limit results by"
+      }
+    }
   }
 };

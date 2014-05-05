@@ -1,5 +1,6 @@
 module.exports = function(app, express){
 	var swagger = require('swagger-node-express');
+	var bodyParser   = require('body-parser');
 	var subpath = express();
 
 	var userController     = require('./../app/controllers/user');
@@ -12,6 +13,8 @@ module.exports = function(app, express){
 	swagger.setAppHandler(subpath);
 
 	subpath.use(allowCrossDomain);
+	subpath.use(bodyParser.json());
+	subpath.use(bodyParser.urlencoded());
 	// // This is a sample validator.  It simply says that for _all_ POST, DELETE, PUT
 	// // methods, the header `api_key` OR query param `api_key` must be equal
 	// // to the string literal `special-key`.  All other HTTP ops are A-OK
@@ -67,7 +70,8 @@ module.exports = function(app, express){
 		.addPut(activityController.updateActivity)
 		.addDelete(activityController.deleteActivity)
 		.addPost(authController.signup)
-		.addPost(authController.login);
+		.addPost(authController.login)
+		.addPost(activityController.activitiesReportsData);
 
 	swagger.configure("http://localhost:3000", "0.1");
 };

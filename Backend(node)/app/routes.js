@@ -40,6 +40,9 @@ module.exports = function(app, passport){
 		.get(activityController.activity.action)
 		.delete(activityController.deleteActivity.action)
 		.put(activityController.updateActivity.action);
+	router.route('/users/:userId/activitiesReportsData')
+		.all(isLoggedIn)
+		.post(activityController.activitiesReportsData.action);
 
 	return router;
 };

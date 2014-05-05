@@ -42,7 +42,7 @@ exports.users = {
 		nickname : "users"
 	},
 	action: function(req, res){
-		User.find(function(err, users) {
+		User.find(null, '-activities', function(err, users) {
 			if (err)
 				res.send(err);
 
@@ -70,7 +70,7 @@ exports.user = {
 		parameters : [swagger.pathParam("userId", "ID of user that needs to be fetched", "string", null, "5357fc3297dfc3b010000002")],
 	},
 	action: function(req, res){
-		User.findById(req.params.userId, function(err, user) {
+		User.findById(req.params.userId, '-activities', function(err, user) {
 			if (err)
 				res.send(err);
 			res.json(user);
