@@ -6,7 +6,7 @@ Ext.define('Pacemaker.view.user.UserMain', {
     ],
 
     xtype: 'usermain',
-    deferredRender: true,
+    // deferredRender: true,
     width: 950,
     height: 550,
     margin: '25 0 0 0',
@@ -20,15 +20,19 @@ Ext.define('Pacemaker.view.user.UserMain', {
     }, {
         title: 'Reports',
         icon: 'resources/images/chart_bar.png',
-        xtype: 'reportsmain'
+        xtype: 'reportsmain',
+        listeners: {
+            activate: function(tabPanel, newCard, oldCard) {
+                // this.down('reportstotals').doLayout();
+            }
+        }
     }, {
         title: 'Activites',
         icon: 'resources/images/note.png',
         xtype: 'activitiesmain',
         listeners: {
             activate: function(tab) {
-                var userMain = tab.up('usermain');
-                userMain.fireEvent('activitesTabActivate', userMain, tab);
+                // this.down('activitystats').doLayout();
             }
         }
     }],

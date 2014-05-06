@@ -25,7 +25,7 @@ Ext.define('Pacemaker.view.user.activities.ActivitiesList', {
             xtype: 'datecolumn',
             dataIndex: 'activityDate',
             format:'m/d',
-            flex: 0.70
+            flex: 0.55
         }, {
             dataIndex: 'activityType',
             flex: 1

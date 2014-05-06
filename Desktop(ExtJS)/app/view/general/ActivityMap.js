@@ -5,9 +5,6 @@
 Ext.define('Pacemaker.view.general.ActivityMap', {
     extend: 'Ext.Component',
     xtype: 'activitymap',
-    config: {
-        store: null
-    },
 
     padding: 8,
     margin: 10,
@@ -15,22 +12,9 @@ Ext.define('Pacemaker.view.general.ActivityMap', {
 
     latitude: 52.245915,
     longitude: -7.139788,
-
-    applyStore: function(store) {
-        if (Ext.isString(store)) {
-            store = Ext.getStore(store);
-        }
-        return store;
-    },
-
-    updateStore: function(store) {
-        if (store) {
-            var me = this;
-            this.getStore().on('datachanged', function(store) {
-                me.setMarkers(store);
-            }, me);
-        }
-    },
+    map: null,
+    path: null,
+    poly: null,
 
     renderMap: function() {
         var me = this;

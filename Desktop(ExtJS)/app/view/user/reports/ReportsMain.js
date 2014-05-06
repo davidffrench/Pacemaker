@@ -1,7 +1,9 @@
 Ext.define('Pacemaker.view.user.reports.ReportsMain', {
     extend: 'Ext.panel.Panel',
     requires: [
-        'Pacemaker.view.user.reports.ReportsList'
+        'Pacemaker.view.user.reports.ReportsList',
+        'Pacemaker.view.user.reports.ReportsHeader',
+        'Pacemaker.view.user.reports.ReportsTotals'
     ],
 
     xtype: 'reportsmain',
@@ -14,20 +16,25 @@ Ext.define('Pacemaker.view.user.reports.ReportsMain', {
         xtype: 'reportslist',
         width: 100,
         height: '100%'
-    }, 
-    // {
-    //     xtype: 'container',
-    //     width: 680,
-    //     height: '100%',
-    //     items: [{
-    //         xtype: 'activitystats',
-    //         margin: 10,
-    //         height: 40
-    //     }, {
-    //         xtype: 'activitymap',
-    //         width: '100%',
-    //         height: 440,
-    //     }]
-    // }
+    }, {
+        xtype: 'container',
+        width: 800,
+        height: '100%',
+        items: [{
+            xtype: 'reportsheader',
+            margin: 10,
+            height: 50
+        }, {
+            xtype: 'reportstotals',
+            margin: 10,
+            height: 40
+        },
+        {
+            html: 'safdsafasfsafasfsafas fasfasfafsa',
+            width: '100%',
+            height: 440,
+        }
+        ]
+    }
     ]
 });

@@ -16,17 +16,23 @@ Ext.define('Pacemaker.controller.User', {
 	}, {
 		ref: 'activityMap',
 		selector: 'activitymap'
+	}, {
+		ref: 'reportsMain',
+		selector: 'reportsmain'
 	}],
 
     init: function() {
 		this.listen({
 			component: {
 				'activitiesmain': {
-					afterrender: this.activitesActivateHandler
+					afterlayout: this.activitesActivateHandler
 				},
 				'activitieslist': {
 					deleteActivity: this.deleteActivityHandler,
 					selectionchange: this.activityChangeHandler
+				},
+				'reportslist': {
+					selectionchange: this.reportsTypeChangeHandler
 				}
 			},
 			store: {
@@ -77,6 +83,38 @@ Ext.define('Pacemaker.controller.User', {
 			activityMap.setPath();
 		}
 	},
+
+	reportsTypeChangeHandler: function(selModel, selected){
+        var reportsMain = this.getReportsMain();
+        reportsMain.down('[name=reportType]').setValue(selected[0].get('itemDesc'));
+
+        var activityType = selected[0].get('itemCd'),
+			postJSON = activityType === 'All' ? {} : {"activityType": activityType};
+
+        Ext.Ajax.request({
+			url: Pacemaker.utils.GlobalVars.serverUrl + '/users/' + Pacemaker.utils.GlobalVars.userId + '/activitiesReportsData',
+			method: 'post',
+			jsonData: postJSON,
+			success: function(response, opts) {
+				var result = Ext.decode(response.responseText);
+
+				reportsMain.down('[name=totalDistance]').setValue(Ext.util.Format.number(result.totals.totalDistance, '0.00'));
+				reportsMain.down('[name=totalDuration]').setValue(result.totals.totalDurationHrs + 'hrs ' + result.totals.totalDurationMins + 'mins');
+				reportsMain.down('[name=totalCalories]').setValue(result.totals.totalCalories);
+			},
+			failure: function(response, opts) {
+				var result = Ext.decode(response.responseText),
+					statusCode = response.status;
+
+				if(statusCode === 422){
+					var loginError = loginView.down('#loginError');
+					//set specific error code text and show error panel
+					loginError.down('label').setText(result.message);
+					loginError.show();
+				}
+			}
+		});
+    },
 
 	log: function(message){
 		console.log(arguments.callee.caller.$name + ': ' + message);

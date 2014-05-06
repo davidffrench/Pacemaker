@@ -852,6 +852,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "Pacemaker.controller.Main": [],
   "Pacemaker.controller.User": [],
   "Pacemaker.model.Activity": [],
+  "Pacemaker.model.Route": [],
   "Pacemaker.model.User": [],
   "Pacemaker.model.metadata.ActivityType": [],
   "Pacemaker.store.Activities": [],
@@ -866,9 +867,13 @@ Ext.ClassManager.addNameAlternateMappings({
   "Pacemaker.view.general.ActivityMap": [],
   "Pacemaker.view.logActivity.NewActivity": [],
   "Pacemaker.view.logActivity.NewActivityDetails": [],
-  "Pacemaker.view.user.Activities": [],
-  "Pacemaker.view.user.ActivitiesMain": [],
-  "Pacemaker.view.user.UserMain": []
+  "Pacemaker.view.user.UserMain": [],
+  "Pacemaker.view.user.activities.ActivitiesList": [],
+  "Pacemaker.view.user.activities.ActivitiesMain": [],
+  "Pacemaker.view.user.activities.ActivityStats": [],
+  "Pacemaker.view.user.reports.ReportsList": [],
+  "Pacemaker.view.user.reports.ReportsMain": [],
+  "Pacemaker.view.user.reports.ReportsTotals": []
 });
 Ext.ClassManager.addNameAliasMappings({
   "Ext.AbstractComponent": [],
@@ -1879,6 +1884,7 @@ Ext.ClassManager.addNameAliasMappings({
   "Pacemaker.controller.Main": [],
   "Pacemaker.controller.User": [],
   "Pacemaker.model.Activity": [],
+  "Pacemaker.model.Route": [],
   "Pacemaker.model.User": [],
   "Pacemaker.model.metadata.ActivityType": [],
   "Pacemaker.store.Activities": [],
@@ -1907,14 +1913,26 @@ Ext.ClassManager.addNameAliasMappings({
   "Pacemaker.view.logActivity.NewActivityDetails": [
     "widget.newactivitydetails"
   ],
-  "Pacemaker.view.user.Activities": [
-    "widget.activities"
-  ],
-  "Pacemaker.view.user.ActivitiesMain": [
-    "widget.activitiesmain"
-  ],
   "Pacemaker.view.user.UserMain": [
     "widget.usermain"
+  ],
+  "Pacemaker.view.user.activities.ActivitiesList": [
+    "widget.activitieslist"
+  ],
+  "Pacemaker.view.user.activities.ActivitiesMain": [
+    "widget.activitiesmain"
+  ],
+  "Pacemaker.view.user.activities.ActivityStats": [
+    "widget.activitystats"
+  ],
+  "Pacemaker.view.user.reports.ReportsList": [
+    "widget.reportslist"
+  ],
+  "Pacemaker.view.user.reports.ReportsMain": [
+    "widget.reportsmain"
+  ],
+  "Pacemaker.view.user.reports.ReportsTotals": [
+    "widget.reportstotals"
   ]
 });
 Ext.setVersion("ext-theme-base", "4.2.1");

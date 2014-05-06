@@ -20,5 +20,13 @@ Ext.define('Pacemaker.view.user.reports.ReportsList', {
         }];
         
         this.callParent(arguments);
+        //add an additional record to the store
+        this.store.add({itemCd: 'All', itemDesc: 'All Activities'});
+    },
+
+    listeners: {
+        viewready: function(grid){
+            grid.getSelectionModel().select(grid.getStore().first());
+        }
     }
 });
