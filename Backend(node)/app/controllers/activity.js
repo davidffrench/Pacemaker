@@ -190,24 +190,29 @@ exports.activitiesReportsData = {
 
 			//unable to filter subdocument with mongoose, looping over activities to build subset and calculate totals
 			for(i=0; i<activities.length; i++){
-				var activity = activities[i];
+				var activity = activities[i],
+					startDate = new Date(req.body.startDate);
 				//do not return the route
 				activity.route = undefined;
 
 				if(req.body.activityType){
 					if(activity.activityType === req.body.activityType){
+						if(startDate < activity.activityDate){
+							activitiesSubSet.push(activity);
+							if(activity.distance) totalDistance += activity.distance;
+							if(activity.durationHours) totalDurationHrs += activity.durationHours;
+							if(activity.durationMinutes) totalDurationMins += activity.durationMinutes;
+							if(activity.calories) totalCalories += activity.calories;
+						}
+					}
+				} else {
+					if(startDate <= activity.activityDate){
 						activitiesSubSet.push(activity);
 						if(activity.distance) totalDistance += activity.distance;
 						if(activity.durationHours) totalDurationHrs += activity.durationHours;
 						if(activity.durationMinutes) totalDurationMins += activity.durationMinutes;
 						if(activity.calories) totalCalories += activity.calories;
 					}
-				} else {
-					activitiesSubSet.push(activity);
-					if(activity.distance) totalDistance += activity.distance;
-					if(activity.durationHours) totalDurationHrs += activity.durationHours;
-					if(activity.durationMinutes) totalDurationMins += activity.durationMinutes;
-					if(activity.calories) totalCalories += activity.calories;
 				}
 			}
 

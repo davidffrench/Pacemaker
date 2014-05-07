@@ -16,7 +16,7 @@ Ext.define('Pacemaker.view.general.ActivityMap', {
     path: null,
     poly: null,
 
-    renderMap: function() {
+    renderMap: function(drawPathAllowed) {
         var me = this;
 
         var cfg = {
@@ -24,7 +24,7 @@ Ext.define('Pacemaker.view.general.ActivityMap', {
             center: new google.maps.LatLng(me.latitude, me.longitude),
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             disableDoubleClickZoom: true,
-            draggableCursor: "crosshair"
+            draggableCursor: drawPathAllowed ? "crosshair" : null
         };
         me.map = new google.maps.Map(me.getEl().dom, cfg);
 
@@ -45,25 +45,27 @@ Ext.define('Pacemaker.view.general.ActivityMap', {
             strokeWeight: 2
         });
 
-        google.maps.event.addListener(me.map, "click", function(evt) {
-            if (me.path.getLength() === 0) {
-                me.path.push(evt.latLng);
-                me.poly.setPath(me.path);
-            } else {
-                service.route({
-                    origin: me.path.getAt(me.path.getLength() - 1),
-                    destination: evt.latLng,
-                    travelMode: google.maps.DirectionsTravelMode.WALKING
-                }, function(result, status) {
-                    if (status == google.maps.DirectionsStatus.OK) {
-                        for (var i = 0, len = result.routes[0].overview_path.length; i < len; i++) {
-                            me.path.push(result.routes[0].overview_path[i]);
+        if(drawPathAllowed){
+            google.maps.event.addListener(me.map, "click", function(evt) {
+                if (me.path.getLength() === 0) {
+                    me.path.push(evt.latLng);
+                    me.poly.setPath(me.path);
+                } else {
+                    service.route({
+                        origin: me.path.getAt(me.path.getLength() - 1),
+                        destination: evt.latLng,
+                        travelMode: google.maps.DirectionsTravelMode.WALKING
+                    }, function(result, status) {
+                        if (status == google.maps.DirectionsStatus.OK) {
+                            for (var i = 0, len = result.routes[0].overview_path.length; i < len; i++) {
+                                me.path.push(result.routes[0].overview_path[i]);
+                            }
+                            me.fireEvent('pathPointAdded', me, evt.latLng);
                         }
-                        me.fireEvent('pathPointAdded', me, evt.latLng);
-                    }
-                });
-            }
-        });
+                    });
+                }
+            });
+        }
 
         //Additional methods for calculating route distance
         google.maps.LatLng.prototype.kmTo = function(a){

@@ -33,6 +33,9 @@ Ext.define('Pacemaker.controller.User', {
 				},
 				'reportslist': {
 					selectionchange: this.reportsTypeChangeHandler
+				},
+				'reportsheader': {
+					timeframechanged: this.timeFrameChangeHandler
 				}
 			},
 			store: {
@@ -47,7 +50,7 @@ Ext.define('Pacemaker.controller.User', {
 		var activityStore = this.getActivitiesList().getStore();
         activityStore.load();
 
-		tabPanel.down('activitymap').renderMap();
+		tabPanel.down('activitymap').renderMap(false);
 	},
 
 	deleteActivityHandler: function(grid, store, rec) {
@@ -88,10 +91,50 @@ Ext.define('Pacemaker.controller.User', {
         var reportsMain = this.getReportsMain();
         reportsMain.down('[name=reportType]').setValue(selected[0].get('itemDesc'));
 
-        var activityType = selected[0].get('itemCd'),
-			postJSON = activityType === 'All' ? {} : {"activityType": activityType};
+        this.getReportsData();
+    },
 
-        Ext.Ajax.request({
+	timeFrameChangeHandler: function(reportsheader, newSel, oldSel){
+		var reportTimeframeText = reportsheader.down('[name=reportTimeframeText]'),
+			date = new Date(),
+			dateText = ' - ';
+
+		if(newSel.action === 'last30Days'){
+			dateText += Ext.Date.format(date, 'M j,Y');
+			date.setDate(date.getDate() - 30);
+			dateText = Ext.Date.format(date, 'M j,Y') + dateText;
+		} else if(newSel.action === 'last3Months'){
+			dateText += Ext.Date.format(date, 'M Y');
+			date.setMonth(date.getMonth() - 2);
+			dateText = Ext.Date.format(date, 'M Y') + dateText;
+		} else if(newSel.action === 'currentYear'){
+			dateText += Ext.Date.format(date, 'M Y');
+			date.setMonth(date.getMonth() - 12);
+			dateText = Ext.Date.format(date, 'M Y') + dateText;
+		} else if(newSel.action === 'lifetime'){
+			dateText += Ext.Date.format(date, 'M Y');
+			date.setMonth(date.getMonth() - 240);
+			dateText = '13.8 billion years ago' + dateText;
+		}
+		reportTimeframeText.setValue(dateText);
+		reportTimeframeText.startDate = date;
+
+		if(oldSel)
+			this.getReportsData();
+    },
+
+	getReportsData: function(){
+		var reportsMain = this.getReportsMain(),
+			activityType = reportsMain.down('reportslist').getSelectionModel().getSelection()[0].get('itemCd'),
+			reportTimeframeDate = reportsMain.down('[name=reportTimeframeText]').startDate,
+			reportTimeframe = reportsMain.down('reportsheader').getReportTimeframe().action,
+			postJSON = {};
+
+		postJSON.activityType = (activityType === 'All') ? undefined : activityType;
+		postJSON.startDate = reportTimeframeDate;
+		postJSON.timeframeOption = reportTimeframe;
+		
+		Ext.Ajax.request({
 			url: Pacemaker.utils.GlobalVars.serverUrl + '/users/' + Pacemaker.utils.GlobalVars.userId + '/activitiesReportsData',
 			method: 'post',
 			jsonData: postJSON,
@@ -101,17 +144,8 @@ Ext.define('Pacemaker.controller.User', {
 				reportsMain.down('[name=totalDistance]').setValue(Ext.util.Format.number(result.totals.totalDistance, '0.00'));
 				reportsMain.down('[name=totalDuration]').setValue(result.totals.totalDurationHrs + 'hrs ' + result.totals.totalDurationMins + 'mins');
 				reportsMain.down('[name=totalCalories]').setValue(result.totals.totalCalories);
-			},
-			failure: function(response, opts) {
-				var result = Ext.decode(response.responseText),
-					statusCode = response.status;
 
-				if(statusCode === 422){
-					var loginError = loginView.down('#loginError');
-					//set specific error code text and show error panel
-					loginError.down('label').setText(result.message);
-					loginError.show();
-				}
+				// debugger;
 			}
 		});
     },

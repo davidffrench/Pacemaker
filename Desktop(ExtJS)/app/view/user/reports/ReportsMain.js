@@ -3,6 +3,7 @@ Ext.define('Pacemaker.view.user.reports.ReportsMain', {
     requires: [
         'Pacemaker.view.user.reports.ReportsList',
         'Pacemaker.view.user.reports.ReportsHeader',
+        'Pacemaker.view.user.reports.ReportsCharts',
         'Pacemaker.view.user.reports.ReportsTotals'
     ],
 
@@ -28,13 +29,11 @@ Ext.define('Pacemaker.view.user.reports.ReportsMain', {
             xtype: 'reportstotals',
             margin: 10,
             height: 40
-        },
-        {
-            html: 'safdsafasfsafasfsafas fasfasfafsa',
-            width: '100%',
-            height: 440,
-        }
-        ]
+        }, {
+            xtype: 'reportscharts',
+            // width: '100%',
+            height: 400,
+        }]
     }
     ]
 });

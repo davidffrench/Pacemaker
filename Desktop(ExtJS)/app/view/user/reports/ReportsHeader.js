@@ -15,28 +15,6 @@ Ext.define("Pacemaker.view.user.reports.ReportsHeader", {
 	},
 
 	updateReportTimeframe: function(newSel, oldSel){
-		var reportTimeframeText = this.down('[name=reportTimeframeText]'),
-			date = new Date(),
-			dateText = ' - ';
-
-		if(newSel.action === 'last30Days'){
-			dateText += Ext.Date.format(date, 'M j,Y');
-			date.setDate(date.getDate() - 30);
-			dateText = Ext.Date.format(date, 'M j,Y') + dateText;
-		} else if(newSel.action === 'last3Months'){
-			dateText += Ext.Date.format(date, 'M Y');
-			date.setMonth(date.getMonth() - 2);
-			dateText = Ext.Date.format(date, 'M Y') + dateText;
-		} else if(newSel.action === 'currentYear'){
-			dateText += Ext.Date.format(date, 'M Y');
-			date.setMonth(date.getMonth() - 12);
-			dateText = Ext.Date.format(date, 'M Y') + dateText;
-		} else if(newSel.action === 'lifetime'){
-			dateText += Ext.Date.format(date, 'M Y');
-			dateText = '13.8 billion years ago' + dateText;
-		}
-		reportTimeframeText.setValue(dateText);
-
 		this.fireEvent('timeframechanged', this, newSel, oldSel);
 	},
 
@@ -52,7 +30,7 @@ Ext.define("Pacemaker.view.user.reports.ReportsHeader", {
 				xtype: 'displayfield',
 				hideLabel: true,
 				name: 'reportType',
-				fieldStyle: 'font-size: 24px;'
+				fieldStyle: 'font-size: 22px;'
 			}, {
 				xtype: 'tbfill'
 			}, {

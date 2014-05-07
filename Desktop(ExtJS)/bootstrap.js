@@ -871,6 +871,8 @@ Ext.ClassManager.addNameAlternateMappings({
   "Pacemaker.view.user.activities.ActivitiesList": [],
   "Pacemaker.view.user.activities.ActivitiesMain": [],
   "Pacemaker.view.user.activities.ActivityStats": [],
+  "Pacemaker.view.user.reports.ReportsCharts": [],
+  "Pacemaker.view.user.reports.ReportsHeader": [],
   "Pacemaker.view.user.reports.ReportsList": [],
   "Pacemaker.view.user.reports.ReportsMain": [],
   "Pacemaker.view.user.reports.ReportsTotals": []
@@ -1924,6 +1926,12 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "Pacemaker.view.user.activities.ActivityStats": [
     "widget.activitystats"
+  ],
+  "Pacemaker.view.user.reports.ReportsCharts": [
+    "widget.reportscharts"
+  ],
+  "Pacemaker.view.user.reports.ReportsHeader": [
+    "widget.reportsheader"
   ],
   "Pacemaker.view.user.reports.ReportsList": [
     "widget.reportslist"

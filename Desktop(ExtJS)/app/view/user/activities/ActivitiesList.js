@@ -28,7 +28,7 @@ Ext.define('Pacemaker.view.user.activities.ActivitiesList', {
             flex: 0.55
         }, {
             dataIndex: 'activityType',
-            flex: 1
+            flex: 0.75
         }, {
             xtype: 'numbercolumn',
             dataIndex: 'distance',
