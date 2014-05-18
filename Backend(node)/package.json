@@ -1,7 +1,14 @@
 {
-  "name": "application-name",
+  "name": "pacemaker",
   "version": "0.0.1",
-  "private": true,
+  "author": "David Ffrench <davidffrench@gmail.com>",
+  "description": "Backend for Msc project",
+  "contributors": [ 
+    {
+      "name": "David Ffrench",
+      "email": "davidffrench@gmail.com"
+    } 
+  ],
   "scripts": {
     "start": "node ./config/startup"
   },
@@ -24,5 +31,17 @@
     "swagger-node-express" : "2.0.1",
     "mocha" : "1.18.2",
     "chai" : "1.9.1"
-  }
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/davidffrench/Pacemaker.git"
+  },
+  "keywords": [
+    "rest",
+    "api",
+    "express",
+    "swagger",
+    "mongodb"
+  ]
 }
