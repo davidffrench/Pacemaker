@@ -14,7 +14,7 @@ Ext.define('Pacemaker.view.user.reports.ReportsCharts', {
 		this.items = [{
 			xtype: 'chart',
 			store: Ext.create('Pacemaker.store.Activities'),
-
+			name: 'distanceChart',
 			axes: [{
 				type: 'Numeric',
 				title: 'KM',
@@ -22,14 +22,33 @@ Ext.define('Pacemaker.view.user.reports.ReportsCharts', {
 				fields: ['distance']
 			}, {
 				type: 'Time',
-				title: 'Country',
+				title: 'Activity Date',
 				position: 'bottom',
 				fields: ['activityDate'],
+				dateFormat: 'M d'
 				// label: {
 				// 	rotate: {
 				// 		degrees: 45
 				// 	}
 				// }
+			}],
+			series: [{
+				type: 'column',
+				axis: 'left',
+				xField: 'activityDate',
+				yField: 'distance',
+				// axis: ['left', 'bottom'],
+				// highlight: {
+				// 	type: 'circle',
+				// 	radius: 10,
+				// 	fill: 'blue'
+				// },
+			// listeners: {
+			// 	itemmouseover: function(item) {
+			// 		var chart = item.series.chart;
+			// 		chart.fireEvent('itemmouseover', chart, item.storeItem);
+			// 	}
+			// }
 			}]
 		}, {
 			html: 'asdsadsadas'

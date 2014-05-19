@@ -128,6 +128,7 @@ Ext.define('Pacemaker.controller.User', {
 			activityType = reportsMain.down('reportslist').getSelectionModel().getSelection()[0].get('itemCd'),
 			reportTimeframeDate = reportsMain.down('[name=reportTimeframeText]').startDate,
 			reportTimeframe = reportsMain.down('reportsheader').getReportTimeframe().action,
+			chartsStore = reportsMain.down('[name=distanceChart]').getStore(),
 			postJSON = {};
 
 		postJSON.activityType = (activityType === 'All') ? undefined : activityType;
@@ -145,7 +146,9 @@ Ext.define('Pacemaker.controller.User', {
 				reportsMain.down('[name=totalDuration]').setValue(result.totals.totalDurationHrs + 'hrs ' + result.totals.totalDurationMins + 'mins');
 				reportsMain.down('[name=totalCalories]').setValue(result.totals.totalCalories);
 
-				// debugger;
+				chartsStore.removeAll();
+				chartsStore.add(result.activities);
+				debugger;
 			}
 		});
     },
