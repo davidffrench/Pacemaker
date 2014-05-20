@@ -65,6 +65,7 @@ Ext.define('Pacemaker.controller.User', {
 				if(btn === 'ok'){
 					//delete user - could also use rec.destroy()
 					store.remove(rec);
+					store.sync();
 				}
 			}
 		});
@@ -148,7 +149,6 @@ Ext.define('Pacemaker.controller.User', {
 
 				chartsStore.removeAll();
 				chartsStore.add(result.activities);
-				debugger;
 			}
 		});
     },

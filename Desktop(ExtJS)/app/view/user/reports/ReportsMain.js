@@ -32,7 +32,7 @@ Ext.define('Pacemaker.view.user.reports.ReportsMain', {
         }, {
             xtype: 'reportscharts',
             // width: '100%',
-            height: 400,
+            height: 380,
         }]
     }
     ]

@@ -14,7 +14,7 @@ Ext.define('Pacemaker.model.Activity', {
         { name: 'startTime', type: 'date' },
         { name: 'duration', type: 'string',
             convert: function (newValue, record) {
-                return record.get('durationHours') + 'hrs ' + record.get('durationMinutes') + 'm';
+                return record.get('durationHours') + 'hr ' + record.get('durationMinutes') + 'm';
             }
         }
     ],
