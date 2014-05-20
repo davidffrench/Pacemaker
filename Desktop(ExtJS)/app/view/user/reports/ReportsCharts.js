@@ -1,5 +1,5 @@
 Ext.define('Pacemaker.view.user.reports.ReportsCharts', {
-	extend: 'Ext.container.Container',
+	extend: 'Ext.panel.Panel',
 	requires: [
 		'Ext.chart.axis.Time',
 		'Ext.chart.axis.Numeric',
@@ -44,6 +44,20 @@ Ext.define('Pacemaker.view.user.reports.ReportsCharts', {
 					}
 				},
 			}]
+		}];
+
+		this.tbar = ['->', {
+			text: 'Save Chart',
+			handler: function() {
+				var distanceChart = this.up('reportscharts').down('[name=distanceChart]');
+				Ext.MessageBox.confirm('Confirm Download', 'Would you like to download the chart as an image?', function(choice){
+					if(choice == 'yes'){
+						distanceChart.save({
+							type: 'image/png'
+						});
+					}
+				});
+			}
 		}];
 
 		this.callParent(arguments);
