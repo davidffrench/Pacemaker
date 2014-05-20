@@ -6,7 +6,12 @@ Ext.define('Pacemaker.model.User', {
         { name: 'firstname', type: 'string' },
         { name: 'lastname', type: 'string' },
         { name: 'email', type: 'string' },
-        { name: 'password', type: 'string' }
+        { name: 'password', type: 'string' },
+        { name: 'fullname', type: 'string',
+            convert: function (newValue, record) {
+                return record.get('firstname') + ' ' + record.get('lastname');
+            }
+        }
     ],
 
     // associations: [{

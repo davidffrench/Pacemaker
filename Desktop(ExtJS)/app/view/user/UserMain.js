@@ -2,7 +2,8 @@ Ext.define('Pacemaker.view.user.UserMain', {
     extend: 'Ext.tab.Panel',
     requires: [
         'Pacemaker.view.user.activities.ActivitiesMain',
-        'Pacemaker.view.user.reports.ReportsMain'
+        'Pacemaker.view.user.reports.ReportsMain',
+        'Pacemaker.view.user.friends.FriendsMain'
     ],
 
     xtype: 'usermain',
@@ -33,6 +34,15 @@ Ext.define('Pacemaker.view.user.UserMain', {
         listeners: {
             activate: function(tab) {
                 // this.down('activitystats').doLayout();
+            }
+        }
+    }, {
+        title: 'Friends',
+        icon: 'resources/images/report_user.png',
+        xtype: 'friendsmain',
+        listeners: {
+            activate: function(tab) {
+                this.down('friendslist').getStore().load();
             }
         }
     }],
