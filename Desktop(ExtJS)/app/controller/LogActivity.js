@@ -4,6 +4,9 @@ Ext.define('Pacemaker.controller.LogActivity', {
 	refs: [{
 		ref: 'newActivity',
 		selector: 'newactivity'
+	}, {
+		ref: 'appHeader',
+		selector: 'appheader'
 	}],
 
     init: function() {
@@ -39,6 +42,9 @@ Ext.define('Pacemaker.controller.LogActivity', {
 		activityRoute.add(routeArr);
 		
 		activityRecord.save();
+
+		var appHeader = this.getAppHeader();
+		appHeader.setCurrentNavItem(appHeader.down('[action=openMe]'));
 	},
 
 	pathPointAddedHandler: function(activityMap, latLng) {
