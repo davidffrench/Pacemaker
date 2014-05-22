@@ -80,28 +80,29 @@ Ext.define('Pacemaker.controller.Authorization', {
 		userRec.set('firstname', firstName);
 		userRec.set('lastname', lastName);
 
-		//set the url to the signup method used and save the record
-		userRec.getProxy().url = Pacemaker.utils.GlobalVars.serverUrl + signupUrl;
-		userRec.save({
-			callback : function(record, operation) {
-				if (operation.success) {
-					var result = Ext.decode(operation.response.responseText);
-					//set the newly created userId to the record. save apitToken & userId in global vars
-					userRec.set('id', result.user._id);
-					Pacemaker.utils.GlobalVars.userId = result.user._id;
-					Pacemaker.utils.GlobalVars.apiToken = result.token;
+		Ext.Ajax.request({
+			url: Pacemaker.utils.GlobalVars.serverUrl + signupUrl,
+			method: 'post',
+			jsonData: Ext.JSON.encode(userRec.data),
+			success: function(response, opts) {
+				var result = Ext.decode(response.responseText);
+				//set the newly created userId to the record. save apitToken & userId in global vars
+				userRec.set('id', result.user._id);
+				Pacemaker.utils.GlobalVars.userId = result.user._id;
+				Pacemaker.utils.GlobalVars.apiToken = result.token;
 
-					//open app now that user has signed up
-					me.getAppHeader().setCurrentNavItem();
-				} else {
-					var statusCode = operation.error.status;
+				//open app now that user has signed up
+				me.getAppHeader().setCurrentNavItem();
+			},
+			failure: function(response, opts) {
+				var result = Ext.decode(response.responseText),
+					statusCode = response.status;
 
-					if(statusCode === 422){
-						var signupError = signupView.down('#signupError');
-						//set specific error code text and show error panel
-						signupError.down('label').setText('That email is already taken.');
-						signupError.show();
-					}
+				if(statusCode === 422){
+					var signupError = signupView.down('#signupError');
+					//set specific error code text and show error panel
+					signupError.down('label').setText('That email is already taken.');
+					signupError.show();
 				}
 			}
 		});
