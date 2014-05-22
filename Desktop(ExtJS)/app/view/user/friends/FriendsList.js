@@ -39,7 +39,16 @@ Ext.define('Pacemaker.view.user.friends.FriendsList', {
             xtype: 'textfield',
             labelAlign: 'top',
             name: 'fullname',
-            fieldLabel: 'Find Users by Name'
+            fieldLabel: 'Find Users by Name',
+            emptyText: 'Search...',
+            listeners: {
+                change: function(field, newValue, oldValue){
+                    field.up('grid').getStore().filterBy(function(record){
+                        var fullname = record.get('fullname').toLowerCase();
+                        return (fullname.indexOf(newValue.toLowerCase()) != -1);
+                    });
+                }
+            }
         }];
         
         this.callParent(arguments);
