@@ -1,8 +1,6 @@
 Ext.define('Pacemaker.view.user.friends.FriendsList', {
     extend: 'Ext.grid.Panel',
     requires: [
-        'Ext.grid.column.Date',
-        'Ext.grid.column.Number',
         'Ext.grid.column.Action'
     ],
 

@@ -5,8 +5,8 @@ Ext.define('Pacemaker.model.User', {
         { name: 'id', type: 'string', mapping: '_id'},
         { name: 'firstname', type: 'string' },
         { name: 'lastname', type: 'string' },
-        { name: 'email', type: 'string' },
-        { name: 'password', type: 'string' },
+        { name: 'email', type: 'string', mapping: 'local.email' },
+        { name: 'password', type: 'string', mapping: 'local.password' },
         { name: 'fullname', type: 'string',
             convert: function (newValue, record) {
                 return record.get('firstname') + ' ' + record.get('lastname');
@@ -21,7 +21,7 @@ Ext.define('Pacemaker.model.User', {
     // }],
 
     proxy: {
-        type: 'ajax',
+        type: 'rest',
         url: Pacemaker.utils.GlobalVars.serverUrl + '/users'
     }
 });

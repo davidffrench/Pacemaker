@@ -3,7 +3,8 @@ Ext.define('Pacemaker.view.user.UserMain', {
     requires: [
         'Pacemaker.view.user.activities.ActivitiesMain',
         'Pacemaker.view.user.reports.ReportsMain',
-        'Pacemaker.view.user.friends.FriendsMain'
+        'Pacemaker.view.user.friends.FriendsMain',
+        'Pacemaker.view.user.dashboard.DashboardMain'
     ],
 
     xtype: 'usermain',
@@ -14,8 +15,11 @@ Ext.define('Pacemaker.view.user.UserMain', {
     items: [{
         title: 'Dashboard',
         icon: 'resources/images/house.png',
+        xtype: 'dashboardmain',
         listeners: {
-            activate: function(tabPanel, newCard, oldCard) {
+            activate: function(tab) {
+                var userMain = tab.up('usermain');
+                userMain.fireEvent('dashboardactivate', userMain, tab);
             }
         }
     }, {

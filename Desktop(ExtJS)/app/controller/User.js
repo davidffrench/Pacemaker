@@ -24,6 +24,9 @@ Ext.define('Pacemaker.controller.User', {
     init: function() {
 		this.listen({
 			component: {
+				'usermain': {
+					dashboardactivate: this.dashboardActivateHandler
+				},
 				'activitiesmain': {
 					afterlayout: this.activitesActivateHandler
 				},
@@ -43,6 +46,22 @@ Ext.define('Pacemaker.controller.User', {
 			},
 			store: {
 				
+			}
+		});
+	},
+
+	dashboardActivateHandler: function(tabPanel, tab) {
+		this.log();
+		
+		var me = this,
+			userModel = Ext.ModelManager.getModel('Pacemaker.model.User'),
+			userId = Pacemaker.utils.GlobalVars.userId;
+		
+		userModel.load(userId, {
+			scope: this,
+			success: function(record, operation) {
+				tab.down('userinfo').loadRecord(record);
+				debugger;
 			}
 		});
 	},
