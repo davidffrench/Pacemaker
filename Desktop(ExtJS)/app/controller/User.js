@@ -36,6 +36,9 @@ Ext.define('Pacemaker.controller.User', {
 				},
 				'reportsheader': {
 					timeframechanged: this.timeFrameChangeHandler
+				},
+				'friendslist': {
+					addfriend: this.addFriendHandler
 				}
 			},
 			store: {
@@ -149,6 +152,21 @@ Ext.define('Pacemaker.controller.User', {
 
 				chartsStore.removeAll();
 				chartsStore.add(result.activities);
+			}
+		});
+    },
+
+    addFriendHandler: function(friendsGrid, store, friendRec){
+		var postJSON = Ext.JSON.encode(friendRec.data);
+
+		Ext.Ajax.request({
+			url: Pacemaker.utils.GlobalVars.serverUrl + '/users/' + Pacemaker.utils.GlobalVars.userId + '/addFriend',
+			method: 'post',
+			jsonData: postJSON,
+			success: function(response, opts) {
+				var result = Ext.decode(response.responseText);
+
+				debugger;
 			}
 		});
     },

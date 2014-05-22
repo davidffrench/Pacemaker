@@ -43,6 +43,9 @@ module.exports = function(app, passport){
 	router.route('/users/:userId/activitiesReportsData')
 		.all(isLoggedIn)
 		.post(activityController.activitiesReportsData.action);
+	router.route('/users/:userId/addFriend')
+		.all(isLoggedIn)
+		.post(userController.addFriend.action);
 
 	return router;
 };

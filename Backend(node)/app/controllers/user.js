@@ -145,3 +145,33 @@ exports.updateUser = {
 		});
 	}
 };
+
+exports.addFriend = {
+	'spec': {
+		path : "/users/{userId}/addFriend",
+		notes : "add friend to the user",
+		summary : "Adds a friend to the user",
+		method: "POST",
+		parameters : [swagger.bodyParam("User", "Friend that needs to be added to the user", "UserSignup")],
+		nickname : "addFriend"
+	},
+	action: function(req, res){
+		User.findById(req.params.userId, function(err, user) {
+			if (err)
+				res.send(err);
+
+			User.findById(req.body.id, function(err, friend) {
+				if (err)
+					res.send(err);
+
+				user.friends.push(friend);
+				user.save(function (err) {
+					if (err)
+						res.send(err);
+					
+					res.json({ message: 'Friend added!' });
+				});
+			});
+		});
+	}
+};

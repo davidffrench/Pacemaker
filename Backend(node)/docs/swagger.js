@@ -71,7 +71,8 @@ module.exports = function(app, express){
 		.addDelete(activityController.deleteActivity)
 		.addPost(authController.signup)
 		.addPost(authController.login)
-		.addPost(activityController.activitiesReportsData);
+		.addPost(activityController.activitiesReportsData)
+		.addPost(userController.addFriend);
 
 	swagger.configure("http://localhost:3000", "0.1");
 };

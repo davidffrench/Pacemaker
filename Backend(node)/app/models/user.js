@@ -28,7 +28,8 @@ var userSchema		= new Schema({
     },
     firstname: String,
     lastname: String,
-	activities: [ activitySchema.schema ]
+	activities: [ activitySchema.schema ],
+    friends: [ userSchema ],
 });
 
 // methods ======================
