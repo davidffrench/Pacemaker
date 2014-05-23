@@ -61,7 +61,13 @@ Ext.define('Pacemaker.controller.User', {
 			scope: this,
 			success: function(record, operation) {
 				tab.down('userinfo').loadRecord(record);
-				debugger;
+				
+				var socket = io.connect('http://localhost:3000');
+
+				socket.on('feedUpdate', function (data) {
+			        debugger;
+			    });
+			    debugger;
 			}
 		});
 	},

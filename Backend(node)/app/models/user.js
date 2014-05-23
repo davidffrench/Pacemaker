@@ -1,7 +1,8 @@
 var mongoose		= require('mongoose');
 var Schema			= mongoose.Schema;
 var bcrypt          = require('bcrypt-nodejs');
-var activitySchema	= require('./activity');
+var activitySchema  = require('./activity');
+var feedSchema      = require('./feed');
 
 var userSchema		= new Schema({
 	local            : {
@@ -30,6 +31,7 @@ var userSchema		= new Schema({
     lastname: String,
 	activities: [ activitySchema.schema ],
     friends: [ userSchema ],
+    feed: [ feedSchema.schema ]
 });
 
 // methods ======================

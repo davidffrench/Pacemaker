@@ -1,6 +1,8 @@
 var User     = require('./../models/user');
 var Activity = require('./../models/activity');
+var Feed     = require('./../models/feed');
 var swagger  = require('swagger-node-express');
+var io       = require('socket.io');
 
 exports.activities = {
 	'spec': {
@@ -20,7 +22,7 @@ exports.activities = {
 		User.findById(req.params.userId, function(err, user) {
 			if (err)
 				res.send(err);
-			
+
 			res.json(user.activities);
 		});
 	}
@@ -56,12 +58,22 @@ exports.createActivity = {
 			for(i=0; i<req.body.route.length; i++){
 				activity.route.push(req.body.route[i]);
 			}
-
 			user.activities.push(activity);
+
+			var feedItem = new Feed({
+				userFirstname   : user.firstname,
+				userLastname    : user.lastname,
+				feedDate        : new Date(),
+				feedText        : ' completed a ' + activity.distance + ' km ' + activity.activityType + ' activity'
+			});
+			user.feed.push(feedItem);
+
 			user.save(function (err) {
 				if (err)
 					res.send(err);
 				
+				global.io.sockets.emit('feedUpdate', JSON.stringify(feedItem));
+
 				res.json({ message: 'Activity created!' });
 			});
 		});

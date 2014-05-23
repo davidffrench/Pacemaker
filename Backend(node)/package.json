@@ -30,7 +30,8 @@
     "bcrypt-nodejs" : "latest",
     "swagger-node-express" : "2.0.1",
     "mocha" : "1.18.2",
-    "chai" : "1.9.1"
+    "chai" : "1.9.1",
+    "socket.io": "0.9.17"
   },
   "license": "MIT",
   "repository": {
