@@ -48,6 +48,12 @@ Ext.define('Pacemaker.controller.User', {
 				
 			}
 		});
+
+		var socket = io.connect('http://localhost:3000');
+
+		socket.on('feedUpdate', function (data) {
+			debugger;
+		});
 	},
 
 	dashboardActivateHandler: function(tabPanel, tab) {
@@ -62,11 +68,6 @@ Ext.define('Pacemaker.controller.User', {
 			success: function(record, operation) {
 				tab.down('userinfo').loadRecord(record);
 				
-				var socket = io.connect('http://localhost:3000');
-
-				socket.on('feedUpdate', function (data) {
-			        debugger;
-			    });
 			    debugger;
 			}
 		});
