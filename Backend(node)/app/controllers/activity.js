@@ -71,8 +71,6 @@ exports.createActivity = {
 			user.save(function (err) {
 				if (err)
 					res.send(err);
-				
-				global.io.sockets.emit('feedUpdate', JSON.stringify(feedItem));
 
 				res.json({ message: 'Activity created!' });
 			});
