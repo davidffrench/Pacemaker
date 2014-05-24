@@ -9,7 +9,7 @@ Ext.define('Pacemaker.model.FeedItem', {
         { name: 'feedText', type: 'string' },
         { name: 'userFullname', type: 'string',
             convert: function (newValue, record) {
-                return record.get('userFirstName') + ' ' + record.get('userLastName');
+                return record.get('userFirstname') + ' ' + record.get('userLastname');
             }
         }
     ]

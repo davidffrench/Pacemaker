@@ -22,6 +22,6 @@ Ext.define('Pacemaker.model.User', {
 
     proxy: {
         type: 'rest',
-        url: Pacemaker.utils.GlobalVars.serverUrl + '/users'
+        url: Pacemaker.utils.GlobalVars.serverApiUrl + '/users'
     }
 });

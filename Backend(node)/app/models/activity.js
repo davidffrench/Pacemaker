@@ -1,6 +1,6 @@
 var mongoose		= require('mongoose');
 var Schema			= mongoose.Schema;
-var routeSchema	= require('./route');
+var routeSchema	    = require('./route');
 
 var activitySchema	= new Schema({
 	activityType: String,

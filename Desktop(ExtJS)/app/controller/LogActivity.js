@@ -40,7 +40,8 @@ Ext.define('Pacemaker.controller.LogActivity', {
             }));
         });
 		activityRoute.add(routeArr);
-		
+
+		activityRecord.getProxy().url = Pacemaker.utils.GlobalVars.serverApiUrl + '/users/' + Pacemaker.utils.GlobalVars.userId + '/activities/';
 		activityRecord.save();
 
 		var appHeader = this.getAppHeader();

@@ -2,7 +2,6 @@ var User     = require('./../models/user');
 var Activity = require('./../models/activity');
 var Feed     = require('./../models/feed');
 var swagger  = require('swagger-node-express');
-var io       = require('socket.io');
 
 exports.activities = {
 	'spec': {

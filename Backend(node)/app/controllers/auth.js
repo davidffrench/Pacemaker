@@ -26,7 +26,6 @@ exports.signup = {
 					e.status = 422;
 				return next(e);
 			} else {
-				        	console.log('user');
 				// We are sending the user inside the token
 				var token = jwt.sign(user, tokenSecret, { expiresInMinutes: 60*5 });
 
@@ -55,6 +54,9 @@ exports.login = {
 					e.status = 422;
 				return next(e);
 			} else {
+				user.activities = null;
+				user.friends = null;
+				user.feed = null;
 				// We are sending the user inside the token
 				var token = jwt.sign(user, tokenSecret, { expiresInMinutes: 60*5 });
 

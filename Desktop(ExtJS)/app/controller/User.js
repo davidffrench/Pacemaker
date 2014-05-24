@@ -22,6 +22,8 @@ Ext.define('Pacemaker.controller.User', {
 	}],
 
     init: function() {
+		var me = this;
+
 		this.listen({
 			component: {
 				'usermain': {
@@ -48,12 +50,6 @@ Ext.define('Pacemaker.controller.User', {
 				
 			}
 		});
-
-		var socket = io.connect('http://localhost:3000');
-
-		socket.on('feedUpdate', function (data) {
-			debugger;
-		});
 	},
 
 	dashboardActivateHandler: function(tabPanel, tab) {
@@ -67,8 +63,18 @@ Ext.define('Pacemaker.controller.User', {
 			scope: this,
 			success: function(record, operation) {
 				tab.down('userinfo').loadRecord(record);
-				
-			    debugger;
+			}
+		});
+
+		Ext.Ajax.request({
+			url: Pacemaker.utils.GlobalVars.serverApiUrl + '/users/' + Pacemaker.utils.GlobalVars.userId + '/dashboardStatsData',
+			method: 'get',
+			success: function(response, opts) {
+				var result = Ext.decode(response.responseText);
+
+				tab.down('[name=totalDistance]').setValue(Ext.util.Format.number(result.totalDistance, '0.00'));
+				tab.down('[name=totalActivities]').setValue(result.totalActivities);
+				tab.down('[name=totalCalories]').setValue(result.totalCalories);
 			}
 		});
 	},
@@ -77,6 +83,7 @@ Ext.define('Pacemaker.controller.User', {
 		this.log();
 		
 		var activityStore = this.getActivitiesList().getStore();
+		activityStore.getProxy().url = Pacemaker.utils.GlobalVars.serverApiUrl + '/users/' + Pacemaker.utils.GlobalVars.userId + '/activities/';
         activityStore.load();
 
 		tabPanel.down('activitymap').renderMap(false);
@@ -166,7 +173,7 @@ Ext.define('Pacemaker.controller.User', {
 		postJSON.timeframeOption = reportTimeframe;
 		
 		Ext.Ajax.request({
-			url: Pacemaker.utils.GlobalVars.serverUrl + '/users/' + Pacemaker.utils.GlobalVars.userId + '/activitiesReportsData',
+			url: Pacemaker.utils.GlobalVars.serverApiUrl + '/users/' + Pacemaker.utils.GlobalVars.userId + '/activitiesReportsData',
 			method: 'post',
 			jsonData: postJSON,
 			success: function(response, opts) {
@@ -186,7 +193,7 @@ Ext.define('Pacemaker.controller.User', {
 		var postJSON = Ext.JSON.encode(friendRec.data);
 
 		Ext.Ajax.request({
-			url: Pacemaker.utils.GlobalVars.serverUrl + '/users/' + Pacemaker.utils.GlobalVars.userId + '/addFriend',
+			url: Pacemaker.utils.GlobalVars.serverApiUrl + '/users/' + Pacemaker.utils.GlobalVars.userId + '/addFriend',
 			method: 'post',
 			jsonData: postJSON,
 			success: function(response, opts) {

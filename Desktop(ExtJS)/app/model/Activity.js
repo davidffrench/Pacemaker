@@ -27,7 +27,7 @@ Ext.define('Pacemaker.model.Activity', {
 
     proxy: {
         type: 'rest',
-        url: Pacemaker.utils.GlobalVars.serverUrl + '/users/' + Pacemaker.utils.GlobalVars.userId + '/activities/',
+        url: Pacemaker.utils.GlobalVars.serverApiUrl + '/users/' + Pacemaker.utils.GlobalVars.userId + '/activities/',
         writer:{
             type: 'json',
             //override to save associated route with model.save()
