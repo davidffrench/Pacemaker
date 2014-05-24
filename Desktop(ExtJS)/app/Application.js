@@ -1,6 +1,9 @@
 Ext.define('Pacemaker.Application', {
     name: 'Pacemaker',
-    requires: ['Pacemaker.utils.GlobalVars'],
+    requires: [
+        'Pacemaker.utils.GlobalVars',
+        'Pacemaker.utils.Utility'
+    ],
 
     extend: 'Ext.app.Application',
 
@@ -19,6 +22,7 @@ Ext.define('Pacemaker.Application', {
     stores: [
         'Users',
         'Activities',
+        'Feed',
         'metadata.ActivityTypes'
     ]
 });

@@ -39,7 +39,7 @@ Ext.define('Pacemaker.controller.Authorization', {
 		var me = this;
 
 		Ext.Ajax.request({
-			url: Pacemaker.utils.GlobalVars.serverUrl + loginUrl,
+			url: Pacemaker.utils.GlobalVars.serverApiUrl + loginUrl,
 			method: 'post',
 			jsonData: formValues,
 			success: function(response, opts) {
@@ -52,6 +52,8 @@ Ext.define('Pacemaker.controller.Authorization', {
 
 				//open app now that user has signed up
 				me.getAppHeader().setCurrentNavItem();
+
+				me.socketConnect();
 			},
 			failure: function(response, opts) {
 				var result = Ext.decode(response.responseText),
@@ -81,7 +83,7 @@ Ext.define('Pacemaker.controller.Authorization', {
 		userRec.set('lastname', lastName);
 
 		Ext.Ajax.request({
-			url: Pacemaker.utils.GlobalVars.serverUrl + signupUrl,
+			url: Pacemaker.utils.GlobalVars.serverApiUrl + signupUrl,
 			method: 'post',
 			jsonData: Ext.JSON.encode(userRec.data),
 			success: function(response, opts) {
@@ -93,6 +95,8 @@ Ext.define('Pacemaker.controller.Authorization', {
 
 				//open app now that user has signed up
 				me.getAppHeader().setCurrentNavItem();
+
+				me.socketConnect();
 			},
 			failure: function(response, opts) {
 				var result = Ext.decode(response.responseText),
@@ -106,6 +110,29 @@ Ext.define('Pacemaker.controller.Authorization', {
 				}
 			}
 		});
+	},
+
+	socketConnect: function() {
+		this.log();
+
+		var me = this;
+		
+		Pacemaker.utils.GlobalVars.socket = io.connect(Pacemaker.utils.GlobalVars.serverUrl, { query: "userId=" + Pacemaker.utils.GlobalVars.userId });
+
+		Pacemaker.utils.GlobalVars.socket.on('feedUpdate', function (data) {
+			var result = Ext.JSON.decode(data);
+
+			var feedStore = me.getStore('Feed');
+			debugger;
+			feedStore.add(result);
+			feedStore.sort('feedDate', 'DESC');
+		});
+	},
+
+	socketDisconnect: function() {
+		this.log();
+
+		Pacemaker.utils.GlobalVars.socket.disconnect();
 	},
 
 	logoutHandler: function(appHeaderView) {
@@ -125,9 +152,11 @@ Ext.define('Pacemaker.controller.Authorization', {
 		//set authentication tab to login
 		authLayout.down('#authTabPanel').layout.setActiveItem(authLayout.down('login'));
 
+		this.socketDisconnect();
 		//reset global vars for apiToken and userId
 		Pacemaker.utils.GlobalVars.userId = null;
 		Pacemaker.utils.GlobalVars.apiToken = null;
+		Pacemaker.utils.GlobalVars.socket = null;
 	},
 
 	log: function(message){

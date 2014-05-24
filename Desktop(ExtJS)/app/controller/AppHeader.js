@@ -45,6 +45,9 @@ Ext.define('Pacemaker.controller.AppHeader', {
 		} else if(newSel.action === 'openMe'){
 			var userMainView = Ext.create('Pacemaker.view.user.UserMain');
 			mainContainer.insert(userMainView);
+		} else if(newSel.action === 'openFeed'){
+			var userFeedView = Ext.create('Pacemaker.view.feed.FeedMain');
+			mainContainer.insert(userFeedView);
 		}
 	},
 

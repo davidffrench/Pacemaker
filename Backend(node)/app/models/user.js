@@ -31,7 +31,8 @@ var userSchema		= new Schema({
     lastname: String,
 	activities: [ activitySchema.schema ],
     friends: [ userSchema ],
-    feed: [ feedSchema.schema ]
+    feed: [ feedSchema.schema ],
+    socketId: String
 });
 
 // methods ======================

@@ -10,3 +10,4 @@ var server = app.listen(app.get('port'), function() {
 
 
 global.io  = require('socket.io').listen(server);
+require('./../app/middleware/socketio');
