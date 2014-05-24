@@ -413,7 +413,6 @@ Ext.ClassManager.addNameAlternateMappings({
   ],
   "Ext.grid.RowEditor": [],
   "Ext.grid.RowEditorButtons": [],
-  "Ext.grid.Scroller": [],
   "Ext.grid.View": [],
   "Ext.grid.ViewDropZone": [],
   "Ext.grid.column.Action": [
@@ -849,28 +848,37 @@ Ext.ClassManager.addNameAlternateMappings({
   "Pacemaker.controller.AppHeader": [],
   "Pacemaker.controller.Authorization": [],
   "Pacemaker.controller.LogActivity": [],
-  "Pacemaker.controller.Main": [],
   "Pacemaker.controller.User": [],
   "Pacemaker.model.Activity": [],
+  "Pacemaker.model.FeedItem": [],
   "Pacemaker.model.Route": [],
   "Pacemaker.model.User": [],
   "Pacemaker.model.metadata.ActivityType": [],
   "Pacemaker.store.Activities": [],
+  "Pacemaker.store.Feed": [],
   "Pacemaker.store.Users": [],
   "Pacemaker.store.metadata.ActivityTypes": [],
   "Pacemaker.utils.GlobalVars": [],
+  "Pacemaker.utils.Utility": [],
   "Pacemaker.view.AppHeader": [],
   "Pacemaker.view.Viewport": [],
   "Pacemaker.view.authorization.AuthLayout": [],
   "Pacemaker.view.authorization.Login": [],
   "Pacemaker.view.authorization.Signup": [],
+  "Pacemaker.view.feed.FeedMain": [],
   "Pacemaker.view.general.ActivityMap": [],
+  "Pacemaker.view.general.UserFeed": [],
   "Pacemaker.view.logActivity.NewActivity": [],
   "Pacemaker.view.logActivity.NewActivityDetails": [],
   "Pacemaker.view.user.UserMain": [],
   "Pacemaker.view.user.activities.ActivitiesList": [],
   "Pacemaker.view.user.activities.ActivitiesMain": [],
   "Pacemaker.view.user.activities.ActivityStats": [],
+  "Pacemaker.view.user.dashboard.DashboardMain": [],
+  "Pacemaker.view.user.dashboard.DashboardStats": [],
+  "Pacemaker.view.user.dashboard.UserInfo": [],
+  "Pacemaker.view.user.friends.FriendsList": [],
+  "Pacemaker.view.user.friends.FriendsMain": [],
   "Pacemaker.view.user.reports.ReportsCharts": [],
   "Pacemaker.view.user.reports.ReportsHeader": [],
   "Pacemaker.view.user.reports.ReportsList": [],
@@ -1313,7 +1321,6 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.grid.RowEditorButtons": [
     "widget.roweditorbuttons"
   ],
-  "Ext.grid.Scroller": [],
   "Ext.grid.View": [
     "widget.gridview"
   ],
@@ -1883,16 +1890,18 @@ Ext.ClassManager.addNameAliasMappings({
   "Pacemaker.controller.AppHeader": [],
   "Pacemaker.controller.Authorization": [],
   "Pacemaker.controller.LogActivity": [],
-  "Pacemaker.controller.Main": [],
   "Pacemaker.controller.User": [],
   "Pacemaker.model.Activity": [],
+  "Pacemaker.model.FeedItem": [],
   "Pacemaker.model.Route": [],
   "Pacemaker.model.User": [],
   "Pacemaker.model.metadata.ActivityType": [],
   "Pacemaker.store.Activities": [],
+  "Pacemaker.store.Feed": [],
   "Pacemaker.store.Users": [],
   "Pacemaker.store.metadata.ActivityTypes": [],
   "Pacemaker.utils.GlobalVars": [],
+  "Pacemaker.utils.Utility": [],
   "Pacemaker.view.AppHeader": [
     "widget.appheader"
   ],
@@ -1906,8 +1915,14 @@ Ext.ClassManager.addNameAliasMappings({
   "Pacemaker.view.authorization.Signup": [
     "widget.signup"
   ],
+  "Pacemaker.view.feed.FeedMain": [
+    "widget.feedmain"
+  ],
   "Pacemaker.view.general.ActivityMap": [
     "widget.activitymap"
+  ],
+  "Pacemaker.view.general.UserFeed": [
+    "widget.userfeed"
   ],
   "Pacemaker.view.logActivity.NewActivity": [
     "widget.newactivity"
@@ -1926,6 +1941,21 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "Pacemaker.view.user.activities.ActivityStats": [
     "widget.activitystats"
+  ],
+  "Pacemaker.view.user.dashboard.DashboardMain": [
+    "widget.dashboardmain"
+  ],
+  "Pacemaker.view.user.dashboard.DashboardStats": [
+    "widget.dashboardstats"
+  ],
+  "Pacemaker.view.user.dashboard.UserInfo": [
+    "widget.userinfo"
+  ],
+  "Pacemaker.view.user.friends.FriendsList": [
+    "widget.friendslist"
+  ],
+  "Pacemaker.view.user.friends.FriendsMain": [
+    "widget.friendsmain"
   ],
   "Pacemaker.view.user.reports.ReportsCharts": [
     "widget.reportscharts"
