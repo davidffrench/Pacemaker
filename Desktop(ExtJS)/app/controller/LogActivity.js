@@ -18,9 +18,6 @@ Ext.define('Pacemaker.controller.LogActivity', {
 				'activitymap': {
 					pathPointAdded: this.pathPointAddedHandler
 				}
-			},
-			store: {
-				
 			}
 		});
 	},

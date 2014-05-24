@@ -3,5 +3,6 @@ Ext.define('Pacemaker.store.metadata.ActivityTypes', {
     requires: [ 'Pacemaker.model.metadata.ActivityType'],
 
     model: 'Pacemaker.model.metadata.ActivityType',
+    //adds records to existing records
     autoLoad: {addRecords: true}
 });

@@ -22,8 +22,6 @@ Ext.define('Pacemaker.controller.User', {
 	}],
 
     init: function() {
-		var me = this;
-
 		this.listen({
 			component: {
 				'usermain': {
@@ -45,9 +43,6 @@ Ext.define('Pacemaker.controller.User', {
 				'friendslist': {
 					addfriend: this.addFriendHandler
 				}
-			},
-			store: {
-				
 			}
 		});
 	},
@@ -199,7 +194,7 @@ Ext.define('Pacemaker.controller.User', {
 			success: function(response, opts) {
 				var result = Ext.decode(response.responseText);
 
-				debugger;
+				Ext.Msg.alert('Friend Added', 'Friend added successfully');
 			}
 		});
     },

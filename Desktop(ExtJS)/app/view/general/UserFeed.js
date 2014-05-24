@@ -1,15 +1,11 @@
 Ext.define('Pacemaker.view.general.UserFeed', {
     extend: 'Ext.grid.Panel',
     requires: [
-        'Ext.grid.column.Date',
-        'Ext.grid.column.Number',
-        'Ext.grid.column.Action'
     ],
 
     xtype: 'userfeed',
     store: 'Feed',
     title: 'Feed',
-    // hideHeaders: true,
     autoScroll: true,
     margin: 15,
 
@@ -27,6 +23,7 @@ Ext.define('Pacemaker.view.general.UserFeed', {
             text: 'Time Since',
             flex: 0.6,
             renderer: function(value){
+                // render feedDate as time Since now. convience method in Utility
                 return Pacemaker.utils.Utility.timeSince(value) + ' ago';
             }
         }];

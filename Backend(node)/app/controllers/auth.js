@@ -17,10 +17,10 @@ exports.signup = {
         console.log('before passport');
 		passport.authenticate('local-signup', function(err, user, info) {
 
-        	console.log('after passport local');
+			console.log('after passport local');
 			if (err)
 				return next(err);
-			        	console.log('after error');
+
 			if(!user){
 				var e = new Error(info);
 					e.status = 422;

@@ -12,7 +12,7 @@ Ext.define('Pacemaker.view.logActivity.NewActivity', {
     },
     title: 'Enter Activity Details',
     padding: 10,
-
+    //defaults applied to all fields in this form
     fieldDefaults: {
         margin: '10 0 10 0',
         allowBlank: false,
@@ -28,7 +28,7 @@ Ext.define('Pacemaker.view.logActivity.NewActivity', {
             width: 500,
             height: 500
         }];
-
+        //form buttons to save activity or reset form & map
         this.buttons = [{
             text: 'Reset',
             listeners: {
@@ -53,6 +53,7 @@ Ext.define('Pacemaker.view.logActivity.NewActivity', {
     },
 
     saveActivity: function(){
+        //If form is valid, get form values and map route and fire custom event with these submitValues as a parameter
         var form = this.getForm();
         if (form.isValid()) {
             var submitValues = this.getValues(false, false, false, true);

@@ -8,7 +8,9 @@ Ext.define('Pacemaker.view.user.friends.FriendsList', {
     store: 'Users',
     hideHeaders: true,
     autoScroll: true,
+    //grid plugins
     plugins: {
+        //only renders a certain amount of grid rows dependant on store page size
         ptype: 'bufferedrenderer',
         trailingBufferZone: 20,  // Keep 20 rows rendered in the table behind scroll
         leadingBufferZone: 50   // Keep 50 rows rendered in the table ahead of scroll
@@ -24,7 +26,9 @@ Ext.define('Pacemaker.view.user.friends.FriendsList', {
             items: [{
                 icon: 'resources/images/add.png',
                 tooltip: 'Invite User',
+                //on click of invite user icon
                 handler: function(gridView, rowIndex, colIndex) {
+                    //fire custom event so controller can send ajax cll to add friend
                     var rec = gridView.getStore().getAt(rowIndex),
                         friendsList = gridView.up('friendslist');
 
@@ -33,6 +37,7 @@ Ext.define('Pacemaker.view.user.friends.FriendsList', {
             }]
         }];
 
+        //top toolbar contains a textfield which is used to filter store from input
         this.tbar = [{
             xtype: 'textfield',
             labelAlign: 'top',
@@ -41,6 +46,8 @@ Ext.define('Pacemaker.view.user.friends.FriendsList', {
             emptyText: 'Search...',
             listeners: {
                 change: function(field, newValue, oldValue){
+                    //filter the store passed on textfield input. 
+                    //If input is contained as a substing of store record fullname field, keep in store otherwise filter out. 
                     field.up('grid').getStore().filterBy(function(record){
                         var fullname = record.get('fullname').toLowerCase();
                         return (fullname.indexOf(newValue.toLowerCase()) != -1);

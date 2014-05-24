@@ -14,11 +14,11 @@ Ext.define('Pacemaker.view.logActivity.NewActivityDetails', {
     },
     width: 300,
     margin: 10,
-    // margin: '25 0 0 0',
-    // border: 1,
+    //default properties for every item
     defaults: {
         listeners: {
             specialkey: function(txtFld, e){
+                //allow save through enter key on every field
                 if (e.getKey() == e.ENTER && txtFld.up('form').isValid()) {
                     txtFld.up('newactivity').saveActivity();
                 }

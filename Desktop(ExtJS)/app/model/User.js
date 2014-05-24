@@ -8,17 +8,12 @@ Ext.define('Pacemaker.model.User', {
         { name: 'email', type: 'string', mapping: 'local.email' },
         { name: 'password', type: 'string', mapping: 'local.password' },
         { name: 'fullname', type: 'string',
+            // new client field fullname, combines firtname and lastname
             convert: function (newValue, record) {
                 return record.get('firstname') + ' ' + record.get('lastname');
             }
         }
     ],
-
-    // associations: [{
-    //     type: 'hasMany',
-    //     model: 'Pacemaker.model.Activity',
-    //     name: 'activities'
-    // }],
 
     proxy: {
         type: 'rest',

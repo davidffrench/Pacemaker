@@ -1,5 +1,3 @@
-
-
 Ext.define('Pacemaker.utils.Utility', {
     singleton: true,
 

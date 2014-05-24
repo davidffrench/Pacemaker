@@ -3,5 +3,4 @@ Ext.define('Pacemaker.store.Activities', {
     requires: [ 'Pacemaker.model.Activity'],
 
     model: 'Pacemaker.model.Activity',
-    // autoSync: true
 });

@@ -19,8 +19,6 @@ global.io.sockets.on('connection', function (socket) {
 		user.socketId = socket.id;
 		user.save();
 
-		console.dir(user);
-		
 		var calls = [];
 		var fullFeedList = user.feed;
 		// for(i=0; i<user.friends.length; i++){

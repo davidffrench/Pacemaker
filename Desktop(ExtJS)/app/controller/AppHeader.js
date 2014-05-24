@@ -15,9 +15,6 @@ Ext.define('Pacemaker.controller.AppHeader', {
 				'appheader': {
 					navitemchange: this.navChangeHandler
 				}
-			},
-			store: {
-				
 			}
 		});
 	},

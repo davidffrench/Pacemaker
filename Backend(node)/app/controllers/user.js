@@ -74,7 +74,6 @@ exports.user = {
 			if (err)
 				res.send(err);
 
-			console.dir(user.socket);
 			res.json(user);
 		});
 	}

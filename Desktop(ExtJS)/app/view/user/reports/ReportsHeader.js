@@ -2,10 +2,12 @@ Ext.define("Pacemaker.view.user.reports.ReportsHeader", {
     extend: 'Ext.container.Container',
     requires: [],
     
+	//encapsulate the time frame for reports. Only accessible through getters and setters
 	config: {
 		reportTimeframe: null
 	},
 
+	//Run on setReportTimeframe(), before item is set. Used for validation etc
 	applyReportTimeframe: function(newSel, oldSel){
 		//if no button is passed in, default to currentYear
 		if(!newSel){
@@ -14,6 +16,7 @@ Ext.define("Pacemaker.view.user.reports.ReportsHeader", {
 		return newSel;
 	},
 
+	//Run after reportTimeframe is successfully set.
 	updateReportTimeframe: function(newSel, oldSel){
 		this.fireEvent('timeframechanged', this, newSel, oldSel);
 	},
@@ -42,10 +45,13 @@ Ext.define("Pacemaker.view.user.reports.ReportsHeader", {
 			xtype: 'container',
 			layout: 'hbox',
 			width: '100%',
+			//defaults for all items under this container
 			defaults: {
 				toggleGroup: 'reportsTimeframe',
+				border: false,
 				listeners: {
 					click: function(btn){
+						//On button click, change the reports time frame to the clicked button
 						btn.up('reportsheader').setReportTimeframe(btn);
 					}
 				}
@@ -55,43 +61,25 @@ Ext.define("Pacemaker.view.user.reports.ReportsHeader", {
 			},{
 				xtype: 'button',
 				text: 'Last 30 Days',
-				action: 'last30Days',
-				border: false
+				action: 'last30Days'
 			},{
 				xtype: 'button',
 				text: 'Last 3 Months',
-				action: 'last3Months',
-				border: false,
-				listeners: {
-					click: function(btn){
-						btn.up('reportsheader').setReportTimeframe(btn);
-					}
-				}
+				action: 'last3Months'
 			},{
 				xtype: 'button',
 				text: 'Current Year',
 				action: 'currentYear',
-				border: false,
-				pressed: true,
-				listeners: {
-					click: function(btn){
-						btn.up('reportsheader').setReportTimeframe(btn);
-					}
-				}
+				pressed: true
 			},{
 				xtype: 'button',
 				text: 'Forever',
-				action: 'lifetime',
-				border: false,
-				listeners: {
-					click: function(btn){
-						btn.up('reportsheader').setReportTimeframe(btn);
-					}
-				}
+				action: 'lifetime'
 			}]
 		}];
         this.callParent(arguments);
 
+        //set report timeframe when this view is instansiated
         this.setReportTimeframe();
     }
 });

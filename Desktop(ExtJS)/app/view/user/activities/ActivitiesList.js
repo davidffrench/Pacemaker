@@ -10,15 +10,6 @@ Ext.define('Pacemaker.view.user.activities.ActivitiesList', {
     store: 'Activities',
     hideHeaders: true,
     autoScroll: true,
-    // layout: 'fit',
-
-    // features: [{
-    //     ftype: 'grouping',
-    //     groupHeaderTpl: '{activityDate} ({rows.length} Item{[values.rows.length > 1 ? "s" : ""]})',
-    //     hideGroupedHeader: true,
-    //     startCollapsed: true,
-    //     id: 'dateGrouping'
-    // }],
 
     initComponent: function() {
         this.columns = [{
@@ -43,7 +34,9 @@ Ext.define('Pacemaker.view.user.activities.ActivitiesList', {
             items: [{
                 icon: 'resources/images/delete.png',
                 tooltip: 'Delete',
+                //on click of delete activity icon
                 handler: function(gridView, rowIndex, colIndex) {
+                    //fire custom event so controller can send ajax call to add delete activity
                     var rec = gridView.getStore().getAt(rowIndex),
                         activitiesGrid = gridView.up('activitieslist');
 

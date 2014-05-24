@@ -25,21 +25,11 @@ Ext.define('Pacemaker.view.user.UserMain', {
     }, {
         title: 'Reports',
         icon: 'resources/images/chart_bar.png',
-        xtype: 'reportsmain',
-        listeners: {
-            activate: function(tabPanel, newCard, oldCard) {
-                // this.down('reportstotals').doLayout();
-            }
-        }
+        xtype: 'reportsmain'
     }, {
         title: 'Activites',
         icon: 'resources/images/note.png',
-        xtype: 'activitiesmain',
-        listeners: {
-            activate: function(tab) {
-                // this.down('activitystats').doLayout();
-            }
-        }
+        xtype: 'activitiesmain'
     }, {
         title: 'Friends',
         icon: 'resources/images/report_user.png',
@@ -49,10 +39,5 @@ Ext.define('Pacemaker.view.user.UserMain', {
                 this.down('friendslist').getStore().load();
             }
         }
-    }],
-
-    // listeners: {
-    //     tabchange: function(tabPanel, newCard, oldCard) {
-    //     }
-    // }
+    }]
 });

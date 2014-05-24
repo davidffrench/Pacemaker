@@ -6,6 +6,7 @@ Ext.define('Pacemaker.view.user.reports.ReportsTotals', {
     xtype: 'reportstotals',
     layout: 'hbox',
 
+    //field properties applied to all fields in this form
     fieldDefaults: {
         labelWidth : 100,
         width : 150,

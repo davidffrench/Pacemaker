@@ -19,11 +19,9 @@ Ext.define('Pacemaker.view.user.friends.FriendsMain', {
         width: 680,
         height: '100%',
         items: [{
-            // xtype: 'activitystats',
             margin: 10,
             height: 40
         }, {
-            // xtype: 'activitymap',
             width: '100%',
             height: 440,
         }]

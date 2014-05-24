@@ -21,12 +21,10 @@ Ext.define('Pacemaker.controller.Authorization', {
 				'appheader': {
 					logout: this.logoutHandler
 				}
-			},
-			store: {
-				
 			}
 		});
 
+		//add Authorization header to all requests
 		Ext.Ajax.on("beforerequest", function(conn, options, eOpts){
 			options.headers = {
 				'Authorization': 'Bearer ' + Pacemaker.utils.GlobalVars.apiToken
@@ -116,7 +114,7 @@ Ext.define('Pacemaker.controller.Authorization', {
 		this.log();
 
 		var me = this;
-		
+
 		Pacemaker.utils.GlobalVars.socket = io.connect(Pacemaker.utils.GlobalVars.serverUrl, { query: "userId=" + Pacemaker.utils.GlobalVars.userId });
 
 		Pacemaker.utils.GlobalVars.socket.on('feedUpdate', function (data) {

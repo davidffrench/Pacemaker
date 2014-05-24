@@ -1,9 +1,6 @@
 Ext.define('Pacemaker.view.user.reports.ReportsList', {
     extend: 'Ext.grid.Panel',
     requires: [
-        'Ext.grid.column.Date',
-        'Ext.grid.column.Number',
-        'Ext.grid.column.Action'
     ],
 
     xtype: 'reportslist',
@@ -12,6 +9,8 @@ Ext.define('Pacemaker.view.user.reports.ReportsList', {
     margin: 15,
 
     initComponent: function() {
+        //Instansiate a new ActivityTypes Store. 
+        // This is because we need to add an additional record and don't want it to show where this store is used elsewhere
         this.store = Ext.create('Pacemaker.store.metadata.ActivityTypes');
 
         this.columns = [{
@@ -26,6 +25,8 @@ Ext.define('Pacemaker.view.user.reports.ReportsList', {
 
     listeners: {
         viewready: function(grid){
+            //when the grid view is ready, select the first row. 
+            // This will trigger the reports data call to be made through a selectionchange listener in the User controller
             grid.getSelectionModel().select(grid.getStore().first());
         }
     }

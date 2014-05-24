@@ -10,6 +10,7 @@ Ext.define('Pacemaker.view.general.ActivityMap', {
     margin: 10,
     layout: 'fit',
 
+    //default lat/long and variables
     latitude: 52.245915,
     longitude: -7.139788,
     map: null,
@@ -18,7 +19,7 @@ Ext.define('Pacemaker.view.general.ActivityMap', {
 
     renderMap: function(drawPathAllowed) {
         var me = this;
-
+        // map config
         var cfg = {
             zoom: 15,
             center: new google.maps.LatLng(me.latitude, me.longitude),
@@ -26,8 +27,10 @@ Ext.define('Pacemaker.view.general.ActivityMap', {
             disableDoubleClickZoom: true,
             draggableCursor: drawPathAllowed ? "crosshair" : null
         };
+        //create new google map with config above
         me.map = new google.maps.Map(me.getEl().dom, cfg);
 
+        //If browser allows geolocation, request and set in newly created map
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function (position) {
                 initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -35,8 +38,10 @@ Ext.define('Pacemaker.view.general.ActivityMap', {
             });
         }
 
+        // create new directions service, used for route path to snap to roads
         var service = new google.maps.DirectionsService();
         me.path = new google.maps.MVCArray();
+        // Polyline is the style on line on map
         me.poly = new google.maps.Polyline({
             map: me.map,
             path: me.path,
@@ -45,6 +50,7 @@ Ext.define('Pacemaker.view.general.ActivityMap', {
             strokeWeight: 2
         });
 
+        //Add click listener to map to allow path to be drawn
         if(drawPathAllowed){
             google.maps.event.addListener(me.map, "click", function(evt) {
                 if (me.path.getLength() === 0) {
@@ -67,7 +73,7 @@ Ext.define('Pacemaker.view.general.ActivityMap', {
             });
         }
 
-        //Additional methods for calculating route distance
+        //Additional methods for calculating route distance in KM
         google.maps.LatLng.prototype.kmTo = function(a){
             var e = Math, ra = e.PI/180;
             var b = this.lat() * ra, c = a.lat() * ra, d = b - c;
@@ -75,7 +81,6 @@ Ext.define('Pacemaker.view.general.ActivityMap', {
             var f = 2 * e.asin(e.sqrt(e.pow(e.sin(d/2), 2) + e.cos(b) * e.cos(c) * e.pow(e.sin(g/2), 2)));
             return f * 6378.137;
         };
-
         google.maps.Polyline.prototype.inKm = function(n){
             var a = this.getPath(n), len = a.getLength(), dist = 0;
             for(var i=0; i<len-1; i++){
@@ -86,6 +91,7 @@ Ext.define('Pacemaker.view.general.ActivityMap', {
 
     },
 
+    //center map from lat/long arguments
     centerMap: function(latitude, longitude) {
         // Save the latitude/longitude
         this.latitude = latitude;
@@ -98,6 +104,7 @@ Ext.define('Pacemaker.view.general.ActivityMap', {
         return this.path;
     },
 
+    //set the map path, If no pathPoints passed, will reset path on map.
     setPath: function(pathPoints) {
         var newPath = new google.maps.MVCArray(),
             me = this;

@@ -19,6 +19,7 @@ Ext.define('Pacemaker.model.Activity', {
         }
     ],
 
+    // hasMany relationship with route
     associations: [{
         type: 'hasMany',
         model: 'Pacemaker.model.Route',
