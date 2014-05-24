@@ -73,6 +73,8 @@ exports.user = {
 		User.findById(req.params.userId, '-activities', function(err, user) {
 			if (err)
 				res.send(err);
+
+			console.dir(user.socket);
 			res.json(user);
 		});
 	}
@@ -163,7 +165,7 @@ exports.addFriend = {
 			User.findById(req.body.id, function(err, friend) {
 				if (err)
 					res.send(err);
-
+				
 				user.friends.push(friend);
 				user.save(function (err) {
 					if (err)
@@ -171,6 +173,42 @@ exports.addFriend = {
 					
 					res.json({ message: 'Friend added!' });
 				});
+			});
+		});
+	}
+};
+
+exports.dashboardStatsData = {
+	'spec': {
+		path : "/users/{userId}/dashboardStatsData",
+		notes : "Retrieves actvities data for reports",
+		summary : "Retrieves actvities data for reports",
+		method: "GET",
+		// parameters : [swagger.bodyParam("User", "Friend that needs to be added to the user", "UserSignup")],
+		nickname : "dashboardStatsData"
+	},
+	action: function(req, res){
+		User.findById(req.params.userId, function(err, user) {
+			if (err)
+				res.send(err);
+
+			var totalDistance = 0,
+				totalCalories = 0,
+				activities = user.activities,
+				totalActivities = activities.length;
+
+			//unable to filter subdocument with mongoose, looping over activities to build subset and calculate totals
+			for(i=0; i<activities.length; i++){
+				var activity = activities[i];
+
+				if(activity.distance) totalDistance += activity.distance;
+				if(activity.calories) totalCalories += activity.calories;
+			}
+
+			res.json({
+				"totalDistance": totalDistance,
+				"totalCalories": totalCalories,
+				"totalActivities": totalActivities
 			});
 		});
 	}

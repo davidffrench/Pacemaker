@@ -1,7 +1,9 @@
 Ext.define('Pacemaker.view.user.dashboard.DashboardMain', {
     extend: 'Ext.panel.Panel',
     requires: [
-        'Pacemaker.view.user.dashboard.UserInfo'
+        'Pacemaker.view.user.dashboard.UserInfo',
+        'Pacemaker.view.user.dashboard.DashboardStats',
+        'Pacemaker.view.general.UserFeed'
     ],
 
     xtype: 'dashboardmain',
@@ -19,13 +21,13 @@ Ext.define('Pacemaker.view.user.dashboard.DashboardMain', {
         width: 680,
         height: '100%',
         items: [{
-            // xtype: 'activitystats',
+            xtype: 'dashboardstats',
             margin: 10,
             height: 40
         }, {
-            // xtype: 'activitymap',
+            xtype: 'userfeed',
             width: '100%',
-            height: 440,
+            height: 400,
         }]
     }]
 });
