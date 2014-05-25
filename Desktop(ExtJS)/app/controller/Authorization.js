@@ -32,6 +32,12 @@ Ext.define('Pacemaker.controller.Authorization', {
 		});
 	},
 
+	/**
+     * Sends login request with formValues as POST body. On success, assigns userId and token to global vars and calls socketConnect() function
+     * @param {Ext.container.Container} loginView login container
+     * @param {object} formValues form values
+     * @param {string} loginUrl url for type of login
+     */
 	loginHandler: function(loginView, formValues, loginUrl) {
 		this.log(formValues);
 		var me = this;
@@ -67,6 +73,12 @@ Ext.define('Pacemaker.controller.Authorization', {
 		});
 	},
 
+	/**
+     * Sends signup request with formValues as POST body. On success, assigns userId and token to global vars and calls socketConnect() function
+     * @param {Ext.container.Container} signupView signup container
+     * @param {object} formValues form values
+     * @param {string} signupUrl url for type of sign up
+     */
 	signupHandler: function(signupView, formValues, signupUrl) {
 		this.log(formValues);
 		var me = this;
@@ -110,6 +122,9 @@ Ext.define('Pacemaker.controller.Authorization', {
 		});
 	},
 
+	/**
+     * Creates socket and assigns to global vars. Adds feedUpdate listener to socket which will update the feedStore
+     */
 	socketConnect: function() {
 		this.log();
 
@@ -121,18 +136,24 @@ Ext.define('Pacemaker.controller.Authorization', {
 			var result = Ext.JSON.decode(data);
 
 			var feedStore = me.getStore('Feed');
-			debugger;
+
 			feedStore.add(result);
 			feedStore.sort('feedDate', 'DESC');
 		});
 	},
 
+	/**
+     * Disconnects socket
+     */
 	socketDisconnect: function() {
 		this.log();
 
 		Pacemaker.utils.GlobalVars.socket.disconnect();
 	},
 
+	/**
+     * Clears global vars, resets forms, hides navigation buttons, redirects to login view, calls socketDisconnect()
+     */
 	logoutHandler: function(appHeaderView) {
 		this.log();
 

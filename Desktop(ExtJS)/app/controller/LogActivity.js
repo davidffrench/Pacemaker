@@ -22,6 +22,11 @@ Ext.define('Pacemaker.controller.LogActivity', {
 		});
 	},
 
+	/**
+     * Creates new activity record and assigns form values, adds route points to activity associated store. Saves activity record
+     * @param {Ext.form.Panel} activityView Activity Form
+     * @param {object} submitValues form values and map route points
+     */
 	saveActivityHandler: function(activityView, submitValues) {
 		this.log(submitValues);
 
@@ -45,6 +50,11 @@ Ext.define('Pacemaker.controller.LogActivity', {
 		appHeader.setCurrentNavItem(appHeader.down('[action=openMe]'));
 	},
 
+	/**
+     * calculates total path in KM and updates form distance field
+     * @param {Ext.Component} activityMap Map parent component
+     * @param {latLng} latLng path point latLng
+     */
 	pathPointAddedHandler: function(activityMap, latLng) {
 		this.log();
 

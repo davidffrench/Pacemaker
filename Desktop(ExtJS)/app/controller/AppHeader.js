@@ -19,6 +19,12 @@ Ext.define('Pacemaker.controller.AppHeader', {
 		});
 	},
 
+	/**
+     * Removes items from mainContainer and instansiates new view depending on new navigation selection
+     * @param {Ext.container.Container} appHeader app header container
+     * @param {Ext.btn.Btn} newSel new Selected Button
+     * @param {Ext.btn.Btn} oldSel old Selected Button
+     */
 	navChangeHandler: function(appHeader, newSel, oldSel) {
 		this.log(newSel.action);
 		
@@ -32,7 +38,7 @@ Ext.define('Pacemaker.controller.AppHeader', {
 		mainContainer.removeAll();
 		//set mainAppCard activeItem
 		this.getViewport().down('#appMainCard').layout.setActiveItem(mainContainer);
-		//hide header navigation
+		//show header navigation
 		this.getAppHeader().showHeaderItems();
 
 		if(newSel.action === 'openLog'){

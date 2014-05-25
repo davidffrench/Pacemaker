@@ -47,6 +47,11 @@ Ext.define('Pacemaker.controller.User', {
 		});
 	},
 
+	/**
+     * Sends requests for dashboard data and updates views
+     * @param {Ext.tab.Panel} tabPanel User tabPanel
+     * @param {Ext.tab.Tab} tab dashboard tab
+     */
 	dashboardActivateHandler: function(tabPanel, tab) {
 		this.log();
 		
@@ -74,6 +79,11 @@ Ext.define('Pacemaker.controller.User', {
 		});
 	},
 
+	/**
+     * Sends request for activities grid data
+     * @param {Ext.tab.Panel} tabPanel User tabPanel
+     * @param {Ext.tab.Tab} tab activities tab
+     */
 	activitesActivateHandler: function(tabPanel, tab) {
 		this.log();
 		
@@ -84,6 +94,12 @@ Ext.define('Pacemaker.controller.User', {
 		tabPanel.down('activitymap').renderMap(false);
 	},
 
+	/**
+     * Opens Msg window to confirm activity deletion, deletes activity if ok clicked
+     * @param {Ext.grid.Panel} grid Actvities grid
+     * @param {Ext.data.Store} store activities store
+     * @param {Ext.data.Model} rec activity record
+     */
 	deleteActivityHandler: function(grid, store, rec) {
 		this.log();
 		
@@ -103,7 +119,12 @@ Ext.define('Pacemaker.controller.User', {
 		
 	},
 
-	activityChangeHandler: function( selModel, selected) {
+	/**
+     * If record is selected, load record into stats view and set google maps path. If record not selected, clear and reset view/map
+     * @param {Ext.selection.Model} selModel activities grid selection model
+     * @param {Ext.data.Model} selected activity record
+     */
+	activityChangeHandler: function(selModel, selected) {
 		this.log();
 
 		var rec = selModel.getSelection()[0],
@@ -119,6 +140,11 @@ Ext.define('Pacemaker.controller.User', {
 		}
 	},
 
+	/**
+     * Set report Type value and call getReportsData() function
+     * @param {Ext.selection.Model} selModel reports grid selection model
+     * @param {Ext.data.Model} selected report record
+     */
 	reportsTypeChangeHandler: function(selModel, selected){
         var reportsMain = this.getReportsMain();
         reportsMain.down('[name=reportType]').setValue(selected[0].get('itemDesc'));
@@ -126,6 +152,12 @@ Ext.define('Pacemaker.controller.User', {
         this.getReportsData();
     },
 
+	/**
+     * Set timeframe text value and call getReportsData() function
+     * @param {Ext.container.Container} reportsheader reports header container
+     * @param {Ext.btn.Btn} newSel new Selected Button
+     * @param {Ext.btn.Btn} oldSel old Selected Button
+     */
 	timeFrameChangeHandler: function(reportsheader, newSel, oldSel){
 		var reportTimeframeText = reportsheader.down('[name=reportTimeframeText]'),
 			date = new Date(),
@@ -155,6 +187,9 @@ Ext.define('Pacemaker.controller.User', {
 			this.getReportsData();
     },
 
+	/**
+     * Send request to get reports data and update view and charts with response
+     */
 	getReportsData: function(){
 		var reportsMain = this.getReportsMain(),
 			activityType = reportsMain.down('reportslist').getSelectionModel().getSelection()[0].get('itemCd'),
@@ -184,6 +219,12 @@ Ext.define('Pacemaker.controller.User', {
 		});
     },
 
+	/**
+     * Sends request to add friend and alerts user upon success
+     * @param {Ext.grid.Panel} friendsGrid Friends grid
+     * @param {Ext.data.Store} store User store
+     * @param {Ext.data.Model} friendRec user record
+     */
     addFriendHandler: function(friendsGrid, store, friendRec){
 		var postJSON = Ext.JSON.encode(friendRec.data);
 
