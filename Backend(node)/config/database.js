@@ -1,3 +1,3 @@
 module.exports = {
-	url : 'mongodb://devuser:password@ds039447.mongolab.com:39447/pacemaker-dev'
+	url : 'mongodb://produser:password@ds027688.mongolab.com:27688/pacemaker'
 };
