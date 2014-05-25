@@ -1,0 +1,13 @@
+[{
+	"itemCd": "running",
+	"itemDesc": "Running",
+}, {
+	"itemCd": "walking",
+	"itemDesc": "Walking",
+}, {
+	"itemCd": "cycling",
+	"itemDesc": "Cycling",
+}, {
+	"itemCd": "swimming",
+	"itemDesc": "Swimming"
+}]
