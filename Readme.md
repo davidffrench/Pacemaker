@@ -7,6 +7,7 @@ _Description: Assignment for design patterns module of MSc in Computing W.I.T._
 _How do I, as a developer, start working on the project?_ 
 
 Installation:
+
 1. _Copy folder to local web server and start server_
 2. _Install node (http://nodejs.org/)_
 3. _open command line and locate backend(node) root._
@@ -18,17 +19,20 @@ Installation:
 
 OR
 
-visit
-_http://pacemaker.davidffrench.com  ( client )_
+ visit
+
+_http://pacemaker.davidffrench.com  ( client )
+
 _http://api.pacemaker.davidffrench.com  ( api documentation )_
 
-
-Bonus!
+#####Bonus!
 _Backend published as npm module._
+
 _use 'npm install pacemaker'_
+
 _https://www.npmjs.org/package/pacemaker_
 
-_Source Code:_
+#####_Source Code:_
 _https://github.com/davidffrench/Pacemaker_
 
 ## License
