@@ -7,29 +7,29 @@ _Description: Assignment for design patterns module of MSc in Computing W.I.T._
 _How do I, as a developer, start working on the project?_ 
 
 Installation:
-1. Copy folder to local web server and start server
-2. Install node (http://nodejs.org/)
-3. open command line and locate backend(node) root.
-4. Run 'npm install'
-5. Run 'npm start'
-6. open http://localhost/Pacemaker/DesktopMinified  ( client )
-7. open http://localhost/Pacemaker/SwaggerUI  ( api documentation )
-8. Enjoy!
+1. Copy folder to local web server and start server_
+2. Install node (http://nodejs.org/)_
+3. open command line and locate backend(node) root._
+4. Run 'npm install'_
+5. Run 'npm start'_
+6. open http://localhost/Pacemaker/DesktopMinified  ( client )_
+7. open http://localhost/Pacemaker/SwaggerUI  ( api documentation )_
+8. Enjoy!_
 
 OR
 
 visit
-http://pacemaker.davidffrench.com  ( client )
-http://api.pacemaker.davidffrench.com  ( api documentation )
+http://pacemaker.davidffrench.com  ( client )_
+http://api.pacemaker.davidffrench.com  ( api documentation )_
 
 
 Bonus!
-Backend published as npm module.
-use 'npm install pacemaker'
-https://www.npmjs.org/package/pacemaker
+Backend published as npm module._
+use 'npm install pacemaker'_
+https://www.npmjs.org/package/pacemaker_
 
-Source Code:
-https://github.com/davidffrench/Pacemaker
+Source Code:_
+https://github.com/davidffrench/Pacemaker_
 
 ## License
 The MIT License
