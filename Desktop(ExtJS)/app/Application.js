@@ -9,7 +9,8 @@ Ext.define('Pacemaker.Application', {
 
     views: [
         'logActivity.NewActivity',
-        'user.UserMain'
+        'user.UserMain',
+        'feed.FeedMain'
     ],
 
     controllers: [
