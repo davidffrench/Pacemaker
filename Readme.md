@@ -1,6 +1,6 @@
 # Pacemaker
 
-Description: Assignment for design patterns module of MSc in Computing W.I.T.
+Description: Assignment for MSc in Computing W.I.T.
 - - -
 ## Project Setup
 
