@@ -71,7 +71,7 @@ exports.createActivity = {
 				if (err)
 					res.send(err);
 
-				res.json({ message: 'Activity created!' });
+				res.json({ message: 'Activity created!', activityId: activity._id });
 			});
 		});
 	}
