@@ -46,6 +46,17 @@ describe('express rest api server', function(){
       });
   });
 
+  it('updates a single user', function(done){
+    superagent.put('http://localhost:3000/users/'+id)
+      .send({firstname: 'Test', lastname: 'Tester'})
+      .end(function(e, res){
+        expect(e).to.eql(null);
+        expect(typeof res.body).to.eql('object');
+        expect(res.body.message).to.eql('User updated!');
+        done();
+      });
+  });
+
   it('deletes the user', function(done){
     superagent.del('http://localhost:3000/users/'+id)
       .end(function(e, res){
