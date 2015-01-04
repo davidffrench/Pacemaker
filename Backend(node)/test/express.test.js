@@ -70,6 +70,37 @@ describe('express rest api server', function(){
       });
   });
 
+  it('gets a collection of users activities', function(done){
+    superagent.get('http://localhost:3000/users/'+id+'/activities')
+      .end(function(e, res){
+        expect(e).to.eql(null);
+        expect(res.body.length).to.be.above(0);
+        expect(res.body.map(function (item){return item._id;})).to.contain(activityId);
+        done();
+      });
+  });
+
+  it('gets a specific users activitity', function(done){
+    superagent.get('http://localhost:3000/users/'+id+'/activities/'+activityId)
+      .end(function(e, res){
+        expect(e).to.eql(null);
+        expect(res.body._id.length).to.eql(24);
+        expect(res.body._id).to.eql(activityId);
+        done();
+      });
+  });
+
+  it('updates a single user activity', function(done){
+    superagent.put('http://localhost:3000/users/'+id+'/activities/'+activityId)
+      .send({"location": "Testing"})
+      .end(function(e, res){
+        expect(e).to.eql(null);
+        expect(typeof res.body).to.eql('object');
+        expect(res.body.message).to.eql('Activity updated!');
+        done();
+      });
+  });
+
   it('deletes a user activity', function(done){
     superagent.del('http://localhost:3000/users/'+id+'/activities/'+activityId)
       .end(function(e, res){
