@@ -101,6 +101,17 @@ describe('express rest api server', function(){
       });
   });
 
+  it('gets user activities reports data', function(done){
+    superagent.post('http://localhost:3000/users/'+id+'/activitiesReportsData')
+      .send({"startDate":"2014-01-04T11:56:17","timeframeOption":"currentYear"})
+      .end(function(e, res){
+        expect(e).to.eql(null);
+        expect(typeof res.body).to.eql('object');
+        expect(res.body.activities.map(function (item){return item._id;})).to.contain(activityId);
+        done();
+      });
+  });
+
   it('deletes a user activity', function(done){
     superagent.del('http://localhost:3000/users/'+id+'/activities/'+activityId)
       .end(function(e, res){
