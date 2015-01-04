@@ -2,7 +2,7 @@ var superagent = require('superagent');
 var expect = require('expect.js');
 
 describe('express rest api server', function(){
-  var id;
+  var id, activityId;
 
   it('creates a new user', function(done){
     superagent.post('http://localhost:3000/auth/signup')
@@ -26,7 +26,7 @@ describe('express rest api server', function(){
       });
   });
 
-  it('retrieves a collection of users', function(done){
+  it('gets a collection of users', function(done){
     superagent.get('http://localhost:3000/users')
       .end(function(e, res){
         expect(e).to.eql(null);
@@ -64,6 +64,18 @@ describe('express rest api server', function(){
         expect(e).to.eql(null);
         expect(typeof res.body).to.eql('object');
         expect(res.body.message).to.eql('Activity created!');
+        expect(res.body.activityId.length).to.eql(24);
+        activityId = res.body.activityId;
+        done();
+      });
+  });
+
+  it('deletes a user activity', function(done){
+    superagent.del('http://localhost:3000/users/'+id+'/activities/'+activityId)
+      .end(function(e, res){
+        expect(e).to.eql(null);
+        expect(typeof res.body).to.eql('object');
+        expect(res.body.message).to.eql('Activity deleted!');
         done();
       });
   });
