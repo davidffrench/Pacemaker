@@ -133,10 +133,15 @@ exports.updateUser = {
 			if (err)
 				res.send(err);
 
-			user.firstname = req.body.firstname;
-			user.lastname = req.body.lastname;
-			user.email = req.body.email;
-			user.password = req.body.password;
+			if(req.body.firstname)
+				user.firstname = req.body.firstname;
+			if(req.body.lastname)
+				user.lastname = req.body.lastname;
+			if(req.body.email)
+				user.email = req.body.email;
+			if(req.body.password)
+				user.password = req.body.password;
+			
 			user.save(function(err) {
 				if (err)
 					res.send(err);
