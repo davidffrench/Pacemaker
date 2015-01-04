@@ -21,8 +21,8 @@
     "grunt-contrib-clean": "~0.4.0",
     "grunt": "~0.4.1",
     "grunt-istanbul": "~0.2.1",
-    "grunt-plato": "~0.1.5"
-  },
+    "grunt-plato": "~0.1.5",
+    "grunt-jsduck": "~1.0.1"},
   "keywords": [
     "ExtJS"
   ]

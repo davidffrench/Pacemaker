@@ -8,7 +8,8 @@ module.exports = function (grunt) {
          * Before generating any new files, remove any previously-created output files.
          */
         clean: {
-            build: ["build"]
+            build: ["build"],
+            docs: ["docs"]
         },
 
         /**
@@ -97,6 +98,24 @@ module.exports = function (grunt) {
         },
 
         /**
+         * JSDuck
+         *
+         * Generates documentation from the comments in teh ExtJS code
+         */
+        jsduck: {
+            main: {
+                // source paths with your code
+                src: [
+                    'app/**/*.js'  // globbing supported!
+                ],
+
+                // docs output dir
+                dest: 'docs',
+            }
+        }
+
+
+        /**
          * Sencha Jasmine
          *
          * Setups Jasmine and runs them using PhantomJS headlessly.
@@ -180,13 +199,14 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("grunt-contrib-clean");
     grunt.loadNpmTasks("grunt-contrib-copy");
     grunt.loadNpmTasks("grunt-sencha-dependencies");
+    grunt.loadNpmTasks('grunt-jsduck');
     // grunt.loadNpmTasks("grunt-sencha-jasmine");
     // grunt.loadNpmTasks("grunt-istanbul");
     // grunt.loadNpmTasks("grunt-plato");
 
     grunt.registerTask("default", [
-        "jshint", "clean:build",
-        "sencha_dependencies:build", "uglify:build", "copy:build"
+        "jshint", "clean:build", "clean:docs",
+        "sencha_dependencies:build", "uglify:build", "copy:build", "jsduck:main"
     ]);
 
     // grunt.registerTask("test", ["sencha_jasmine:app"]);
