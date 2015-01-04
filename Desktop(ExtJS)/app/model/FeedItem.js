@@ -1,3 +1,6 @@
+/**
+ * Feed Item model
+ */
 Ext.define('Pacemaker.model.FeedItem', {
     extend: 'Ext.data.Model',
     

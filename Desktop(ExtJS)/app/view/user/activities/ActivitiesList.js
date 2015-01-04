@@ -1,3 +1,6 @@
+/**
+ * Activities list view
+ */
 Ext.define('Pacemaker.view.user.activities.ActivitiesList', {
     extend: 'Ext.grid.Panel',
     requires: [

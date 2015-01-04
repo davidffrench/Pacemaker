@@ -1,3 +1,6 @@
+/**
+ * New activity view
+ */
 Ext.define('Pacemaker.view.logActivity.NewActivity', {
     extend: 'Ext.form.Panel',
     requires: [

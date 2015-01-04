@@ -1,3 +1,6 @@
+/**
+ * Login view
+ */
 Ext.define("Pacemaker.view.authorization.Login", {
     extend: 'Ext.container.Container',
     xtype: 'login',

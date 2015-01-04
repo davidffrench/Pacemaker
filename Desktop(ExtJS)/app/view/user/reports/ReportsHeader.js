@@ -1,3 +1,6 @@
+/**
+ * Reports header view
+ */
 Ext.define("Pacemaker.view.user.reports.ReportsHeader", {
     extend: 'Ext.container.Container',
     requires: [],

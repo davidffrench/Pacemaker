@@ -1,3 +1,6 @@
+/**
+ * Dashboard main view
+ */
 Ext.define('Pacemaker.view.user.dashboard.DashboardMain', {
     extend: 'Ext.panel.Panel',
     requires: [

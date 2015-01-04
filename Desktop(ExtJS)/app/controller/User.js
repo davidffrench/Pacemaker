@@ -1,3 +1,6 @@
+/**
+ * User controller
+ */
 Ext.define('Pacemaker.controller.User', {
     extend: 'Ext.app.Controller',
 

@@ -1,3 +1,6 @@
+/**
+ * Viewport
+ */
 Ext.define('Pacemaker.view.Viewport', {
     extend: 'Ext.container.Viewport',
     requires: [

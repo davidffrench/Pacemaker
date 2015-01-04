@@ -1,3 +1,6 @@
+/**
+ * Log Activity controller
+ */
 Ext.define('Pacemaker.controller.LogActivity', {
     extend: 'Ext.app.Controller',
 

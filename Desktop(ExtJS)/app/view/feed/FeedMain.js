@@ -1,3 +1,6 @@
+/**
+ * Feed main view
+ */
 Ext.define('Pacemaker.view.feed.FeedMain', {
     extend: 'Ext.container.Container',
     requires: [

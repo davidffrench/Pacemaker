@@ -1,3 +1,6 @@
+/**
+ * User model
+ */
 Ext.define('Pacemaker.model.User', {
     extend: 'Ext.data.Model',
 

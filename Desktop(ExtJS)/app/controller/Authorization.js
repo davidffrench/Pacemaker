@@ -1,3 +1,6 @@
+/**
+ * Authorization controller
+ */
 Ext.define('Pacemaker.controller.Authorization', {
     extend: 'Ext.app.Controller',
 

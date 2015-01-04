@@ -1,3 +1,6 @@
+/**
+ * Reports main view
+ */
 Ext.define('Pacemaker.view.user.reports.ReportsMain', {
     extend: 'Ext.panel.Panel',
     requires: [

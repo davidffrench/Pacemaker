@@ -1,3 +1,6 @@
+/**
+ * User main view
+ */
 Ext.define('Pacemaker.view.user.UserMain', {
     extend: 'Ext.tab.Panel',
     requires: [

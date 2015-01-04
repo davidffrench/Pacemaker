@@ -1,3 +1,6 @@
+/**
+ * Activities stats view
+ */
 Ext.define('Pacemaker.view.user.activities.ActivityStats', {
     extend: 'Ext.form.Panel',
     requires: [

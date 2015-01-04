@@ -1,3 +1,6 @@
+/**
+ * Reports list view
+ */
 Ext.define('Pacemaker.view.user.reports.ReportsList', {
     extend: 'Ext.grid.Panel',
     requires: [

@@ -1,3 +1,6 @@
+/**
+ * Route model
+ */
 Ext.define('Pacemaker.model.Route', {
     extend: 'Ext.data.Model',
 

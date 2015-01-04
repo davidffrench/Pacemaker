@@ -1,3 +1,6 @@
+/**
+ * Activities main view
+ */
 Ext.define('Pacemaker.view.user.activities.ActivitiesMain', {
     extend: 'Ext.panel.Panel',
     requires: [

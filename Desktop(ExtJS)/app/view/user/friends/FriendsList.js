@@ -1,3 +1,6 @@
+/**
+ * Friends list view
+ */
 Ext.define('Pacemaker.view.user.friends.FriendsList', {
     extend: 'Ext.grid.Panel',
     requires: [

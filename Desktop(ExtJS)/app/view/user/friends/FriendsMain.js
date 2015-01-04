@@ -1,3 +1,6 @@
+/**
+ * Friends main view
+ */
 Ext.define('Pacemaker.view.user.friends.FriendsMain', {
     extend: 'Ext.panel.Panel',
     requires: [

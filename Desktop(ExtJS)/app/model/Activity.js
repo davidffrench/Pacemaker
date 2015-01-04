@@ -1,3 +1,6 @@
+/**
+ * Activity model
+ */
 Ext.define('Pacemaker.model.Activity', {
     extend: 'Ext.data.Model',
     requires: [ 'Pacemaker.model.Route'],

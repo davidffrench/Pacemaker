@@ -1,3 +1,6 @@
+/**
+ * Reports charts view
+ */
 Ext.define('Pacemaker.view.user.reports.ReportsCharts', {
 	extend: 'Ext.panel.Panel',
 	requires: [

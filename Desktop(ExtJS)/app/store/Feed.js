@@ -1,3 +1,6 @@
+/**
+ * Feed store
+ */
 Ext.define('Pacemaker.store.Feed', {
     extend: 'Ext.data.Store',
     requires: [ 'Pacemaker.model.FeedItem'],

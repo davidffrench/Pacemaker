@@ -1,3 +1,6 @@
+/**
+ * Reports totals view
+ */
 Ext.define('Pacemaker.view.user.reports.ReportsTotals', {
     extend: 'Ext.form.Panel',
     requires: [

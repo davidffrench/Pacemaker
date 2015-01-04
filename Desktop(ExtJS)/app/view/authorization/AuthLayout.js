@@ -1,3 +1,6 @@
+/**
+ * Authentication layout view
+ */
 Ext.define("Pacemaker.view.authorization.AuthLayout", {
     extend: 'Ext.container.Container',
     requires: [

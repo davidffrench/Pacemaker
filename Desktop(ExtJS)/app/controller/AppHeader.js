@@ -1,3 +1,6 @@
+/**
+ * App header controller
+ */
 Ext.define('Pacemaker.controller.AppHeader', {
     extend: 'Ext.app.Controller',
 

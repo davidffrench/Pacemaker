@@ -1,3 +1,6 @@
+/**
+ * New activity details view
+ */
 Ext.define('Pacemaker.view.logActivity.NewActivityDetails', {
     extend: 'Ext.container.Container',
     requires: [

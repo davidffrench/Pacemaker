@@ -1,3 +1,6 @@
+/**
+ * Application file
+ */
 Ext.define('Pacemaker.Application', {
     name: 'Pacemaker',
     requires: [

@@ -1,3 +1,6 @@
+/**
+ * User feed view
+ */
 Ext.define('Pacemaker.view.general.UserFeed', {
     extend: 'Ext.grid.Panel',
     requires: [

@@ -1,3 +1,6 @@
+/**
+ * App header view
+ */
 Ext.define("Pacemaker.view.AppHeader", {
     extend: 'Ext.container.Container',
     requires: ['Ext.button.Split'],

@@ -1,3 +1,6 @@
+/**
+ * User info view
+ */
 Ext.define('Pacemaker.view.user.dashboard.UserInfo', {
     extend: 'Ext.form.Panel',
     requires: [

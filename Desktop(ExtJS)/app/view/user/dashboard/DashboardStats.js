@@ -1,3 +1,6 @@
+/**
+ * Dashboard stats view
+ */
 Ext.define('Pacemaker.view.user.dashboard.DashboardStats', {
     extend: 'Ext.form.Panel',
     requires: [

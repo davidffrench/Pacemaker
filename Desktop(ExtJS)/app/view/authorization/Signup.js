@@ -1,3 +1,6 @@
+/**
+ * Signup view
+ */
 Ext.define("Pacemaker.view.authorization.Signup", {
     extend: 'Ext.container.Container',
     xtype: 'signup',

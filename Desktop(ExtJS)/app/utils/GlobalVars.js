@@ -1,3 +1,6 @@
+/**
+ * Global Variables singleton
+ */
 Ext.define('Pacemaker.utils.GlobalVars', {
     singleton: true,
 

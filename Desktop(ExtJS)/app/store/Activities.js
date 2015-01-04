@@ -1,3 +1,6 @@
+/**
+ * Activities store
+ */
 Ext.define('Pacemaker.store.Activities', {
     extend: 'Ext.data.Store',
     requires: [ 'Pacemaker.model.Activity'],

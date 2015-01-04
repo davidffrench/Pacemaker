@@ -1,3 +1,6 @@
+/**
+ * Activity Type metadata model
+ */
 Ext.define('Pacemaker.model.metadata.ActivityType', {
     extend: 'Ext.data.Model',
     
