@@ -13,7 +13,7 @@ Installation:
 3. open command line and locate backend(node) root.
 4. Run 'npm install'
 5. Run 'npm start'
-6. open http://localhost/Pacemaker/DesktopMinified  ( client )
+6. open http://localhost/Pacemaker/Desktop(ExtJS)  ( client )
 7. open http://localhost/Pacemaker/SwaggerUI  ( api documentation )
 8. Enjoy!
 
@@ -21,6 +21,26 @@ Installation:
 Backend published as npm module.  
 use 'npm install pacemaker'  
 https://www.npmjs.org/package/pacemaker
+
+#### Build(Front End)
+2 options(pick 1):
+
+* (Sencha Cmd build
+* Grunt build
+
+Both are run through the command line from Desktop(ExtJS) root.
+
+#####Sencha Cmd
+```
+Run 'sencha app build'  
+```  
+Requires Sencha Cmd version 4.0.x (http://www.sencha.com/products/sencha-cmd/download)
+
+#####Grunt
+```
+Run 'grunt --force'  
+```  
+For JSDuck documentation generation, ruby and JSDuck need to be installed. Refer to this installation guide (https://github.com/senchalabs/jsduck/wiki/Installation)
 
 ###Deployed  
 http://pacemaker.davidffrench.com  ( client )  
