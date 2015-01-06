@@ -37,4 +37,18 @@ describe('Models', function(){
       done();
     });
   });
+
+  it('creates a new user', function(done){
+    user.create({ local: { email: 'test2@test.com', password: 'password' }}, function(e, user){
+      expect(user.local.email).to.eql('test2@test.com');
+      done();
+		});
+  });
+
+  it('fetches user by id', function(done){
+    user.findById(currentUser._id, function(e, user){
+      expect(user._id).to.eql(currentUser._id);
+      done();
+    });
+  });
 });
