@@ -8,11 +8,13 @@ var feedSchema	= new Schema({
 	feedDate: Date
 });
 
+/* istanbul ignore next */
 feedSchema.pre('save', function (next) {
 	this.wasNew = this.isNew;
 	next();
 });
 
+/* istanbul ignore next */
 feedSchema.post('save', function () {
 	var feed = this;
 	if (feed.wasNew){
