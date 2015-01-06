@@ -12,6 +12,7 @@ mongoose.connect('mongodb://devuser:password@ds039447.mongolab.com:39447/pacemak
 describe('Models', function(){
   var currentUser = null;
   var currentActivity = null;
+  var currentRoute = null;
 
   /*
    * beforeEach Method
@@ -63,6 +64,21 @@ describe('Models', function(){
   it('fetches activity by id', function(done){
     activity.findById(currentActivity._id, function(e, activity){
       expect(activity._id).to.eql(currentActivity._id);
+      done();
+    });
+  });
+
+  it('creates a new route', function(done){
+    route.create({ latitude: 52.2626943830317, longitude: -7.131071090698242 }, function(e, route){
+      expect(route.latitude).to.eql(52.2626943830317);
+      currentRoute = route;
+      done();
+		});
+  });
+
+  it('fetches route by id', function(done){
+    route.findById(currentRoute._id, function(e, route){
+      expect(route._id).to.eql(currentRoute._id);
       done();
     });
   });
