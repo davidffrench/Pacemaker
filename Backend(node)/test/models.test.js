@@ -51,4 +51,19 @@ describe('Models', function(){
       done();
     });
   });
+
+  it('creates a new activity', function(done){
+    activity.create({ activityType: 'walking', activityDate: '2015-01-04T00:00:00' }, function(e, activity){
+      expect(activity.activityType).to.eql('walking');
+      currentActivity = activity;
+      done();
+		});
+  });
+
+  it('fetches activity by id', function(done){
+    activity.findById(currentActivity._id, function(e, activity){
+      expect(activity._id).to.eql(currentActivity._id);
+      done();
+    });
+  });
 });
