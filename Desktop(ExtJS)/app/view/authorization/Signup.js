@@ -105,6 +105,7 @@ Ext.define("Pacemaker.view.authorization.Signup", {
             icon: 'resources/images/facebook.png',
             margin: '5 0 5 0',
             width: 200,
+            disabled: true,
             listeners: {
                 click: function(btn){
                     btn.up('signup').submitSignup(btn.signupUrl);
@@ -118,6 +119,7 @@ Ext.define("Pacemaker.view.authorization.Signup", {
             icon: 'resources/images/google_plus.png',
             margin: '5 0 5 0',
             width: 200,
+            disabled: true,
             listeners: {
                 click: function(btn){
                     btn.up('signup').submitSignup(btn.signupUrl);
@@ -131,6 +133,7 @@ Ext.define("Pacemaker.view.authorization.Signup", {
             icon: 'resources/images/twitter_1.png',
             margin: '5 0 5 0',
             width: 200,
+            disabled: true,
             listeners: {
                 click: function(btn){
                     btn.up('signup').submitSignup(btn.signupUrl);
