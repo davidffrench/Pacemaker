@@ -166,7 +166,7 @@ exports.addFriend = {
 			if (err)
 				res.send(err);
 
-			User.findById(req.body.id, function(err, friend) {
+			User.findById(req.body.id,  '-activities -friends -feed -local', function(err, friend) {
 				if (err)
 					res.send(err);
 				
