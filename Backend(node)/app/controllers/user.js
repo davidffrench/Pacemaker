@@ -67,7 +67,7 @@ exports.user = {
 		type : "User",
 		nickname : "getUserById",
 		produces : ["application/json"],
-		parameters : [swagger.pathParam("userId", "ID of user that needs to be fetched", "string", null, "538110b1564830b831000004")],
+		parameters : [swagger.pathParam("userId", "ID of user that needs to be fetched", "string", null, "54ada067d15f6ce862000004")],
 	},
 	action: function(req, res){
 		User.findById(req.params.userId, '-activities -friends', function(err, user) {

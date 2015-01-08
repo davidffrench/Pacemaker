@@ -14,7 +14,7 @@ exports.activities = {
 		items: {
 			$ref: "Activity"
 		},
-		parameters : [swagger.pathParam("userId", "ID of user that activities are retrieved for", "string", null, "538110b1564830b831000004")],
+		parameters : [swagger.pathParam("userId", "ID of user that activities are retrieved for", "string", null, "54ada067d15f6ce862000004")],
 		nickname : "activities"
 	},
 	action: function(req, res){
@@ -34,7 +34,7 @@ exports.createActivity = {
 		summary : "Creates an activity for user based on userId",
 		method: "POST",
 		parameters : [
-			swagger.pathParam("userId", "ID of user", "string", null, "538110b1564830b831000004"),
+			swagger.pathParam("userId", "ID of user", "string", null, "54ada067d15f6ce862000004"),
 			swagger.bodyParam("body", "Activity object that needs to be added to the user", "Activity")
 		],
 		nickname : "createActivity"
@@ -85,8 +85,8 @@ exports.activity = {
 		method: "GET",
 		type : "Activity",
 		parameters : [
-			swagger.pathParam("userId", "ID of user", "string", null, "538110b1564830b831000004"),
-			swagger.pathParam("activityId", "ID of activity that needs to be fetched", "string", null, "538110e8564830b831000005")
+			swagger.pathParam("userId", "ID of user", "string", null, "54ada067d15f6ce862000004"),
+			swagger.pathParam("activityId", "ID of activity that needs to be fetched", "string", null, "54ada54bd15f6ce862000006")
 		],
 		nickname : "getActivity"
 	},
@@ -106,7 +106,7 @@ exports.deleteActivity = {
 		summary : "Deletes a single activity for user based on userId",
 		method: "DELETE",
 		parameters : [
-			swagger.pathParam("userId", "ID of user", "string", null, "538110b1564830b831000004"),
+			swagger.pathParam("userId", "ID of user", "string", null, "54ada067d15f6ce862000004"),
 			swagger.pathParam("activityId", "ID of activity that needs to be fetched", "string")
 		],
 		nickname : "getActivity"
@@ -133,8 +133,8 @@ exports.updateActivity = {
 		summary : "Updates an activity for user based on userId",
 		method: "POST",
 		parameters : [
-			swagger.pathParam("userId", "ID of user", "string", null, "538110b1564830b831000004"),
-			swagger.pathParam("activityId", "ID of activity", "string", null, "538110e8564830b831000005"),
+			swagger.pathParam("userId", "ID of user", "string", null, "54ada067d15f6ce862000004"),
+			swagger.pathParam("activityId", "ID of activity", "string", null, "54ada54bd15f6ce862000006"),
 			swagger.bodyParam("body", "Updated activity object", "Activity")
 		],
 		nickname : "updateActivity"
@@ -179,7 +179,7 @@ exports.activitiesReportsData = {
 		summary : "Retrieves actvities data for reports",
 		method: "POST",
 		parameters : [
-			swagger.pathParam("userId", "ID of user", "string", null, "538110b1564830b831000004"),
+			swagger.pathParam("userId", "ID of user", "string", null, "54ada067d15f6ce862000004"),
 			swagger.bodyParam("body", "params to retrieve limited reports data", "ActivitiesReportsData")
 		],
 		nickname : "activitiesReportsData"
