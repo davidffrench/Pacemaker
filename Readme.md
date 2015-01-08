@@ -42,6 +42,13 @@ Run 'grunt --force'
 ```  
 For JSDuck documentation generation, ruby and JSDuck need to be installed. Refer to this installation guide (https://github.com/senchalabs/jsduck/wiki/Installation)
 
+#### Tests(Back end)
+Open command line and locate backend(node) root  
+Run 'npm start'  
+Run 'istanbul cover node_modules/mocha/bin/_mocha -- -R spec'  
+Coverage report generated under /coverage/lcov-report
+
+
 ###Deployed  
 http://pacemaker.davidffrench.com  ( client )  
 http://api.pacemaker.davidffrench.com  ( api documentation )
