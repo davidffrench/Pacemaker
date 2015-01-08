@@ -1,6 +1,6 @@
 {
   "name": "pacemaker",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "author": "David Ffrench <davidffrench@gmail.com>",
   "description": "Backend for Msc project",
   "contributors": [
