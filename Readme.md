@@ -38,6 +38,7 @@ Requires Sencha Cmd version 4.0.x (http://www.sencha.com/products/sencha-cmd/dow
 
 #####Grunt
 ```
+Run 'npm install'  
 Run 'grunt --force'  
 ```  
 For JSDuck documentation generation, ruby and JSDuck need to be installed. Refer to this installation guide (https://github.com/senchalabs/jsduck/wiki/Installation)
