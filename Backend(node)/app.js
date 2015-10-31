@@ -15,7 +15,9 @@ var allowCrossDomain = require('./app/middleware/cors');
 
 var app     = express();
 
-
+mongoose.connection.on('error', function (err) {
+ console.dir(err)
+});
 
 // configuration ===============================================================
 mongoose.connect(database.url);     // connect to mongoDB database
