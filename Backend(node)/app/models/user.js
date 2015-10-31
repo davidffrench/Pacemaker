@@ -4,7 +4,8 @@ var bcrypt          = require('bcrypt-nodejs');
 var activitySchema  = require('./activity');
 var feedSchema      = require('./feed');
 
-var userSchema		= new Schema({
+var userSchema		= new Schema();
+userSchema.add({
 	local            : {
         email        : String,
         password     : String,
