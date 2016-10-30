@@ -17,7 +17,7 @@ Installation:
 7. open http://localhost/Pacemaker/SwaggerUI  ( api documentation )
 8. Enjoy
 
-#####Bonus!
+##### Bonus!
 Backend published as npm module.  
 use 'npm install pacemaker'  
 https://www.npmjs.org/package/pacemaker
@@ -30,13 +30,13 @@ https://www.npmjs.org/package/pacemaker
 
 Both are run through the command line from Desktop(ExtJS) root.
 
-#####Sencha Cmd
+##### Sencha Cmd
 ```
 Run 'sencha app build'  
 ```  
 Requires Sencha Cmd version 4.0.x (http://www.sencha.com/products/sencha-cmd/download)
 
-#####Grunt
+##### Grunt
 ```
 Run 'npm install'  
 Run 'grunt --force'  
@@ -50,7 +50,7 @@ Run 'istanbul cover node_modules/mocha/bin/_mocha -- -R spec'
 Coverage report generated under /coverage/lcov-report
 
 
-###Deployed  
+### Deployed  
 http://pacemaker.davidffrench.com  ( client )  
 http://api.pacemaker.davidffrench.com  ( api documentation )
 
