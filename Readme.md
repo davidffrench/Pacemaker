@@ -4,7 +4,7 @@ Description: Assignment for MSc in Computing W.I.T.
 - - -
 ## Project Setup
 
-How do I, as a developer, start working on the project? 
+How do I, as a developer, start working on the project
 
 Installation:
 
