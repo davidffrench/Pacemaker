@@ -15,7 +15,7 @@ Installation:
 5. Run 'npm start'
 6. open http://localhost/Pacemaker/Desktop(ExtJS)  ( client )
 7. open http://localhost/Pacemaker/SwaggerUI  ( api documentation )
-8. Enjoy!
+8. Enjoy
 
 #####Bonus!
 Backend published as npm module.  
